@@ -1,0 +1,306 @@
+<!--  -->
+<section class="home">
+  <section>
+    <div
+      id="carouselExampleInterval"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <img
+            src="/user/img/hero/hero-1.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption">
+            <div class="row">
+              <div class="col-xl-5 col-lg-7 col-md-8">
+                <div class="carousel-text">
+                  <h6>Summer Collection</h6>
+                  <h2>Fall - Winter Collections 2030</h2>
+                  <p>
+                    A specialist label creating luxury essentials. Ethically
+                    crafted with an unwavering commitment to exceptional
+                    quality.
+                  </p>
+                  <a href="#" class="primary-btn">Shop now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img
+            src="/user/img/hero/hero-2.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption">
+            <div class="row">
+              <div class="col-xl-5 col-lg-7 col-md-8">
+                <div class="carousel-text">
+                  <h6>Summer Collection</h6>
+                  <h2>Fall - Winter Collections 2030</h2>
+                  <p>
+                    A specialist label creating luxury essentials. Ethically
+                    crafted with an unwavering commitment to exceptional
+                    quality.
+                  </p>
+                  <a href="#" class="primary-btn"
+                    >Shop now <span class="arrow_right"></span
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleInterval"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleInterval"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+  <!-- banner -->
+  <section class="banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 offset-lg-4">
+          <div class="banner-item-top">
+            <div class="banner-item-img">
+              <img src="/user/img/banner/banner-2.jpg" alt="" />
+            </div>
+            <div class="banner-item-text">
+              <h2>Accessories</h2>
+              <a href="#">Shop now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="banner-item-center">
+            <div class="banner-item-img">
+              <img src="/user/img/banner/banner-1.jpg" alt="" />
+            </div>
+            <div class="banner-item-text">
+              <h2>Clothing Collections 2030</h2>
+              <a href="#">Shop now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="banner-item-bottom">
+            <div class="banner-item-img">
+              <img src="/user/img/banner/banner-3.jpg" alt="" />
+            </div>
+            <div class="banner-item-text">
+              <h2>Shoes Spring</h2>
+              <a href="#">Shop now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- product -->
+  <section class="new-product">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="new-product-nav">
+            <h3>New Product</h3>
+          </div>
+        </div>
+        <div
+          class="col-md-12 col-lg-4 mb-4 mb-lg-0"
+          ng-repeat="pr in listProduct"
+        >
+          <a href="#detail-product/{{pr.id}}">
+            <div class="card rounded-lg-10">
+              <img
+                src="/user/img/product/product-1.jpg"
+                class="card-img-top"
+                alt="Laptop"
+              />
+              <div class="card-body">
+                <div class="d-flex justify-content-between">
+                  <!-- <p class="small">
+                <a href="#!" class="text-muted">{{pr.category}}</a>
+              </p> -->
+                  <!-- <p class="small text-danger"><s>$1099</s></p> -->
+                </div>
+
+                <div class="d-flex justify-content-between mb-3">
+                  <h5 class="mb-0">{{pr.name}}</h5>
+                </div>
+
+                <div class="d-flex justify-content-between mb-2">
+                  <p class="text-muted mb-0">
+                    Available: <span class="fw-bold">6</span>
+                  </p>
+                  <h5 class="text-danger mb-0">{{pr.sellPrice}}.00đ</h5>
+                </div>
+
+                <!--  -->
+                <div class="d-flex justify-content-between mb-2">
+                  <p class="text-muted mb-0"></p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- event -->
+  <section class="event">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="event-text">
+            <h2>
+              Clothings Hot <br />
+              <span>Shoe Collection</span> <br />
+              Accessories
+            </h2>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="event-deal">
+            <img src="/user/img/product-sale.png" alt="" />
+            <div class="event-deal-sticker">
+              <span>Sale Of</span>
+              <h5>$29.99</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 offset-lg-1">
+          <div class="event-time">
+            <span>Deal Of The Week</span>
+            <h2>Multi-pocket Chest Bag Black</h2>
+            <a href="#" class="primary-btn">Shop now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- instagram -->
+  <section class="instagram">
+    <div class="container">
+      <div class="row">
+        <div class="col-8">
+          <div class="row">
+            <div class="col-4">
+              <div class="instagram-img-1">
+                <img src="/user/img/instagram/instagram-1.jpg" alt="" />
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="instagram-img-2">
+                <img src="/user/img/instagram/instagram-2.jpg" alt="" />
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="instagram-img-3">
+                <img src="/user/img/instagram/instagram-3.jpg" alt="" />
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="instagram-img-4">
+                <img src="/user/img/instagram/instagram-4.jpg" alt="" />
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="instagram__pic__item">
+                <img src="/user/img/instagram/instagram-5.jpg" alt="" />
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="instagram__pic__item">
+                <img src="/user/img/instagram/instagram-6.jpg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="instagram-text">
+            <h2>Instagram</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <h3>#Male_Fashion</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- blog -->
+  <section class="blog">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="blog-title">
+            <span>Blog</span>
+            <h2>Fashion New Trends</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="blog-item">
+            <div class="blog-item-img-1"></div>
+            <div class="blog-item-text">
+              <span
+                ><img src="/user/img/icon/calendar.png" alt="" /> 16 February
+                2020</span
+              >
+              <h5>What Curling Irons Are The Best Ones</h5>
+              <a href="#">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="blog-item">
+            <div class="blog-item-img-2"></div>
+            <div class="blog-item-text">
+              <span
+                ><img src="/user/img/icon/calendar.png" alt="" /> 16 February
+                2020</span
+              >
+              <h5>Eternity Bands Do Last Forever</h5>
+              <a href="#">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="blog-item">
+            <div class="blog-item-img-3"></div>
+            <div class="blog-item-text">
+              <span
+                ><img src="/user/img//icon/calendar.png" alt="" /> 16 February
+                2020</span
+              >
+              <h5>The Health Benefits Of Sunglasses</h5>
+              <a href="#">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>

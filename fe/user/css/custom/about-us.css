@@ -1,0 +1,154 @@
+.about-us .breadcum-custom {
+  background: #f3f2ee;
+  padding: 40px 0;
+  margin-bottom: 45px;
+}
+.about-us .breadcum-custom a {
+  color: #111111;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  background-color: transparent;
+}
+.about-us .about {
+  padding-bottom: 70px;
+}
+.about-us .about-item-img {
+  text-align: center;
+  margin-bottom: 35px;
+}
+.about-us .about-item-text {
+  margin-bottom: 30px;
+}
+
+.about-us .about-item-text h4 {
+  color: #111111;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.about-us .about-item-text p {
+  font-size: 15px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #3d3d3d;
+  font-weight: 400;
+  line-height: 25px;
+  margin: 0 0 15px 0;
+}
+/* Testimonial */
+.about-us .testimonial {
+  background: #f3f2ee;
+}
+.about-us .testimonial-text {
+  text-align: center;
+  padding: 130px 150px 175px;
+}
+.about-us .testimonial-text p {
+  color: #111111;
+  font-size: 20px;
+  font-style: italic;
+  line-height: 30px;
+  padding-top: 12px;
+  margin-bottom: 25px;
+}
+.about-us .testimonial-author {
+  display: inline-block;
+}
+.about-us .testimonial-author-img {
+  float: left;
+  margin-right: 20px;
+}
+.about-us .testimonial-author-text {
+  overflow: hidden;
+  padding-top: 3px;
+  margin-right: 20px;
+}
+.about-us .testimonial-author-text h5 {
+  color: #111111;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.about-us .testimonial-author-text p {
+  color: #b7b7b7;
+  margin-bottom: 0 !important;
+  padding-top: 0;
+  font-size: 20px;
+  font-style: italic;
+  line-height: 30px;
+}
+.about-us .testimonial-img {
+  background-image: url("/user/img/about/testimonial-pic.jpg");
+  height: 600px;
+}
+/*  */
+.about-us .team {
+  padding-top: 70px;
+}
+.about-us .team-title {
+  margin-bottom: 45px;
+  text-align: center;
+}
+.about-us .team-title span {
+  color: #e53637;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.about-us .team-title h2 {
+  color: #111111;
+  font-weight: 700;
+  line-height: 46px;
+}
+/* team */
+.about-us .team-item {
+  margin-bottom: 30px;
+}
+.about-us .team-item img {
+  min-width: 100%;
+  margin-bottom: 25px;
+}
+.about-us .team-item h4 {
+  color: #111111;
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-size: 24px;
+}
+.about-us .team-item span {
+  font-size: 15px;
+  display: block;
+  color: #b7b7b7;
+}
+/* client */
+.about-us .client {
+  padding-top: 0;
+  padding-top: 70px;
+  padding-bottom: 25px;
+}
+.about-us .client-title {
+  margin-bottom: 45px;
+  text-align: center;
+}
+.about-us .client-title h2 {
+  color: #111111;
+  font-weight: 700;
+  line-height: 46px;
+}
+.about-us .client-title span {
+  color: #e53637;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  display: block;
+}
+.about-us .client-item {
+  display: block;
+  margin-bottom: 75px;
+  text-align: center;
+}

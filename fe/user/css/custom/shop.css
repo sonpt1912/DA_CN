@@ -1,0 +1,141 @@
+.shop .breadcum-custom {
+  background: #f3f2ee;
+  padding: 40px 0;
+  margin-bottom: 45px;
+}
+.shop .breadcum-custom a {
+  color: #111111;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+/* ==================================== */
+.shop .body {
+  /* padding: 40px; */
+}
+/* all */
+.shop .body-left-all {
+  padding: 20px 0;
+  margin: 0;
+  border-bottom: 1px solid #eee;
+}
+.shop .body-left-all h2 {
+  font-size: 20px;
+  font-weight: bolder;
+  padding-bottom: 25px;
+}
+.shop .body-left-all a {
+  text-decoration: none;
+  color: black;
+}
+.shop .body-left-all span {
+  font-weight: bolder;
+  font-size: 20px;
+}
+/* Category */
+
+.shop .body-left-category {
+  padding: 20px 0;
+  margin: 0;
+  border-bottom: 1px solid #eee;
+}
+
+.shop .body-left-category h4 {
+  font-size: 20px;
+  font-weight: bolder;
+  padding-bottom: 20px;
+}
+
+.shop .body-left-category-item {
+  /* display: inline; */
+}
+
+/* brand */
+.shop .body-left-brand {
+  padding: 20px 0;
+  margin: 0;
+  border-bottom: 1px solid #eee;
+}
+
+.shop .body-left-brand h4 {
+  font-size: 20px;
+  font-weight: bolder;
+  padding-bottom: 20px;
+}
+
+.shop .body-left-brand-item {
+  /* display: inline; */
+}
+/* color */
+.shop .body-left-color {
+  padding: 20px 0;
+  margin: 0;
+  border-bottom: 1px solid #eee;
+}
+.shop .body-left-color h4 {
+  font-size: 20px;
+  font-weight: bolder;
+  padding-bottom: 20px;
+}
+
+/* Size */
+.shop .body-left-size {
+  padding: 20px 0;
+  margin: 0;
+  border-bottom: 1px solid #eee;
+}
+.shop .body-left-size h4 {
+  font-size: 20px;
+  font-weight: bolder;
+  padding-bottom: 20px;
+}
+
+/* body right */
+.shop .body-right-top h2 {
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* product */
+
+.shop .product {
+  margin-bottom: 45px;
+}
+.shop .new-product-nav {
+  text-align: center;
+  margin-bottom: 45px;
+}
+.shop .product h3 {
+  color: #111111;
+  font-size: 24px;
+  font-weight: 700;
+
+  display: inline-block;
+  margin-right: 88px;
+}
+.shop .product a {
+  text-decoration: none;
+  color: #111111;
+  list-style: none;
+}
+.shop .product h6 {
+  display: inline-block;
+  color: #111111;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+.shop .product h5 {
+  color: #0d0d0d;
+  font-weight: 700;
+}
+.shop .product p {
+  list-style: none;
+  color: #0d0d0d;
+}
+/* body right container */
+.shop .body-right-container {
+  min-height: max-content;
+}

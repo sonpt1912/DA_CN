@@ -1,0 +1,148 @@
+<header class="container">
+  <div class="offcanvas-menu-overlay"></div>
+  <div class="offcanvas-menu-wrapper">
+    <div class="offcanvas_option">
+      <div class="offcanvas_sign_in">
+        <a href="#"><h4>SIGN IN</h4></a>
+      </div>
+    </div>
+    <div class="offcanvas__nav__option">
+      <a href="#home"><i class="bi bi-cart2"></i></a>
+      <a href="#favorite"><i class="bi bi-search"> </i></a>
+      <a href="#"><i class="bi bi-person"></i></a>
+    </div>
+    <div id="mobile-menu-wrap">
+      <div class="slicknav_menu">
+        <a
+          href="#"
+          aria-haspopup="true"
+          role="button"
+          tabindex="0"
+          class="slicknav_btn slicknav_collapsed"
+          style="outline: none"
+          ><span class="slicknav_menutxt">MENU</span
+          ><span class="slicknav_icon"
+            ><span class="slicknav_icon-bar"></span
+            ><span class="slicknav_icon-bar"></span
+            ><span class="slicknav_icon-bar"></span></span
+        ></a>
+        <nav
+          class="slicknav_nav slicknav_hidden"
+          aria-hidden="true"
+          role="menu"
+          style="display: none"
+        >
+          <ul>
+            <li class="active"><a href="#home" role="menuitem">Home</a></li>
+            <li><a href="#shop" role="menuitem">Shop</a></li>
+            <li><a href="#blog" role="menuitem">Blog</a></li>
+            <li><a href="#about-us" role="menuitem">About Us</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="offcanvas__text">
+      <p>Free shipping</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3 col-md-3">
+      <div class="header_logo">
+        <a href="#home">
+          <img src="/user/img/logo.png" alt="LOGO" />
+        </a>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6">
+      <div class="header_menu">
+        <ul>
+          <li><a href="#home">HOME</a></li>
+          <li><a href="#shop">SHOP</a></li>
+          <li><a href="#blog">BLOG</a></li>
+          <li><a href="#about-us">ABOUT US</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-3">
+      <div class="header_right">
+        <a href="#cart"><i class="bi bi-cart2"></i></a>
+        <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"
+          ><i class="bi bi-heart"></i
+        ></a>
+        <a href="#"><i class="bi bi-person"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="canvas__open"><i class="bi bi-list"> </i></div>
+</header>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Favorites</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="card-body p-4">
+          <div class="row d-flex justify-content-between align-items-center">
+            <div class="col-md-3 col-lg-2 col-xl-2">
+              <img
+                src="/user/img/product/product-1.jpg"
+                class="img-fluid rounded-3"
+                alt="Cotton T-shirt"
+              />
+            </div>
+            <div class="col-md-3 col-lg-3 col-xl-3">
+              <span class="lead fw-normal mb-2">Basic T-shirt</span>
+            </div>
+            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+              <span class="mb-0">$499.00</span>
+            </div>
+            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+              <a href="#!" class="text-danger"
+                ><i class="bi bi-trash-fill"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <hr class="mx-n3" />
+        <div class="card-body p-4">
+          <div class="row d-flex justify-content-between align-items-center">
+            <div class="col-md-2 col-lg-2 col-xl-2">
+              <img
+                src="/user/img/product/product-1.jpg"
+                class="img-fluid rounded-3"
+                alt="Cotton T-shirt"
+              />
+            </div>
+            <div class="col-md-3 col-lg-3 col-xl-3">
+              <span class="lead fw-normal mb-2">Basic T-shirt</span>
+            </div>
+
+            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+              <span class="mb-0">$499.00</span>
+            </div>
+            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+              <a href="#!" class="text-danger"
+                ><i class="bi bi-trash-fill"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

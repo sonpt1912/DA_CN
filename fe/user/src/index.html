@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/user/css/plugin/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="/user/css/custom/home.css" />
+    <link rel="stylesheet" href="/user/css/custom/about-us.css" />
+    <link rel="stylesheet" href="/user/css/custom/blog.css" />
+    <link rel="stylesheet" href="/user/css/custom/footer.css" />
+    <link rel="stylesheet" href="/user/css/custom/header.css" />
+    <link rel="stylesheet" href="/user/css/custom/shop.css" />
+  </head>
+  <body>
+    <header ng-include="'./layout/header.html'"></header>
+    <section ng-view></section>
+    <footer ng-include="'./layout/footer.html'"></footer>
+
+    <!-- bootstrap -->
+    <script src="/user/js/plugin/bootstrap.min.js"></script>
+    <script src="/user/js/plugin/bootstrap.bundle.min.js"></script>
+
+    <!--angularjs -->
+    <script src="/user/lib/angular-1.8.2/angular.min.js"></script>
+    <script src="/user/lib/angular-1.8.2/angular-route.min.js"></script>
+    <!-- api -->
+    <script src="./api/product.js"></script>
+    <!-- service -->
+    <script src="./service/product-service.js"></script>
+    <!-- controller -->
+    <script src="./controller/home-controller.js"></script>
+    <script src="./controller/shop-controller.js"></script>
+    <script src="./controller/detail-product-controller.js"></script>
+    <script src="./controller/regesiter-controller.js"></script>
+    <!-- js -->
+    <script src="../js/custom/header.js"></script>
+    <script src="/user/js/custom/register.js"></script>
+    <!-- route -->
+    <script src="./route.js"></script>
+  </body>
+</html>

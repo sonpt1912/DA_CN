@@ -1,0 +1,243 @@
+/* .header {
+  padding: 20px 0px;
+} */
+/*  */
+ul {
+  padding: 0;
+  margin: 0;
+}
+.header_logo {
+  padding: 25px 0;
+}
+.header_menu {
+  text-align: center;
+  padding: 26px 0 25px;
+}
+.header_right {
+  padding: 26px 0;
+}
+.header_right a {
+  margin-right: 30px;
+  float: right;
+}
+.offcanvas_option_right a {
+  margin-right: 30px;
+  float: right;
+}
+.header_menu ul li {
+  list-style: none;
+  display: inline-block;
+  margin-right: 45px;
+  position: relative;
+}
+.header_menu ul li a {
+  font-size: 18px;
+  color: #111111;
+  display: block;
+  font-weight: 600;
+  position: relative;
+  padding: 3px 0;
+  text-decoration: none;
+}
+.bi-person {
+  color: black;
+  font-size: 28px;
+}
+.bi-heart {
+  color: black;
+  font-size: 28px;
+}
+.bi-search {
+  color: black;
+  font-size: 25px;
+}
+.bi-cart2 {
+  color: black;
+  font-size: 25px;
+}
+.offcanvas-menu-wrapper {
+  display: none;
+}
+.canvas__open {
+  display: none;
+}
+@media only screen and (max-width: 767px) {
+  .header_menu {
+    display: none;
+  }
+  .header_right {
+    display: none;
+  }
+  .canvas__open {
+    display: block;
+    font-size: 22px;
+    color: #111111;
+    height: 35px;
+    width: 35px;
+    line-height: 35px;
+    text-align: center;
+    border: 1px solid #111111;
+    border-radius: 2px;
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 25px;
+  }
+  .offcanvas-menu-overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    content: "";
+    z-index: 98;
+    -webkit-transition: all, 0.5s;
+    -o-transition: all, 0.5s;
+    transition: all, 0.5s;
+    visibility: hidden;
+  }
+  .offcanvas-menu-overlay.active {
+    visibility: visible;
+  }
+  .offcanvas-menu-wrapper {
+    position: fixed;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    background: #ffffff;
+    padding: 50px 20px 30px 30px;
+    display: block;
+    z-index: 99;
+    overflow-y: auto;
+    -webkit-transition: all, 0.5s;
+    -o-transition: all, 0.5s;
+    transition: all, 0.5s;
+    opacity: 0;
+  }
+  .offcanvas-menu-wrapper.active {
+    opacity: 1;
+    left: 0;
+  }
+  .offcanvas__menu {
+    display: none;
+  }
+  .slicknav_btn {
+    display: none;
+  }
+  .slicknav_menu {
+    background: transparent;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  .slicknav_nav ul {
+    margin: 0;
+  }
+  .slicknav_nav .slicknav_row,
+  .slicknav_nav a {
+    padding: 7px 0;
+    margin: 0;
+    color: #111111;
+    font-weight: 600;
+  }
+  .slicknav_nav .slicknav_arrow {
+    color: #111111;
+  }
+  .slicknav_nav .slicknav_row:hover {
+    border-radius: 0;
+    background: transparent;
+    color: #111111;
+  }
+  .slicknav_nav a:hover {
+    border-radius: 0;
+    background: transparent;
+    color: #111111;
+  }
+  .slicknav_nav {
+    display: block !important;
+  }
+  .offcanvas__option {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .offcanvas__links {
+    display: inline-block;
+    margin-right: 25px;
+  }
+  .offcanvas__links a {
+    color: #111111;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-right: 16px;
+    display: inline-block;
+    font-weight: 600;
+  }
+  .offcanvas__links a:last-child {
+    margin-right: 0;
+  }
+  .offcanvas__top__hover {
+    display: inline-block;
+    position: relative;
+  }
+  .offcanvas__top__hover:hover ul {
+    top: 24px;
+    opacity: 1;
+    visibility: visible;
+  }
+  .offcanvas__top__hover span {
+    color: #111111;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .offcanvas__top__hover span i {
+    font-size: 20px;
+    position: relative;
+    top: 3px;
+    right: 2px;
+  }
+  .offcanvas__top__hover ul {
+    background: #111111;
+    display: inline-block;
+    padding: 2px 0;
+    position: absolute;
+    left: 0;
+    top: 44px;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 3;
+    -webkit-transition: all, 0.3s;
+    -o-transition: all, 0.3s;
+    transition: all, 0.3s;
+  }
+  .offcanvas__top__hover ul li {
+    list-style: none;
+    font-size: 13px;
+    color: #ffffff;
+    padding: 2px 15px;
+    cursor: pointer;
+  }
+  .offcanvas__nav__option {
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  .offcanvas__nav__option a {
+    display: inline-block;
+    margin-right: 26px;
+    position: relative;
+  }
+  .offcanvas__nav__option a span {
+    color: #0d0d0d;
+    font-size: 11px;
+    position: absolute;
+    left: 5px;
+    top: 8px;
+  }
+  .offcanvas__nav__option a:last-child {
+    margin-right: 0;
+  }
+}
