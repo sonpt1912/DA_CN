@@ -11,16 +11,15 @@ public class UserProductResponse {
 
     private String name;
 
-    private String category;
 
     private String image;
 
     private BigDecimal sellPrice;
 
-    public UserProductResponse(long id, String name, String category, String image, BigDecimal sellPrice) {
+    public UserProductResponse(long id, String name, String image, BigDecimal sellPrice) {
         this.id = id;
         this.name = name;
-        this.category = category;
+
         this.image = image;
         this.sellPrice = sellPrice;
     }

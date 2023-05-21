@@ -1,9 +1,7 @@
 package com.example.be.base.user.service;
 
-import com.example.be.base.user.model.response.UserBrandResponse;
 import com.example.be.base.user.model.response.UserProductResponse;
-import com.example.be.base.user.repository.UserBrandResponseRepository;
-import com.example.be.base.user.repository.UserProductResponseRepository;
+import com.example.be.base.user.repository.UserProductRepository;
 import com.example.be.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +12,7 @@ import java.util.List;
 public class UserProductService {
 
     @Autowired
-    private UserProductResponseRepository response;
+    private UserProductRepository response;
 
     public List<UserProductResponse> getAllProduct() {
         return response.getAllProduct();

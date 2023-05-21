@@ -1,5 +1,30 @@
 var myApp = angular.module("myModule", ["ngRoute"]);
 
+myApp.controller("headerController", function ($scope, $http) {
+  // favorite
+  $scope.listFavorites = [];
+  $http
+    .get(favoriteAPI + "/get-all-by-customer/" + 1)
+    .then(function (response) {
+      $scope.listFavorites = response.data;
+    });
+
+  $scope.deleteFavorite = function (id) {
+    $http
+      .delete(favoriteAPI + "/delete-favorite/" + 1 + "/" + id)
+      .then(function (response) {}),
+      function (error) {
+        console.log(error);
+      };
+  };
+
+  // cart
+  $scope.IdCart = [];
+  $http.get(cartAPI + "/get-cart-by-customer/" + 1).then(function (response) {
+    $scope.IdCart = response.data;
+  });
+});
+
 myApp.config(function ($routeProvider, $locationProvider) {
   $locationProvider.hashPrefix("");
   $routeProvider
@@ -17,11 +42,13 @@ myApp.config(function ($routeProvider, $locationProvider) {
       templateUrl: "./page/shop.html",
       controller: shopController,
     })
-    .when("/cart", {
+    .when("/cart/:id", {
       templateUrl: "./page/cart.html",
+      controller: cartController,
     })
-    .when("/checkout", {
-      templateUrl: "./page/checkout-guest.html",
+    .when("/checkout/:id", {
+      templateUrl: "./page/checkout.html",
+      controller: checkoutController,
     })
     .when("/detail-product/:id", {
       templateUrl: "./page/detail-product.html",
@@ -34,7 +61,10 @@ myApp.config(function ($routeProvider, $locationProvider) {
       templateUrl: "./page/register.html",
       controller: registerController,
     })
+    .when("/customer", {
+      templateUrl: "./page/customer.html",
+    })
     .otherwise({
-      redirectTo: "/checkout",
+      redirectTo: "/customer",
     });
 });

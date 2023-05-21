@@ -1,5 +1,8 @@
 window.detailProductController = function ($scope, $routeParams, $http) {
   let id = $routeParams.id;
+
+  $scope.selectColor; // lấy id color
+
   // brand
   $scope.brand = [];
   $http.get(brandApi + "/get-by-product/" + id).then(function (response) {
@@ -22,19 +25,28 @@ window.detailProductController = function ($scope, $routeParams, $http) {
   $scope.colors = [];
   $http.get(colorAPI + "/get-by-product/" + id).then(function (response) {
     $scope.colors = response.data;
+    if ($scope.colors.length > 0) {
+      // lấy id color đầu tiên
+      $scope.selectColor = $scope.colors[0].id;
+      $scope.getSize($scope.selectColor);
+    }
   }),
     function (error) {
       console.log(error);
     };
 
   // size
-  $scope.sizes = [];
-  $http.get(sizeAPI + "/get-by-product/" + id).then(function (response) {
-    $scope.sizes = response.data;
-  }),
-    function (error) {
-      console.log(error);
-    };
+  $scope.getSize = function (idColor) {
+    $scope.sizes = [];
+    $http
+      .get(sizeAPI + "/get-by-product/" + id + "/" + idColor)
+      .then(function (response) {
+        $scope.sizes = response.data;
+      }),
+      function (error) {
+        console.log(error);
+      };
+  };
 
   // detail product
   $scope.detailProduct = [];

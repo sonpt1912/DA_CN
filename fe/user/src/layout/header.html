@@ -8,7 +8,7 @@
     </div>
     <div class="offcanvas__nav__option">
       <a href="#home"><i class="bi bi-cart2"></i></a>
-      <a href="#favorite"><i class="bi bi-search"> </i></a>
+      <a href="#favorite"><i class="bi bi-heart"> </i></a>
       <a href="#"><i class="bi bi-person"></i></a>
     </div>
     <div id="mobile-menu-wrap">
@@ -65,10 +65,17 @@
     </div>
     <div class="col-lg-3 col-md-3">
       <div class="header_right">
-        <a href="#cart"><i class="bi bi-cart2"></i></a>
-        <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"
-          ><i class="bi bi-heart"></i
-        ></a>
+        <a href="#cart/{{IdCart.id}}"><i class="bi bi-cart2"></i></a>
+        <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <i class="bi bi-heart position-relative">
+            <span
+              class="position-absolute start-100 translate-middle badge rounded-pill bg-danger"
+              style="font-size: 10px; bottom: 15px"
+              ng-if="favoriteCount > 0"
+              >{{favoriteCount}}
+            </span>
+          </i>
+        </a>
         <a href="#"><i class="bi bi-person"></i></a>
       </div>
     </div>
@@ -96,53 +103,39 @@
         ></button>
       </div>
       <div class="modal-body">
-        <div class="card-body p-4">
-          <div class="row d-flex justify-content-between align-items-center">
-            <div class="col-md-3 col-lg-2 col-xl-2">
-              <img
-                src="/user/img/product/product-1.jpg"
-                class="img-fluid rounded-3"
-                alt="Cotton T-shirt"
-              />
-            </div>
-            <div class="col-md-3 col-lg-3 col-xl-3">
-              <span class="lead fw-normal mb-2">Basic T-shirt</span>
-            </div>
-            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-              <span class="mb-0">$499.00</span>
-            </div>
-            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-              <a href="#!" class="text-danger"
-                ><i class="bi bi-trash-fill"></i
-              ></a>
-            </div>
-          </div>
-        </div>
-        <hr class="mx-n3" />
-        <div class="card-body p-4">
-          <div class="row d-flex justify-content-between align-items-center">
-            <div class="col-md-2 col-lg-2 col-xl-2">
-              <img
-                src="/user/img/product/product-1.jpg"
-                class="img-fluid rounded-3"
-                alt="Cotton T-shirt"
-              />
-            </div>
-            <div class="col-md-3 col-lg-3 col-xl-3">
-              <span class="lead fw-normal mb-2">Basic T-shirt</span>
-            </div>
-
-            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-              <span class="mb-0">$499.00</span>
-            </div>
-            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-              <a href="#!" class="text-danger"
-                ><i class="bi bi-trash-fill"></i
-              ></a>
+        <div
+          ng-repeat="favorite in listFavorites"
+          ng-init="$parent.favoriteCount = $index + 1"
+        >
+          <div class="card-body p-4">
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="col-md-3 col-lg-2 col-xl-2">
+                <img
+                  src="/user/img/product/product-1.jpg"
+                  class="img-fluid rounded-3"
+                  alt="Cotton T-shirt"
+                />
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-3">
+                <span class="fw-normal mb-2">{{favorite.nameProduct}}</span>
+              </div>
+              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                <span class="mb-0 text-danger">{{favorite.sellPrice}}.00đ</span>
+              </div>
+              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                <a
+                  href="#{{favorite.idProduct}}"
+                  class="text-danger"
+                  ng-click="deleteFavorite(favorite.idProduct)"
+                  ><i class="bi bi-trash-fill"></i
+                ></a>
+              </div>
             </div>
           </div>
+          <hr class="mx-n3" />
         </div>
       </div>
     </div>
   </div>
 </div>
+<script src="/user/js/custom/header.js"></script>

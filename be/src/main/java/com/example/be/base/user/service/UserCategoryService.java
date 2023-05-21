@@ -1,8 +1,7 @@
 package com.example.be.base.user.service;
 
-import com.example.be.base.user.model.response.UserBrandResponse;
 import com.example.be.base.user.model.response.UserCategoryResponse;
-import com.example.be.base.user.repository.UserCategoryResponseRepository;
+import com.example.be.base.user.repository.UserCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +11,7 @@ import java.util.List;
 public class UserCategoryService {
 
     @Autowired
-    private UserCategoryResponseRepository response;
+    private UserCategoryRepository response;
 
     public List<UserCategoryResponse> getAllCategory() {
         return response.getAllCategory();

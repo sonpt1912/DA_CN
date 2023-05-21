@@ -24,9 +24,9 @@ public class UserSizeController {
         return service.getAllSize();
     }
 
-    @GetMapping("/get-by-product/{idProduct}")
-    public List<UserSizeResponse> getOneByProduct(@PathVariable("idProduct") long idProduct) {
-        return service.getSizeByProduct(idProduct);
+    @GetMapping("/get-by-product/{idProduct}/{idColor}")
+    public List<UserSizeResponse> getOneByProduct(@PathVariable("idProduct") long idProduct, @PathVariable("idColor") long idColor) {
+        return service.getSizeByProduct(idProduct, idColor);
     }
 
 

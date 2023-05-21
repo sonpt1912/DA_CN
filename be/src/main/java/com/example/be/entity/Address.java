@@ -21,17 +21,23 @@ public class Address {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "id_customer", nullable = false, referencedColumnName = "id")
+    @JoinColumn(name = "id_customer", referencedColumnName = "id")
     private Customer customer;
 
     @Column(name = "description")
     private String description;
 
+    @Column(name = "ward")
+    private String ward;
+
+    @Column(name = "district")
+    private String district;
+
     @Column(name = "city")
     private String city;
 
-    @Column(name = "county")
-    private String country;
+    @Column(name = "status")
+    private Integer status;
 
 
 }

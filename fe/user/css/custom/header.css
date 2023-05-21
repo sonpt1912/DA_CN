@@ -241,3 +241,10 @@ ul {
     margin-right: 0;
   }
 }
+.offcanvas-menu-overlay.active {
+  display: block;
+}
+
+.offcanvas-menu-wrapper.active {
+  transform: translateX(0);
+}

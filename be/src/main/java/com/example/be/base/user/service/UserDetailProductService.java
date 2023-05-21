@@ -1,26 +1,23 @@
 package com.example.be.base.user.service;
 
-import com.example.be.base.user.model.response.UserBrandResponse;
 import com.example.be.base.user.model.response.UserDetailProductResponse;
-import com.example.be.base.user.repository.UserBrandResponseRepository;
-import com.example.be.base.user.repository.UserDetailProductResponseRepository;
+import com.example.be.base.user.repository.UserDetailProductRepository;
+import com.example.be.entity.DetailProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class UserDetailProductService {
 
     @Autowired
-    private UserDetailProductResponseRepository response;
-
-//    public List<UserBrandResponse> getAllBrand() {
-//        return response.getAllBrand();
-//    }
+    private UserDetailProductRepository response;
 
     public UserDetailProductResponse getDetailProductByIdProduct(long id) {
         return response.getDetailProductByProduct(id);
+    }
+
+    public DetailProduct getDetailProductById(long id) {
+        return response.findDetailProductById(id);
     }
 
 }

@@ -4,5 +4,5 @@ import com.example.be.repository.CustomerRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserCustomerResponseRepository extends CustomerRepository {
+public interface UserCustomerRepository extends CustomerRepository {
 }

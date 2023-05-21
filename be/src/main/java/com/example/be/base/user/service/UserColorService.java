@@ -1,8 +1,7 @@
 package com.example.be.base.user.service;
 
-import com.example.be.base.user.model.response.UserCategoryResponse;
 import com.example.be.base.user.model.response.UserColorResponse;
-import com.example.be.base.user.repository.UserColorResponseRepository;
+import com.example.be.base.user.repository.UserColorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +11,7 @@ import java.util.List;
 public class UserColorService {
 
     @Autowired
-    private UserColorResponseRepository response;
+    private UserColorRepository response;
 
     public List<UserColorResponse> getAllColor() {
         return response.getAllColor();

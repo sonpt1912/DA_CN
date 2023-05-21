@@ -13,3 +13,11 @@ window.sizeAPI = api + "/size";
 window.colorAPI = api + "/color";
 
 window.favoriteAPI = api + "/favorite";
+
+window.cartAPI = api + "/cart";
+
+window.detailCart = api + "/detail-cart";
+
+window.voucherAPI = api + "/voucher";
+
+window.addressAPI = api + "/address";

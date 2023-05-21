@@ -36,24 +36,6 @@ public class Cart {
     @Column(name = "code", nullable = false)
     private Integer code;
 
-    @Column(name = "order_date")
-    private Date orderDate;
-
-    @Column(name = "payment_date")
-    private Date paymentDate;
-
-    @Column(name = "received_date")
-    private Date receivedDate;
-
-    @Column(name = "name_customer")
-    private String nameCustomer;
-
-    @Column(name = "address")
-    private String address;
-
-    @Column(name = "phone_number")
-    private Integer phoneNumber;
-
     @Column(name = "status")
     private Integer status;
 

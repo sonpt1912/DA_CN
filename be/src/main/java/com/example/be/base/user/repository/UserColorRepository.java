@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UserColorResponseRepository extends ColorRepository {
+public interface UserColorRepository extends ColorRepository {
 
     @Query("SELECT NEW com.example.be.base.user.model.response.UserColorResponse(c.id, c.name) " +
             "FROM Color c WHERE c.status = 0")
@@ -17,7 +17,8 @@ public interface UserColorResponseRepository extends ColorRepository {
 
     @Query("SELECT NEW com.example.be.base.user.model.response.UserColorResponse(c.id, c.name) " +
             "FROM Color c INNER JOIN DetailProduct  dp ON c = dp.color INNER JOIN Product p ON dp.product = p " +
-            "WHERE p.id = :IdProduct")
+            "WHERE p.id = :IdProduct " +
+            "GROUP BY c.id, c.name")
     List<UserColorResponse> getColorByIdProduct(@Param("IdProduct") long idProduct);
 
 

@@ -53,6 +53,9 @@
                   type="radio"
                   class="btn-check"
                   name="color"
+                  ng-click="getSize(color.id)"
+                  value="{{color.id}}"
+                  ng-checked="$index == 0"
                   id="color{{color.id}}"
                   autocomplete="off"
                 />
@@ -76,6 +79,7 @@
                   type="radio"
                   class="btn-check"
                   name="size"
+                  ng-checked="$index == 0"
                   id="size{{size.id}}"
                   autocomplete="off"
                 />
@@ -101,9 +105,11 @@
 
                 <input
                   id="form1"
-                  min="0"
+                  min="1"
+                  max="100"
                   name="quantity"
-                  value="0"
+                  value="1"
+                  oninput="checkInputValue(100)"
                   type="number"
                   class="form-control form-control-sm"
                 />
@@ -116,20 +122,32 @@
                 </button>
               </div>
             </div>
+            <p class="text-muted mb-0">
+              Available: <span class="fw-bold">6</span>
+            </p>
           </div>
-          <a href="#" class="btn btn-dark shadow-0 w-50"> Add to cart </a>
-          <!-- toat -->
-          <input
-            type="checkbox"
-            class="btn-check btn-danger shadow-0"
-            name="color"
-            id="showToastCheckbox"
-            ng-checked="favorite"
-            autocomplete="off"
-          />
-          <label class="btn btn-outline-danger" for="showToastCheckbox"
-            ><i class="bi bi-bookmark-heart-fill"></i
-          ></label>
+          <div class="mb-1">
+            <a href="#" class="btn btn-outline-dark shadow-0 w-50">
+              Add to cart
+            </a>
+            <!-- toat -->
+            <input
+              type="checkbox"
+              class="btn-check btn-danger shadow-0"
+              name="color"
+              id="showToastCheckbox"
+              ng-checked="favorite"
+              autocomplete="off"
+            />
+            <label class="btn btn-outline-danger" for="showToastCheckbox"
+              ><i class="bi bi-bookmark-heart-fill"></i
+            ></label>
+          </div>
+          <div>
+            <a href="#" class="btn btn-dark shadow-0" style="width: 307px"
+              >Buy Now
+            </a>
+          </div>
         </div>
       </main>
     </div>
@@ -158,3 +176,4 @@
     <div class="toast-body" id="toastBody"></div>
   </div>
 </div>
+<script src="/user/js/custom/detail-product.js"></script>

@@ -1,9 +1,7 @@
 package com.example.be.base.user.service;
 
-import com.example.be.base.user.model.response.UserBrandResponse;
 import com.example.be.base.user.model.response.UserFavoriteResponse;
-import com.example.be.base.user.repository.UserBrandResponseRepository;
-import com.example.be.base.user.repository.UserFavoriteResponseRepository;
+import com.example.be.base.user.repository.UserFavoriteRepository;
 import com.example.be.entity.Customer;
 import com.example.be.entity.Favorite;
 import com.example.be.entity.Product;
@@ -16,7 +14,7 @@ import java.util.List;
 public class UserFavoriteService {
 
     @Autowired
-    private UserFavoriteResponseRepository response;
+    private UserFavoriteRepository response;
 
     public List<UserFavoriteResponse> getAllFavoriteByCustomer(Customer customer) {
         return response.getAllByCustomer(customer);

@@ -1,4 +1,4 @@
-window.shopController = function ($http, $scope, $routeParams) {
+window.shopController = function ($http, $scope, $routeParams, $rootScope) {
   // $scope.listProduct = [];
   $http.get(productAPI + "/get-all").then(function (response) {
     $scope.listProduct = response.data;

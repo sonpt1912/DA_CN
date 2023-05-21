@@ -31,22 +31,20 @@ public class UseFavoriteController {
 
     private final UserCustomerService customerService;
 
-    @GetMapping("/get-all-by-customer{idCustomer}")
+    @GetMapping("/get-all-by-customer/{idCustomer}")
     public List<UserFavoriteResponse> getAllFavoriteByCustomer(@PathVariable("idCustomer") long id) {
         Customer customer = customerService.findCustomerById(id);
         return favoriteService.getAllFavoriteByCustomer(customer);
     }
 
     @GetMapping("/get-one-by-customer-product/{idCustomer}/{idProduct}")
-    public boolean getOneFavoriteByCustomer(@PathVariable("idProduct") long idProduct, @PathVariable("idCustomer") long idCustomer) {
+    public UserFavoriteResponse getOneFavoriteByCustomer(@PathVariable("idProduct") long idProduct, @PathVariable("idCustomer") long idCustomer) {
         Product product = productService.findProductById(idProduct);
         Customer customer = customerService.findCustomerById(idCustomer);
         // find favorite
         UserFavoriteResponse favoriteResponse = favoriteService.getOneFavoriteByCustomerAndProduct(customer, product);
-        if (favoriteResponse != null) {
-            return true;
-        }
-        return false;
+
+        return favoriteResponse;
     }
 
     @PostMapping("/save-favorite/{idCustomer}/{idProduct}")

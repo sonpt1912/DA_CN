@@ -7,8 +7,6 @@ import java.math.BigDecimal;
 @Data
 public class UserDetailProductResponse {
 
-    private Long id;
-
     private String product;
 
     private String image;
@@ -25,8 +23,7 @@ public class UserDetailProductResponse {
 
     private BigDecimal sellPrice;
 
-    public UserDetailProductResponse(Long id, String product, String image, String category, String brand, String color, String size, String description, BigDecimal sellPrice) {
-        this.id = id;
+    public UserDetailProductResponse(String product, String image, String category, String brand, String color, String size, String description, BigDecimal sellPrice) {
         this.product = product;
         this.image = image;
         this.category = category;
@@ -37,8 +34,7 @@ public class UserDetailProductResponse {
         this.sellPrice = sellPrice;
     }
 
-    public UserDetailProductResponse(Long id, String product, String image, String description, BigDecimal sellPrice) {
-        this.id = id;
+    public UserDetailProductResponse(String product, String image, String description, BigDecimal sellPrice) {
         this.product = product;
         this.image = image;
         this.description = description;
