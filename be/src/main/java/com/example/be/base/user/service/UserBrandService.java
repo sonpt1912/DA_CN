@@ -2,6 +2,7 @@ package com.example.be.base.user.service;
 
 import com.example.be.base.user.model.response.UserBrandResponse;
 import com.example.be.base.user.repository.UserBrandRepository;
+import com.example.be.entity.Brand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,10 @@ public class UserBrandService {
 
     public UserBrandResponse getBrandByProduct(long idProduct) {
         return response.getBrandByIdProduct(idProduct);
+    }
+
+    public Brand getBrandById(long id) {
+        return response.findBrandById(id);
     }
 
 }

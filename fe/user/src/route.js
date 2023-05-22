@@ -57,6 +57,9 @@ myApp.config(function ($routeProvider, $locationProvider) {
     .when("/login", {
       templateUrl: "./page/login.html",
     })
+    .when("/forgot-password", {
+      templateUrl: "./page/forgot-password.html",
+    })
     .when("/register", {
       templateUrl: "./page/register.html",
       controller: registerController,
@@ -65,6 +68,6 @@ myApp.config(function ($routeProvider, $locationProvider) {
       templateUrl: "./page/customer.html",
     })
     .otherwise({
-      redirectTo: "/customer",
+      redirectTo: "/login",
     });
 });

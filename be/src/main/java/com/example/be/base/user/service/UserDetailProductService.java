@@ -2,7 +2,7 @@ package com.example.be.base.user.service;
 
 import com.example.be.base.user.model.response.UserDetailProductResponse;
 import com.example.be.base.user.repository.UserDetailProductRepository;
-import com.example.be.entity.DetailProduct;
+import com.example.be.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +19,10 @@ public class UserDetailProductService {
     public DetailProduct getDetailProductById(long id) {
         return response.findDetailProductById(id);
     }
+
+    public DetailProduct getDetailProductByCategoryAndSizeAndBrandAndColorAndProduct(Brand brand, Color color, Category category, Size size, Product product) {
+        return response.findDetailProductByBrandAndColorAndCategoryAndSizeAAndProduct(brand, color, category, size, product);
+    }
+
 
 }

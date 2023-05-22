@@ -39,7 +39,7 @@ public class UseFavoriteController {
 
     @GetMapping("/get-one-by-customer-product/{idCustomer}/{idProduct}")
     public UserFavoriteResponse getOneFavoriteByCustomer(@PathVariable("idProduct") long idProduct, @PathVariable("idCustomer") long idCustomer) {
-        Product product = productService.findProductById(idProduct);
+        Product product = productService.getProductById(idProduct);
         Customer customer = customerService.findCustomerById(idCustomer);
         // find favorite
         UserFavoriteResponse favoriteResponse = favoriteService.getOneFavoriteByCustomerAndProduct(customer, product);
@@ -50,7 +50,7 @@ public class UseFavoriteController {
     @PostMapping("/save-favorite/{idCustomer}/{idProduct}")
     public void saveFavorite(@PathVariable("idProduct") long idProduct, @PathVariable("idCustomer") long idCustomer) {
         // get object
-        Product product = productService.findProductById(idProduct);
+        Product product = productService.getProductById(idProduct);
         Customer customer = customerService.findCustomerById(idCustomer);
         Favorite favorite = new Favorite(customer, product);
         // save favorite
@@ -60,7 +60,7 @@ public class UseFavoriteController {
     @DeleteMapping("/delete-favorite/{idCustomer}/{idProduct}")
     public void deleteFavorite(@PathVariable("idProduct") long idProduct, @PathVariable("idCustomer") long idCustomer) {
         // get object
-        Product product = productService.findProductById(idProduct);
+        Product product = productService.getProductById(idProduct);
         Customer customer = customerService.findCustomerById(idCustomer);
         Favorite favorite = new Favorite(customer, product);
         // save favorite

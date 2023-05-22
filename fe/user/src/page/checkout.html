@@ -96,6 +96,7 @@
                   ng-change="onProvinceChange()"
                 >
                   <option
+                    selected
                     ng-repeat="provinces in Provinces"
                     value="{{provinces.code}}"
                   >
@@ -107,6 +108,7 @@
                 <p class="mb-0">District</p>
                 <select
                   class="form-select"
+                  selected
                   ng-model="selectedDistrictId"
                   ng-change="onDistrictChange()"
                 >
@@ -121,7 +123,7 @@
               <div class="col-sm-4 mb-3">
                 <p class="mb-0">Ward</p>
                 <select class="form-select" ng-model="selectedWard">
-                  <option ng-repeat="ward in Ward" value="{{ ward }}">
+                  <option ng-repeat="ward in Ward" value="{{ ward }}" selected>
                     {{ ward.name}}
                   </option>
                 </select>

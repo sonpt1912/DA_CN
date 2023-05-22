@@ -21,4 +21,6 @@ public interface UserBrandRepository extends BrandRepository {
             "GROUP BY b.id, b.name")
     UserBrandResponse getBrandByIdProduct(@Param("IdProduct") long idProduct);
 
+
+
 }

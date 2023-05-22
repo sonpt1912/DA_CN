@@ -22,10 +22,10 @@ public class UserProductService {
         return response.getTop3NewProduct();
     }
 
-    public Product findProductById(long id) {
-        return response.findById(id).get();
+    public Product getProductById(long id) {
+        return response.findProductById(id);
     }
 
-    ;
+
 
 }

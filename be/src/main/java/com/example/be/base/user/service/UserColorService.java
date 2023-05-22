@@ -2,6 +2,8 @@ package com.example.be.base.user.service;
 
 import com.example.be.base.user.model.response.UserColorResponse;
 import com.example.be.base.user.repository.UserColorRepository;
+import com.example.be.entity.Brand;
+import com.example.be.entity.Color;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +23,9 @@ public class UserColorService {
         return response.getColorByIdProduct(idProduct);
     }
 
+
+    public Color getColorById(long id) {
+        return response.findColorById(id);
+    }
 
 }

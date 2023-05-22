@@ -14,17 +14,23 @@ import java.util.List;
 public class UserDetailCartService {
 
     @Autowired
-    private UserDetailCartRepository repository;
+    private UserDetailCartRepository detailCartRepository;
+
 
     public List<UserDetailCartResponse> getAllUserDetailCartByCart(long id) {
-        return repository.getAllByCart(id);
+        return detailCartRepository.getAllByCart(id);
     }
 
     public DetailCart getDetailCart(Cart cart, DetailProduct detailProduct) {
-        return repository.findDetailCartByCartAndAndDetailProduct(cart, detailProduct);
+        return detailCartRepository.findDetailCartByCartAndAndDetailProduct(cart, detailProduct);
     }
 
     public void deleteDetailCart(DetailCart detailCart) {
-        repository.delete(detailCart);
+        detailCartRepository.delete(detailCart);
     }
+
+    public void saveDetailCart(DetailCart detailCart) {
+        detailCartRepository.save(detailCart);
+    }
+
 }
