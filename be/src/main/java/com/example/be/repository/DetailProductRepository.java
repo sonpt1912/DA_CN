@@ -9,6 +9,6 @@ public interface DetailProductRepository extends JpaRepository<DetailProduct, Lo
 
     DetailProduct findDetailProductById(long id);
 
-    DetailProduct findDetailProductByBrandAndColorAndCategoryAndSizeAAndProduct(Brand brand, Color color, Category category, Size size, Product product);
+    DetailProduct findDetailProductByBrandAndColorAndCategoryAndSizeAndProduct(Brand brand, Color color, Category category, Size size, Product product);
 
 }

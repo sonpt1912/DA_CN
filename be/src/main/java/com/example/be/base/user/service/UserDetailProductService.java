@@ -20,8 +20,8 @@ public class UserDetailProductService {
         return response.findDetailProductById(id);
     }
 
-    public DetailProduct getDetailProductByCategoryAndSizeAndBrandAndColorAndProduct(Brand brand, Color color, Category category, Size size, Product product) {
-        return response.findDetailProductByBrandAndColorAndCategoryAndSizeAAndProduct(brand, color, category, size, product);
+    public DetailProduct findDetailProductByBrandAndColorAndCategoryAndSizeAndProduct(Brand brand, Color color, Category category, Size size, Product product) {
+        return response.findDetailProductByBrandAndColorAndCategoryAndSizeAndProduct(brand, color, category, size, product);
     }
 
 

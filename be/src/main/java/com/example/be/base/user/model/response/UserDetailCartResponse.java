@@ -11,15 +11,21 @@ public class UserDetailCartResponse {
 
     private String nameProduct;
 
+    private String nameSize;
+
+    private String nameColor;
+
     private String image;
 
     private Integer quantity;
 
     private BigDecimal price;
 
-    public UserDetailCartResponse(Long idDetailProduct, String nameProduct, String image, Integer quantity, BigDecimal price) {
+    public UserDetailCartResponse(Long idDetailProduct, String nameProduct, String nameSize, String nameColor, String image, Integer quantity, BigDecimal price) {
         this.idDetailProduct = idDetailProduct;
         this.nameProduct = nameProduct;
+        this.nameSize = nameSize;
+        this.nameColor = nameColor;
         this.image = image;
         this.quantity = quantity;
         this.price = price;

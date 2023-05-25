@@ -13,12 +13,12 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "detail_cart")
-@Getter
-@IdClass(DetailCart.class)
-@Setter
+@IdClass(DetailCartId.class)
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
+@Setter
+@Getter
 public class DetailCart {
 
     @Id

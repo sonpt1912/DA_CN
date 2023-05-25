@@ -1,18 +1,18 @@
 package com.example.be.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 
+@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
+@Getter
+@Setter
 public class DetailCartId implements Serializable {
 
-    private Long idCart;
+    private Cart cart;
 
-    private Long idDetailProduct;
+    private DetailProduct detailProduct;
 
 }

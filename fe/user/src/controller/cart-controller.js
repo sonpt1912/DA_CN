@@ -18,7 +18,7 @@ window.cartController = function ($scope, $routeParams, $http) {
   // xóa detail cart
   $scope.deleteDetailCart = function (idDetailProduct) {
     $http
-      .get(
+      .delete(
         detailCart +
           "/delete-detail-cart/" +
           $scope.idCart +
@@ -33,6 +33,18 @@ window.cartController = function ($scope, $routeParams, $http) {
       function (error) {
         console.log(error);
       };
+  };
+
+  // update quantity
+  $scope.updateQuantity = (detail) => {
+    $scope.formDetailCart = {
+      idDetailProduct: detail.idDetailProduct,
+      idCart: $scope.idCart,
+      quantity: detail.quantity,
+    };
+    $http
+      .put(detailCart + "/update-detail-cart", $scope.formDetailCart)
+      .then(function (response) {});
   };
 
   //tính thuế tax
@@ -61,10 +73,10 @@ window.cartController = function ($scope, $routeParams, $http) {
 
   // nếu sản phẩm tăng lên
   $scope.increaseQuantity = function (detailCart) {
-    if (detailCart.quantity < 100) {
-      detailCart.quantity++;
-    }
+    detailCart.quantity++;
     $scope.calculateTotalPrice();
+    console.log(detailCart);
+    $scope.updateQuantity(detailCart);
   };
 
   // nếu giảm đi
@@ -73,6 +85,7 @@ window.cartController = function ($scope, $routeParams, $http) {
       detailCart.quantity--;
     }
     $scope.calculateTotalPrice();
+    $scope.updateQuantity(detailCart);
   };
 
   //nếu sửa trong ô input
@@ -81,10 +94,9 @@ window.cartController = function ($scope, $routeParams, $http) {
 
     if (isNaN(value) || value < 1) {
       detailCart.quantity = 1;
-    } else if (value > 100) {
-      detailCart.quantity = 100;
     }
-
     $scope.calculateTotalPrice();
+
+    $scope.updateQuantity(detailCart);
   };
 };

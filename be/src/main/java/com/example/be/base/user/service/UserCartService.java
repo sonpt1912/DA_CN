@@ -20,4 +20,8 @@ public class UserCartService {
         return repository.findCartById(id);
     }
 
+    public Cart getCartByStatus(long id) {
+        return repository.findCartByStatus(id);
+    }
+
 }

@@ -1,12 +1,24 @@
 window.detailProductController = function ($scope, $routeParams, $http) {
   let id = $routeParams.id;
-
   $scope.selectColor; // lấy id color
+
+  // form detail-cart
+
+  $scope.formProduct = {
+    idProduct: "",
+    idCategory: "",
+    idBrand: "",
+    idColor: "",
+    idSize: "",
+    quantity: 1,
+  };
+  $scope.formProduct.idProduct = id;
 
   // brand
   $scope.brand = [];
   $http.get(brandApi + "/get-by-product/" + id).then(function (response) {
     $scope.brand = response.data;
+    $scope.formProduct.idBrand = response.data.id;
   }),
     function (error) {
       console.log(error);
@@ -16,6 +28,7 @@ window.detailProductController = function ($scope, $routeParams, $http) {
   $scope.category = [];
   $http.get(categoryAPI + "/get-by-product/" + id).then(function (response) {
     $scope.category = response.data;
+    $scope.formProduct.idCategory = response.data.id;
   }),
     function (error) {
       console.log(error);
@@ -34,18 +47,24 @@ window.detailProductController = function ($scope, $routeParams, $http) {
     function (error) {
       console.log(error);
     };
-
   // size
   $scope.getSize = function (idColor) {
+    $scope.formProduct.idColor = idColor;
     $scope.sizes = [];
     $http
       .get(sizeAPI + "/get-by-product/" + id + "/" + idColor)
       .then(function (response) {
         $scope.sizes = response.data;
+        $scope.getIdSize($scope.sizes[0].id);
       }),
       function (error) {
         console.log(error);
       };
+  };
+
+  // get idSize
+  $scope.getIdSize = function (idSize) {
+    $scope.formProduct.idSize = idSize;
   };
 
   // detail product
@@ -65,10 +84,40 @@ window.detailProductController = function ($scope, $routeParams, $http) {
     .get(favoriteAPI + "/get-one-by-customer-product/" + 1 + "/" + id)
     .then(function (response) {
       $scope.favorite = response.data;
+      console.log(response.data);
     });
 
-  // add product to wish list
+  // add to detail cart
+  $scope.addToCart = function () {
+    $http
+      .post(detailCart + "/add-detail-cart", $scope.formProduct)
+      .then(function (response) {
+        alert("succes");
+      });
+  };
 
+  // get quantity
+  $scope.checkInputValue = function () {
+    var input = document.querySelector("#form1");
+    var value = $scope.formProduct.quantity;
+
+    if (isNaN(value) || value === 0 || value < 1) {
+      $scope.formProduct.quantity = 1;
+    }
+  };
+
+  // tăng và giảm
+  $scope.decreaseQuantity = function () {
+    if ($scope.formProduct.quantity > 1) {
+      $scope.formProduct.quantity--;
+    }
+  };
+
+  $scope.increaseQuantity = function () {
+    $scope.formProduct.quantity++;
+  };
+
+  // add product to wish list
   // button toast
   var showToastCheckbox = document.getElementById("showToastCheckbox");
   var toastContainer = document.querySelector(".toast-container");
@@ -105,4 +154,5 @@ window.detailProductController = function ($scope, $routeParams, $http) {
     var newToast = new bootstrap.Toast(clonedToast);
     newToast.show();
   }
+  // alert show toat add to cart
 };

@@ -9,5 +9,7 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
 
     Cart findCartById(long id);
 
+    Cart findCartByStatus(long id);
+
 
 }

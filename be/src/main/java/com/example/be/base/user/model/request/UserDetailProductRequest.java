@@ -5,8 +5,6 @@ import lombok.Data;
 @Data
 public class UserDetailProductRequest {
 
-    private Long idCart;
-
     private Long idProduct;
 
     private Long idCategory;

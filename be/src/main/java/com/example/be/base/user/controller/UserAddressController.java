@@ -27,4 +27,9 @@ public class UserAddressController {
         return addressService.getAddressByCustomer(customer);
     }
 
+    @GetMapping("/get-by-id/{idAddress}")
+    public UserAddressResponse getOneById(@PathVariable("idAddress") long idAddress) {
+        return addressService.getOneById(idAddress);
+    }
+
 }

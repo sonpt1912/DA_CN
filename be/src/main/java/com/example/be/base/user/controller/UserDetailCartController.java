@@ -1,5 +1,6 @@
 package com.example.be.base.user.controller;
 
+import com.example.be.base.user.model.request.UserDetailCartRequest;
 import com.example.be.base.user.model.request.UserDetailProductRequest;
 import com.example.be.base.user.model.response.UserDetailCartResponse;
 import com.example.be.base.user.model.response.UserDetailProductResponse;
@@ -41,15 +42,14 @@ public class UserDetailCartController {
 
 
     @GetMapping("/get-by-product/{IdCart}")
-    public List<UserDetailCartResponse> getOneById(@PathVariable("IdCart") long id) {
+    public List<UserDetailCartResponse> getAllById(@PathVariable("IdCart") long id) {
         return detailCartService.getAllUserDetailCartByCart(id);
     }
 
-    @GetMapping("/delete-detail-cart/{IdCart}/{IdDetailProduct}")
+    @DeleteMapping("/delete-detail-cart/{IdCart}/{IdDetailProduct}")
     public void deleteDetailCart(@PathVariable("IdCart") long idCart, @PathVariable("IdDetailProduct") long idDetailProduct) {
         Cart cart = cartService.getCartById(idCart);
         DetailProduct detailProduct = detailProductService.getDetailProductById(idDetailProduct);
-
         // xóa detail cart
         detailCartService.deleteDetailCart(detailCartService.getDetailCart(cart, detailProduct));
     }
@@ -62,17 +62,34 @@ public class UserDetailCartController {
         Category category = categoryService.getCategoryById(userDetailProductRequest.getIdCategory());
         Size size = sizeService.getSizeById(userDetailProductRequest.getIdSize());
         Product product = productService.getProductById(userDetailProductRequest.getIdProduct());
-        DetailProduct detailProduct = detailProductService.getDetailProductByCategoryAndSizeAndBrandAndColorAndProduct(brand, color, category, size, product);
+        DetailProduct detailProduct = detailProductService.findDetailProductByBrandAndColorAndCategoryAndSizeAndProduct(brand, color, category, size, product);
         // find cart
-        Cart cart = cartService.getCartById(userDetailProductRequest.getIdCart());
+        Cart cart = cartService.getCartByStatus(0L);
         // save to detail cart
-        DetailCart detailCart = DetailCart.builder()
-                .cart(cart)
-                .detailProduct(detailProduct)
-                .quantity(userDetailProductRequest.getQuantity())
-                .build();
-        detailCartService.saveDetailCart(detailCart);
 
+        DetailCart detailCart = detailCartService.getDetailCart(cart, detailProduct);
+        if (detailCart == null) {
+            DetailCart saveDetailCart = DetailCart.builder()
+                    .cart(cart)
+                    .detailProduct(detailProduct)
+                    .quantity(userDetailProductRequest.getQuantity())
+                    .build();
+            detailCartService.saveDetailCart(saveDetailCart);
+        } else {
+            int quantity = detailCart.getQuantity() + userDetailProductRequest.getQuantity();
+            detailCart.setQuantity(quantity);
+            detailCartService.saveDetailCart(detailCart);
+        }
+    }
+
+    @PutMapping("/update-detail-cart")
+    public void updateQuantity(@RequestBody UserDetailCartRequest userDetailCartRequest) {
+        DetailProduct detailProduct = detailProductService.getDetailProductById(userDetailCartRequest.getIdDetailProduct());
+        Cart cart = cartService.getCartById(userDetailCartRequest.getIdCart());
+
+        DetailCart detailCart = detailCartService.getDetailCart(cart, detailProduct);
+        detailCart.setQuantity(userDetailCartRequest.getQuantity());
+        detailCartService.saveDetailCart(detailCart);
     }
 
 }

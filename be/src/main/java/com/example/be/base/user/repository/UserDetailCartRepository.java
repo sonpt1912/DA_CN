@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface UserDetailCartRepository extends DetailCartRepository {
 
-    @Query("SELECT NEW com.example.be.base.user.model.response.UserDetailCartResponse(dp.id, dp.product.name,dp.product.image, dc.quantity, dp.sellPrice) " +
+    @Query("SELECT NEW com.example.be.base.user.model.response.UserDetailCartResponse(dp.id, dp.product.name,dp.size.name, dp.color.name, dp.product.image, dc.quantity, dp.sellPrice) " +
             "FROM DetailCart dc INNER JOIN Cart c ON dc.cart = c INNER JOIN DetailProduct dp ON dc.detailProduct = dp " +
             "WHERE c.id = :IdCart ")
     List<UserDetailCartResponse> getAllByCart(@Param("IdCart") long id);

@@ -47,8 +47,12 @@ myApp.config(function ($routeProvider, $locationProvider) {
       controller: cartController,
     })
     .when("/checkout/:id", {
-      templateUrl: "./page/checkout.html",
-      controller: checkoutController,
+      templateUrl: "./page/checkout-user.html",
+      controller: checkoutUserController,
+    })
+    .when("/checkout-guest", {
+      templateUrl: "./page/checkout-guest.html",
+      controller: checkoutGuestController,
     })
     .when("/detail-product/:id", {
       templateUrl: "./page/detail-product.html",
@@ -68,6 +72,6 @@ myApp.config(function ($routeProvider, $locationProvider) {
       templateUrl: "./page/customer.html",
     })
     .otherwise({
-      redirectTo: "/login",
+      redirectTo: "/checkout-guest",
     });
 });

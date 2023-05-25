@@ -79,6 +79,7 @@
                   type="radio"
                   class="btn-check"
                   name="size"
+                  ng-click="getIdSize(size.id)"
                   ng-checked="$index == 0"
                   id="size{{size.id}}"
                   autocomplete="off"
@@ -98,6 +99,7 @@
               <div class="input-group mb-3" style="width: 170px">
                 <button
                   class="btn border px-2"
+                  ng-click="decreaseQuantity()"
                   onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                 >
                   <i class="bi bi-dash-lg"></i>
@@ -106,16 +108,15 @@
                 <input
                   id="form1"
                   min="1"
-                  max="100"
-                  name="quantity"
-                  value="1"
-                  oninput="checkInputValue(100)"
+                  ng-model="formProduct.quantity"
+                  ng-change="checkInputValue()"
                   type="number"
                   class="form-control form-control-sm"
                 />
 
                 <button
                   class="btn border px-2"
+                  ng-click="increaseQuantity()"
                   onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                 >
                   <i class="bi bi-plus-lg"></i>
@@ -127,7 +128,10 @@
             </p>
           </div>
           <div class="mb-1">
-            <a href="#" class="btn btn-outline-dark shadow-0 w-50">
+            <a
+              ng-click="addToCart()"
+              class="btn btn-outline-dark shadow-0 w-50"
+            >
               Add to cart
             </a>
             <!-- toat -->
@@ -176,4 +180,24 @@
     <div class="toast-body" id="toastBody"></div>
   </div>
 </div>
-<script src="/user/js/custom/detail-product.js"></script>
+<!-- toats add -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div
+    id="addToat"
+    class="toast"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="toast-header">
+      <small id="toastStatus"></small>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="toast-body" id="toastBody"></div>
+  </div>
+</div>

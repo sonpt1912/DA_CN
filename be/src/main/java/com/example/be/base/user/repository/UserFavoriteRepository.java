@@ -23,7 +23,8 @@ public interface UserFavoriteRepository extends FavoriteRepositor {
     @Query("SELECT NEW com.example.be.base.user.model.response.UserFavoriteResponse(c.id, p.id,  p.name, p.image, dp.sellPrice) " +
             "FROM Favorite f INNER JOIN Product p ON f.product = p INNER JOIN DetailProduct dp ON dp.product = p " +
             "INNER JOIN Customer c ON c = f.customer " +
-            "WHERE c = :Customer AND p = :Product")
+            "WHERE c = :Customer AND p = :Product " +
+            "GROUP BY c.id, p.id,  p.name, p.image, dp.sellPrice")
     UserFavoriteResponse getOneByCustomerAndProduct(@Param("Customer") Customer customer, @Param("Product") Product product);
 
 }

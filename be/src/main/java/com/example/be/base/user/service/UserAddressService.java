@@ -18,4 +18,8 @@ public class UserAddressService {
         return repository.getAllByCustomer(customer);
     }
 
+    public UserAddressResponse getOneById(long idAddress) {
+        return repository.getOneById(idAddress);
+    }
+
 }
