@@ -72,6 +72,6 @@ myApp.config(function ($routeProvider, $locationProvider) {
       templateUrl: "./page/customer.html",
     })
     .otherwise({
-      redirectTo: "/checkout-guest",
+      redirectTo: "/customer",
     });
 });

@@ -11,24 +11,32 @@ myApp.config(function ($routeProvider, $locationProvider) {
     })
     .when("/color", {
       templateUrl: "./page/color.html",
+      controller: colorController,
     })
     .when("/size", {
       templateUrl: "./page/size.html",
+      controller: sizeController,
     })
     .when("/brand", {
       templateUrl: "./page/brand.html",
+      controller: brandController,
     })
     .when("/product", {
       templateUrl: "./page/product.html",
+      controller: productController,
     })
     .when("/category", {
       templateUrl: "./page/category.html",
+      controller: categoryController,
     })
     .when("/order", {
       templateUrl: "./page/order.html",
     })
     .when("/voucher", {
       templateUrl: "./page/voucher.html",
+    })
+    .when("/detail-bill/:id", {
+      templateUrl: "./page/detail-bill.html",
     })
     .otherwise({
       redirectTo: "/static",

@@ -1,0 +1,125 @@
+<nav
+  class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+></nav>
+<div class="container-xl">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h2>Manage <b>Voucher</b></h2>
+          </div>
+          <div class="col-sm-6">
+            <a
+              href="#addEmployeeModal"
+              class="btn btn-success"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              ><i class="material-icons">&#xE147;</i>
+              <span>Add New Voucher</span></a
+            >
+          </div>
+        </div>
+      </div>
+      <table class="table align-middle mb-0 bg-white table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Code</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Discount Amount</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Thomas Hardy</td>
+            <td>Thomas Hardy</td>
+            <td>Thomas Hardy</td>
+            <td>Thomas Hardy</td>
+            <td>
+              <span class="badge badge-primary rounded-pill d-inline"
+                >Prepare</span
+              >
+              <span class="badge badge-danger rounded-pill d-inline"
+                >Active</span
+              >
+            </td>
+            <td>
+              <a href=""><i class="bi bi-pencil-fill text-warning me-3"></i></a>
+              <a href=""><i class="bi bi-trash-fill text-danger"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <div class="clearfix">
+        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+        <ul class="pagination">
+          <li class="page-item disabled"><a href="#">Previous</a></li>
+          <li class="page-item"><a href="#" class="page-link">1</a></li>
+          <li class="page-item"><a href="#" class="page-link">2</a></li>
+          <li class="page-item active"><a href="#" class="page-link">3</a></li>
+          <li class="page-item"><a href="#" class="page-link">4</a></li>
+          <li class="page-item"><a href="#" class="page-link">5</a></li>
+          <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+      </div> -->
+    </div>
+  </div>
+</div>
+<!-- save Modal HTML -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"></div>
+      <div class="modal-body">
+        <form>
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <input type="text" id="form3Example3" class="form-control" />
+            <label class="form-label" for="form3Example3">Code</label>
+          </div>
+
+          <!-- 2 column grid layout with text inputs for the first and last names -->
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <input type="date" id="form3Example1" class="form-control" />
+                <label class="form-label" for="form3Example1">Start Date</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <input type="date" id="form3Example2" class="form-control" />
+                <label class="form-label" for="form3Example2">End Date</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+            <input type="number" id="form3Example4" class="form-control" />
+            <label class="form-label" for="form3Example4"
+              >Discount Amount</label
+            >
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Add voucher</button>
+      </div>
+    </div>
+  </div>
+</div>
