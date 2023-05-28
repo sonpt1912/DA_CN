@@ -68,6 +68,10 @@ myApp.config(function ($routeProvider, $locationProvider) {
       templateUrl: "./page/register.html",
       controller: registerController,
     })
+    .when("/detail-bill", {
+      templateUrl: "./page/detail-bill.html",
+      controller: registerController,
+    })
     // customer
     .when("/customer-accout", {
       templateUrl: "./page/customer-account.html",

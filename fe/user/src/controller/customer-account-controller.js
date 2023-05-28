@@ -5,6 +5,17 @@ window.customerController = function ($scope, $http) {
     $scope.IdCart = response.data;
   });
 
+  // lấy all address
+  $scope.listAddress = [];
+  $http
+    .get(addressAPI + "/get-all-address-by-customer/" + 1)
+    .then(function (response) {
+      $scope.listAddress = response.data;
+    }),
+    function (error) {
+      console.log(error);
+    };
+
   $scope.Provinces = []; // Cập nhật dữ liệu về tỉnh/thành phố từ JSON
   $scope.Districts = []; // Cập nhật dữ liệu về quận/huyện từ JSON
   $scope.Ward = []; // Cập nhật dữ liệu về quận/huyện từ JSON
