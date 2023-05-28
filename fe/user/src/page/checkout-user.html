@@ -6,36 +6,49 @@
         <!-- Checkout -->
         <div class="card shadow-0 border">
           <div class="p-4">
-            <h5 class="card-title mb-3">Address</h5>
+            <h5 class="card-title mb-3">Customer Information</h5>
             <div class="row">
               <div class="col-12 mb-3">
-                <p class="mb-0 fw-bold">Name customer</p>
+                <p class="mb-0 fw-bold">
+                  {{customer.lastName}} {{customer.firstName}}
+                </p>
               </div>
 
               <div class="col-12 mb-3">
-                <span>6</span>
+                <span
+                  >phone: (+84){{customer.phoneNumber}}, email:
+                  {{customer.email}}</span
+                >
               </div>
 
               <div class="col-12 mb-3">
-                <span>abc phố xyz</span>
+                <span
+                  >Adress: {{address.description}}, {{address.ward}},
+                  {{address.district}}, {{address.city}}</span
+                >
               </div>
               <div class="col-12 mb-3">
                 <button
                   type="button"
                   class="btn btn-outline-primary d-inline"
                   data-bs-toggle="modal"
-                  data-bs-target="#checkoutModal"
+                  data-bs-target="#selectAddress"
                 >
                   Select address
                 </button>
-                <button type="button" class="btn btn-outline-danger d-inline">
+                <button
+                  type="button"
+                  class="btn btn-outline-danger d-inline"
+                  data-bs-toggle="modal"
+                  data-bs-target="#newAddress"
+                >
                   New address
                 </button>
               </div>
 
               <div class="col-12 m3">
                 <div class="form-check mb-3">
-                  <p class="text-dark">Estimated delivery time:</p>
+                  <p class="text-dark">Estimated delivery time: 3-7 (days)</p>
                   <p class="text-dark">Shipping carrier: <span>Fedex</span></p>
                 </div>
               </div>
@@ -177,6 +190,9 @@
                   {{detailCart.nameProduct}}<br />
                 </a>
                 <div class="price text-muted">
+                  {{detailCart.nameColor}}, {{detailCart.nameSize}}
+                </div>
+                <div class="price text-muted">
                   {{detailCart.price}}.00đ x{{detailCart.quantity}}
                 </div>
               </div>
@@ -188,9 +204,10 @@
   </div>
 </section>
 <!-- modal -->
+<!-- select address -->
 <div
   class="modal fade"
-  id="checkoutModal"
+  id="selectAddress"
   tabindex="-1"
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
@@ -216,25 +233,15 @@
                   {{address.district}}, {{address.city}}</span
                 >
               </div>
-              <!-- <div class="col-md-2 col-lg-2 col-xl-2">
-                <span class="fw-normal mb-2">đang được chọn</span>
-              </div> -->
               <div class="col-md-4 col-lg-9 col-xl-3">
-                <!-- <button
-                  type=""
-                  class="btn btn-outline-primary d-inline"
-                  data-bs-toggle="modal"
-                  data-bs-target="#checkoutModal"
-                >
-                  Select address
-                </button> -->
                 <input
                   type="radio"
                   class="btn-check"
                   name="address"
                   value="{{address.idAddress}}"
                   ng-checked="$index == 0"
-                  id="address{{color.id}}"
+                  id="address{{address.idAddress}}"
+                  ng-click="getAddress(address.idAddress)"
                   autocomplete="off"
                 />
                 <label
@@ -247,6 +254,98 @@
           </div>
           <hr class="mx-n3" />
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- new address -->
+<div
+  class="modal fade"
+  id="newAddress"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">New Address</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <!-- 3 column grid layout with text inputs for the first and last names -->
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form3Example1">Provinces</label>
+                <select
+                  class="form-select"
+                  ng-model="selectedProvinceId"
+                  ng-change="onProvinceChange()"
+                >
+                  <option
+                    selected
+                    ng-repeat="provinces in Provinces"
+                    value="{{provinces.code}}"
+                  >
+                    {{provinces.name}}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form3Example1">District</label>
+                <select
+                  class="form-select"
+                  ng-model="selectedDistrictId"
+                  ng-change="onDistrictChange()"
+                >
+                  <option
+                    ng-repeat="district in Districts"
+                    value="{{district.code}}"
+                  >
+                    {{district.name}}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form3Example2">Ward</label>
+                <select class="form-select" ng-model="selectedWard">
+                  <option ng-repeat="ward in Ward" value="{{ward}}" selected>
+                    {{ ward.name}}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- descripton input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example3">Description</label>
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+            ></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" ng-click="addAdress()">
+          Save changes
+        </button>
       </div>
     </div>
   </div>

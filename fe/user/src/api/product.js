@@ -21,3 +21,5 @@ window.detailCart = api + "/detail-cart";
 window.voucherAPI = api + "/voucher";
 
 window.addressAPI = api + "/address";
+
+window.customerAPI = api + "/customer";

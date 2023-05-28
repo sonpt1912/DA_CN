@@ -1,0 +1,263 @@
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2 col-xl-2">
+        <nav class="nav flex-lg-column w-100 d-flex nav-pills mb-4">
+          <a class="nav-link active my-0" href="#customer-accout"
+            ><p class="pb-0 mb-0" style="width: 100px">Account</p></a
+          >
+          <a class="nav-link my-0 bg-light" href="#customer-order "
+            ><p class="pb-0 mb-0" style="width: 100px">Order History</p></a
+          >
+          <a class="nav-link my-0 bg-light" href="#customer-cart/{{IdCart.id}}"
+            ><p class="pb-0 mb-0" style="width: 100px">Cart</p></a
+          >
+          <a class="nav-link my-0 bg-light" href="#"
+            ><p class="pb-0 mb-0" style="width: 100px">Logout</p></a
+          >
+        </nav>
+      </div>
+      <main class="col-lg-10 col-xl-10">
+        <div class="card p-4 mb-0 shadow-0 border">
+          <div class="content-body">
+            <div class="d-flex align-items-center">
+              <div class="me-3"></div>
+              <div class="pt-2">
+                <h6 class="pt-2">Name: Jackson Mike</h6>
+                <p>username:</p>
+                <p>Email: myusername@gmail.com, Phone: +1234567890988</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <a
+                  href="#"
+                  class="btn btn-light border"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editInfor"
+                >
+                  edit Information
+                </a>
+              </div>
+              <div class="col-6">
+                <a href="#" class="btn btn-light border"> Change Password </a>
+              </div>
+            </div>
+            <hr />
+
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <div class="border p-3 rounded-3 bg-light">
+                  <b class="mx-2 text-muted"
+                    ><i class="fa fa-map-marker-alt"></i
+                  ></b>
+                  United States, 3601 Old Capitol Trail, Unit A-7, Suite
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="border p-3 rounded-3 bg-light">
+                  <b class="mx-2 text-muted"
+                    ><i class="fa fa-map-marker-alt"></i
+                  ></b>
+                  Moscow city, Street name, Building lenin, House 77
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <a
+                  href="#"
+                  class="btn btn-light border"
+                  data-bs-toggle="modal"
+                  data-bs-target="#newAddress"
+                >
+                  Add new address
+                </a>
+              </div>
+              <div class="col">
+                <a
+                  href="#"
+                  class="btn btn-light border"
+                  data-bs-toggle="modal"
+                  data-bs-target="#newAddress"
+                >
+                  edit address
+                </a>
+              </div>
+            </div>
+
+            <hr class="my-4" />
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</section>
+<link rel="stylesheet" href="/user/css/plugin/mdb.min.css" />
+<!-- new address -->
+<div
+  class="modal fade"
+  id="newAddress"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">New Address</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <!-- 3 column grid layout with text inputs for the first and last names -->
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form3Example1">Provinces</label>
+                <select
+                  class="form-select"
+                  ng-model="selectedProvinceId"
+                  ng-change="onProvinceChange()"
+                >
+                  <option
+                    selected
+                    ng-repeat="provinces in Provinces"
+                    value="{{provinces.code}}"
+                  >
+                    {{provinces.name}}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form3Example1">District</label>
+                <select
+                  class="form-select"
+                  ng-model="selectedDistrictId"
+                  ng-change="onDistrictChange()"
+                >
+                  <option
+                    ng-repeat="district in Districts"
+                    value="{{district.code}}"
+                  >
+                    {{district.name}}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form3Example2">Ward</label>
+                <select class="form-select" ng-model="selectedWard">
+                  <option ng-repeat="ward in Ward" value="{{ward}}" selected>
+                    {{ ward.name}}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- descripton input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example3">Description</label>
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+            ></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" ng-click="addAdress()">
+          Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- edit information -->
+<div
+  class="modal fade"
+  id="editInfor"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          Edit Information
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <!-- 3 column grid layout with text inputs for the first and last names -->
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form3Example1">Provinces</label>
+                <select
+                  class="form-select"
+                  ng-model="selectedProvinceId"
+                  ng-change="onProvinceChange()"
+                >
+                  <option
+                    selected
+                    ng-repeat="provinces in Provinces"
+                    value="{{provinces.code}}"
+                  >
+                    {{provinces.name}}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form3Example1">District</label>
+                <select
+                  class="form-select"
+                  ng-model="selectedDistrictId"
+                  ng-change="onDistrictChange()"
+                >
+                  <option
+                    ng-repeat="district in Districts"
+                    value="{{district.code}}"
+                  >
+                    {{district.name}}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" ng-click="addAdress()">
+          Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

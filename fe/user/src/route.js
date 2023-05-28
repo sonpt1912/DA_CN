@@ -68,10 +68,19 @@ myApp.config(function ($routeProvider, $locationProvider) {
       templateUrl: "./page/register.html",
       controller: registerController,
     })
-    .when("/customer", {
-      templateUrl: "./page/customer.html",
+    // customer
+    .when("/customer-accout", {
+      templateUrl: "./page/customer-account.html",
+      controller: customerController,
+    })
+    .when("/customer-cart/:id", {
+      templateUrl: "./page/customer-cart.html",
+      controller: cartController,
+    })
+    .when("/customer-order", {
+      templateUrl: "./page/customer-order-history.html",
     })
     .otherwise({
-      redirectTo: "/customer",
+      redirectTo: "/customer-accout",
     });
 });

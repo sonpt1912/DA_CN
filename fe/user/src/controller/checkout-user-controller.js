@@ -2,6 +2,15 @@ window.checkoutUserController = function ($scope, $http, $routeParams) {
   $scope.idCart = $routeParams.id;
   $scope.totalPrice = 0;
 
+  // form address
+  $scope.formAddress = {
+    idCustomer: 1,
+    city: "",
+    district: "",
+    ward: "",
+    description: "",
+  };
+
   // Lấy detail cart
   $scope.listDetailCarts = [];
   $http.get(detailCart + "/get-by-product/" + 1).then(function (response) {
@@ -24,17 +33,27 @@ window.checkoutUserController = function ($scope, $http, $routeParams) {
       console.log(error);
     };
 
-  // $scope.address = [];
-  // // lấy address
+  // lấy address
 
-  // $scope.getAddress = function (idAddress) {
-  //   $http.get(addressAPI + "/get-by-id/" + 1).then(function (response) {
-  //     $scope.address = response.data;
-  //   }),
-  //     function (error) {
-  //       console.log(error);
-  //     };
-  // };
+  $scope.getAddress = function (idAddress) {
+    $scope.address = [];
+    $http.get(addressAPI + "/get-by-id/" + idAddress).then(function (response) {
+      $scope.address = response.data;
+      console.log($scope.address);
+    }),
+      function (error) {
+        console.log(error);
+      };
+  };
+
+  // lấy user hiện tại
+  $scope.customer = [];
+  $http.get(customerAPI + "/get-one-by-id/" + 1).then(function (response) {
+    $scope.customer = response.data;
+  }),
+    function (error) {
+      console.log(error);
+    };
 
   // lấy số tiền của voucher
   $scope.code = "";
@@ -48,6 +67,13 @@ window.checkoutUserController = function ($scope, $http, $routeParams) {
       function (e) {
         console.log(e);
       };
+  };
+
+  // hàm add address
+  $scope.addAdress = function () {
+    $http
+      .post(addressAPI + "/add-address", $scope.formAddress)
+      .then(function (response) {});
   };
 
   //tính thuế tax
@@ -75,5 +101,44 @@ window.checkoutUserController = function ($scope, $http, $routeParams) {
       var quantity = detailCart.quantity;
       $scope.totalPrice += price * quantity;
     }
+  };
+
+  $scope.Provinces = []; // Cập nhật dữ liệu về tỉnh/thành phố từ JSON
+  $scope.Districts = []; // Cập nhật dữ liệu về quận/huyện từ JSON
+  $scope.Ward = []; // Cập nhật dữ liệu về quận/huyện từ JSON
+
+  // lấy thành phố
+  $http
+    .get("https://vn-public-apis.fpo.vn/provinces/getAll?limit=-1")
+    .then(function (response) {
+      $scope.Provinces = response.data.data.data;
+    });
+
+  // Sự kiện khi chọn một tỉnh/thành phố
+  $scope.onProvinceChange = function () {
+    var selectedProvinceId = $scope.selectedProvinceId; // Lấy ID của tỉnh/thành phố đã chọn
+    $http
+      .get(
+        "https://vn-public-apis.fpo.vn/districts/getByProvince?provinceCode=" +
+          selectedProvinceId +
+          "&limit=-1"
+      )
+      .then(function (response) {
+        $scope.Districts = response.data.data.data;
+      });
+  };
+
+  // Sự kiện khi chọn một huyện
+  $scope.onDistrictChange = function () {
+    var selectedDistrictId = $scope.selectedDistrictId; // Lấy ID của tỉnh/thành phố đã chọn
+    $http
+      .get(
+        "https://vn-public-apis.fpo.vn/wards/getByDistrict?districtCode=" +
+          selectedDistrictId +
+          "&limit=-1"
+      )
+      .then(function (response) {
+        $scope.Ward = response.data.data.data;
+      });
   };
 };

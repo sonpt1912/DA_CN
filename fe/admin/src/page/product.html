@@ -13,7 +13,8 @@
             <a
               href="#addEmployeeModal"
               class="btn btn-success"
-              data-toggle="modal"
+              data-bs-toggle="modal"
+              data-bs-target="#addModel"
               ><i class="material-icons">&#xE147;</i>
               <span>Add New Product</span></a
             >
@@ -78,6 +79,172 @@
     </div>
   </div>
 </div>
+<!-- add Modal HTML -->
+<div
+  class="modal fade"
+  id="addModel"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <!-- 2 column grid layout with text inputs for the first and last names -->
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form3Example1">Image</label>
+                <input
+                  class="form-control"
+                  type="file"
+                  id="formFile"
+                  accept="image/*"
+                />
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form3Example2">Name</label>
+                <input type="text" id="form3Example2" class="form-control" />
+              </div>
+            </div>
+          </div>
+
+          <!-- 2 column grid layout with text inputs for the first and last names -->
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form3Example1">Brand</label>
+                <select class="form-select" aria-label="Default select example">
+                  <option ng-repeat="brand in listBrand">{{brand.name}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form3Example2">Category</label>
+                <select class="form-select" aria-label="Default select example">
+                  <option ng-repeat="category in listCategory">
+                    {{category.name}}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- color input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example3">Color: </label>
+            <div class="body-left-size-item d-inline">
+              <input
+                type="checkbox"
+                class="btn-check"
+                name="color"
+                id="color-all"
+                autocomplete="off"
+                checked
+              />
+              <label class="btn btn-outline-dark" for="color-all">ALL</label>
+            </div>
+
+            <div class="body-left-size-item d-inline">
+              <input
+                type="checkbox"
+                class="btn-check"
+                name="color"
+                id="color-red"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-dark" for="color-red">Red</label>
+            </div>
+          </div>
+
+          <!-- size input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example3">Size:</label>
+            <div class="body-left-size-item d-inline">
+              <input
+                type="checkbox"
+                class="btn-check"
+                name="color"
+                id="color-all"
+                autocomplete="off"
+                checked
+              />
+              <label class="btn btn-outline-dark" for="color-all">ALL</label>
+            </div>
+
+            <div class="body-left-size-item d-inline">
+              <input
+                type="checkbox"
+                class="btn-check"
+                name="color"
+                id="color-red"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-dark" for="color-red">Red</label>
+            </div>
+          </div>
+
+          <!-- 3 column grid layout with text inputs for the first and last names -->
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form3Example1">Quantity</label>
+                <input type="number" id="form3Example2" class="form-control" />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form3Example1"
+                  >Origin Price</label
+                >
+                <input type="number" id="form3Example2" class="form-control" />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form3Example2">Sell Price</label>
+                <input type="number" id="form3Example2" class="form-control" />
+              </div>
+            </div>
+          </div>
+
+          <!-- descripton input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example3">Description</label>
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+            ></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Edit Modal HTML -->
 <div
   class="modal fade"

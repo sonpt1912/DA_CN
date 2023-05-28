@@ -1,0 +1,159 @@
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2 col-xl-2">
+        <nav class="nav flex-lg-column w-100 d-flex nav-pills mb-4">
+          <a class="nav-link my-0 bg-light" href="#customer-accout"
+            ><p class="pb-0 mb-0" style="width: 100px">Account</p></a
+          >
+          <a class="nav-link my-0 bg-light" href="#customer-order"
+            ><p class="pb-0 mb-0" style="width: 100px">Order History</p></a
+          >
+          <a class="nav-link my-0 active" href="#customer-cart "
+            ><p class="pb-0 mb-0" style="width: 100px">Cart</p></a
+          >
+          <a class="nav-link my-0 bg-light" href="#"
+            ><p class="pb-0 mb-0" style="width: 100px">Logout</p></a
+          >
+        </nav>
+      </div>
+      <main class="col-lg-10 col-xl-10">
+        <div class="row">
+          <!-- cart -->
+          <div class="col-lg-9">
+            <div class="card border shadow-0">
+              <div class="m-4">
+                <h4 class="card-title mb-4">Your shopping cart</h4>
+                <div
+                  class="row gy-3 mb-4"
+                  ng-repeat="detailCart in listDetailCarts"
+                >
+                  <div class="col-lg-5">
+                    <div class="me-lg-5">
+                      <div class="d-flex">
+                        <img
+                          src="/user/img/product/product-1.jpg"
+                          class="border rounded me-3"
+                          style="width: 96px; height: 96px"
+                        />
+                        <div class="">
+                          {{detailCart.nameProduct}}
+                          <p class="text-muted">
+                            Color:{{detailCart.nameColor}},
+                            Size:{{detailCart.nameSize}}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="col-lg-5 col-sm-6 col-6 d-flex flex-row flex-lg-column flex-xl-row text-nowrap justify-content-center align-items-center"
+                  >
+                    <div class="">
+                      <div class="input-group me-4" style="width: 150px">
+                        <button
+                          class="btn border px-2"
+                          ng-click="decreaseQuantity(detailCart)"
+                          onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                        >
+                          <i class="bi bi-dash-lg"></i>
+                        </button>
+
+                        <input
+                          id="form1"
+                          min="1"
+                          name="quantity"
+                          ng-model="detailCart.quantity"
+                          ng-change="checkInputValue(detailCart)"
+                          type="number"
+                          class="form-control form-control-sm"
+                        />
+
+                        <button
+                          class="btn border px-2"
+                          ng-click="increaseQuantity(detailCart)"
+                          onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                        >
+                          <i class="bi bi-plus-lg"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="">
+                      <text class="h6">{{detailCart.price}}.00đ</text> <br />
+                    </div>
+                  </div>
+                  <div
+                    class="col-lg-2 col-sm-6 col-6 d-flex flex-row flex-lg-column flex-xl-row text-nowrap justify-content-center align-items-center"
+                  >
+                    <div class="float-md-end">
+                      <a
+                        ng-click="deleteDetailCart(detailCart.idDetailProduct)"
+                        class="btn btn-danger rounded-pill d-inline"
+                      >
+                        Remove</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="border-top pt-4 mx-4 mb-4">
+                <p>
+                  <i class="fas fa-truck text-muted fa-lg"></i> Free Delivery
+                  within 1-2 weeks
+                </p>
+                <p class="text-muted">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- cart -->
+          <!-- summary -->
+          <div class="col-lg-3">
+            <div class="card shadow-0 border">
+              <div class="card-body">
+                <div class="d-flex justify-content-between">
+                  <p class="mb-2">Price:</p>
+                  <p id="totalPrice" class="mb-2">{{ totalPrice }}.00đ</p>
+                </div>
+                <!-- <div class="d-flex justify-content-between">
+                  <p class="mb-2">Discount:</p>
+                  <p class="mb-2 text-success">-$60.00</p>
+                </div> -->
+                <div class="d-flex justify-content-between">
+                  <p class="mb-2">TAX:</p>
+                  <p class="mb-2">{{calculateTax()}}.00đ</p>
+                </div>
+                <hr />
+                <div class="d-flex justify-content-between">
+                  <p class="mb-2">Total price:</p>
+                  <p class="mb-2 fw-bold">{{calculateToTal()}}.00đ</p>
+                </div>
+
+                <div class="mt-3">
+                  <a
+                    ng-if="calculateToTal() > 0"
+                    href="#checkout/{{idCart}}"
+                    class="btn btn-success w-100 shadow-0 mb-2"
+                  >
+                    Make Purchase
+                  </a>
+                  <a href="#home" class="btn btn-light w-100 border mt-2">
+                    Back to shop
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- summary -->
+        </div>
+      </main>
+    </div>
+  </div>
+</section>
+<link rel="stylesheet" href="/user/css/plugin/mdb.min.css" />
+<!-- <script type="text/javascript" src="/user/js/plugin/mdb.min.js"></script> -->

@@ -6,4 +6,20 @@ window.productController = function ($scope, $http, $routeParams) {
     function (error) {
       console.log(error);
     };
+
+  $scope.listBrand = [];
+  $http.get(brandAPI + "/get-all-brand").then(function (response) {
+    $scope.listBrand = response.data;
+  }),
+    function (error) {
+      console.log(error);
+    };
+
+  $scope.listCategory = [];
+  $http.get(categoryAPI + "/get-all-category").then(function (response) {
+    $scope.listCategory = response.data;
+  }),
+    function (error) {
+      console.log(error);
+    };
 };

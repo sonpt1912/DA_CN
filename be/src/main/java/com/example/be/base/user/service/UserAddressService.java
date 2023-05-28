@@ -2,6 +2,7 @@ package com.example.be.base.user.service;
 
 import com.example.be.base.user.model.response.UserAddressResponse;
 import com.example.be.base.user.repository.UserAddressRepository;
+import com.example.be.entity.Address;
 import com.example.be.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,10 @@ public class UserAddressService {
 
     public UserAddressResponse getOneById(long idAddress) {
         return repository.getOneById(idAddress);
+    }
+
+    public void add(Address address) {
+        repository.save(address);
     }
 
 }
