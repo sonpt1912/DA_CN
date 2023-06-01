@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = {"*"})
-@RequestMapping("/address")
+@RequestMapping("/user/address")
 public class UserAddressController {
 
     @Autowired

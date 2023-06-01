@@ -19,4 +19,12 @@ public class UserCustomerService {
     public UserCustomerResponse getCustomerResponseById(long id) {
         return repository.getOneResponseById(id);
     }
+
+    public void update(Customer customer) {
+        repository.save(customer);
+    }
+
+    public Customer getOneById(Long id) {
+        return repository.findCustomerById(id);
+    }
 }

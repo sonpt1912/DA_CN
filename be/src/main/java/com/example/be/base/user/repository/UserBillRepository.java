@@ -16,7 +16,7 @@ public interface UserBillRepository extends BillRepository {
             "FROM Bill b " +
             "INNER JOIN DetailBill db ON db.bill = b " +
             "LEFT JOIN  Voucher v ON v = b.voucher " +
-            "WHERE b.customer.id = :Customer AND b.status = :IdStatus  " +
+            "WHERE b.customer = :Customer AND b.status = :IdStatus  " +
             "GROUP BY b.id, b.code ")
     List<UserBillResponse> getAllByCustomerAndStatus(@Param("Customer") Customer customer, @Param("IdStatus") int idStatus);
 

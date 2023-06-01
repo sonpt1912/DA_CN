@@ -15,33 +15,55 @@
       </tr>
     </thead>
     <tbody>
-      <tr onclick="window.location='#detail-bill'">
+      <tr
+        onclick="window.location='#detail-bill'"
+        ng-repeat="order in listBill"
+      >
         <td>
-          <p class="fw-normal mb-1">1</p>
+          <p class="fw-normal mb-1">{{$index}}</p>
         </td>
         <td>
-          <p class="fw-normal mb-1">4354</p>
+          <p class="fw-normal mb-1">{{order.code}}</p>
+        </td>
+
+        <td>
+          <p class="fw-normal mb-1">{{order.quantity}}</p>
         </td>
         <td>
-          <p class="fw-normal mb-1 text-danger">120000.00đ</p>
+          <p class="fw-normal mb-1 text-danger">{{order.totalPrice}}.00đ</p>
         </td>
         <td>
-          <p class="fw-normal mb-1">4354</p>
+          <p class="fw-normal mb-1">{{order.phoneNumber}}</p>
         </td>
         <td>
-          <p class="fw-normal mb-1">4354</p>
+          <p class="fw-normal mb-1">{{order.orderDate}}</p>
         </td>
         <td>
-          <p class="fw-normal mb-1">19/12/2003</p>
-        </td>
-        <td>
-          <span class="badge badge-success rounded-pill d-inline">Succes</span>
-          <span class="badge badge-warning rounded-pill d-inline"
+          <span
+            class="badge badge-warning rounded-pill d-inline"
+            ng-if="order.status == 0"
             >Wait for confirmation</span
           >
-          <span class="badge badge-danger rounded-pill d-inline">Cancel</span>
-          <span class="badge badge-primary rounded-pill d-inline">Prepare</span>
-          <span class="badge badge-info rounded-pill d-inline">delivering</span>
+          <span
+            class="badge badge-success rounded-pill d-inline"
+            ng-if="order.status == 1"
+            >Succes</span
+          >
+          <span
+            class="badge badge-primary rounded-pill d-inline"
+            ng-if="order.status == 3"
+            >Prepare</span
+          >
+          <span
+            class="badge badge-info rounded-pill d-inline"
+            ng-if="order.status == 4"
+            >delivering</span
+          >
+          <span
+            class="badge badge-danger rounded-pill d-inline"
+            ng-if="order.status == 5"
+            >Cancel</span
+          >
         </td>
       </tr>
     </tbody>

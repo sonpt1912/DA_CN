@@ -31,6 +31,7 @@ myApp.config(function ($routeProvider, $locationProvider) {
     })
     .when("/order", {
       templateUrl: "./page/order.html",
+      controller: orderController,
     })
     .when("/voucher", {
       templateUrl: "./page/voucher.html",

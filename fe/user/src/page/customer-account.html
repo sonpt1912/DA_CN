@@ -40,8 +40,10 @@
                   class="btn btn-light border"
                   data-bs-toggle="modal"
                   data-bs-target="#editInfor"
+                  ng-click="getInfor()"
                 >
-                  <i class="bi bi-pencil-square"></i> edit Information
+                  <i class="bi bi-pencil-square"></i>
+                  edit Information
                 </a>
                 <a
                   href="#"
@@ -312,10 +314,32 @@
             <div class="col">
               <div class="mb-3 row">
                 <label for="staticEmail" class="col-sm-2 col-form-label"
-                  >Name</label
+                  >First name</label
                 >
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="staticEmail" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="staticEmail"
+                    ng-model="formCustomer.firstName"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col">
+              <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2 col-form-label"
+                  >Last name</label
+                >
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="staticEmail"
+                    ng-model="formCustomer.lastName"
+                  />
                 </div>
               </div>
             </div>
@@ -327,7 +351,12 @@
                   >Email</label
                 >
                 <div class="col-sm-10">
-                  <input type="email" class="form-control" id="staticEmail" />
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="staticEmail"
+                    ng-model="formCustomer.email"
+                  />
                 </div>
               </div>
             </div>
@@ -339,7 +368,12 @@
                   >Phone</label
                 >
                 <div class="col-sm-10">
-                  <input type="number" class="form-control" id="staticEmail" />
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="staticEmail"
+                    ng-model="formCustomer.phoneNumber"
+                  />
                 </div>
               </div>
             </div>
@@ -350,7 +384,7 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary" ng-click="addAdress()">
+        <button type="button" class="btn btn-primary" ng-click="editInfor()">
           Save changes
         </button>
       </div>
@@ -386,7 +420,11 @@
                   >Old password</label
                 >
                 <div class="col-sm-10">
-                  <input type="number" class="form-control" id="staticEmail" />
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="staticEmail"
+                  />
                 </div>
               </div>
             </div>
@@ -398,7 +436,11 @@
                   >New password</label
                 >
                 <div class="col-sm-10">
-                  <input type="number" class="form-control" id="staticEmail" />
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="staticEmail"
+                  />
                 </div>
               </div>
             </div>
@@ -410,7 +452,11 @@
                   >Confirm password</label
                 >
                 <div class="col-sm-10">
-                  <input type="number" class="form-control" id="staticEmail" />
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="staticEmail"
+                  />
                 </div>
               </div>
             </div>

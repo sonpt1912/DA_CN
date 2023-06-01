@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = {"*"})
-@RequestMapping("/voucher")
+@RequestMapping("/user/voucher")
 public class UserVoucherController {
 
     @Autowired

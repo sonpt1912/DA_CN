@@ -15,7 +15,7 @@ import com.example.be.entity.DetailBill;
 import com.example.be.entity.DetailCart;
 import com.example.be.entity.DetailProduct;
 import com.example.be.entity.Voucher;
-import com.example.be.util.RandomCode;
+import com.example.be.base.user.util.RandomCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +23,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 @RestController
 @CrossOrigin(origins = {"*"})

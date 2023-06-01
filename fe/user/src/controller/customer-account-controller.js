@@ -2,10 +2,19 @@ window.customerController = function ($scope, $http) {
   // form address
   $scope.formAddress = {
     idCustomer: 1,
-    nameProvice: "",
-    nameDistrict: "",
-    nameWard: "",
+    city: "",
+    district: "",
+    ward: "",
     description: "",
+  };
+
+  // form
+  $scope.formCustomer = {
+    idCustomer: 1,
+    lastName: "",
+    firstName: "",
+    phoneNumber: "",
+    email: "",
   };
 
   // cart
@@ -41,18 +50,37 @@ window.customerController = function ($scope, $http) {
       console.log(error);
     };
 
+  // get customer
+  $scope.getInfor = function () {
+    $http.get(customerAPI + "/get-one-by-id/" + 1).then(function (response) {
+      $scope.formCustomer.lastName = response.data.lastName;
+      $scope.formCustomer.firstName = response.data.firstName;
+      $scope.formCustomer.phoneNumber = response.data.phoneNumber;
+      $scope.formCustomer.email = response.data.email;
+    }),
+      function (error) {
+        console.log(error);
+      };
+  };
+
+  // hàm update infor
+  $scope.editInfor = function () {
+    console.log($scope.formCustomer);
+    $http
+      .put(customerAPI + "/update", $scope.formCustomer)
+      .then(function (response) {});
+  };
+
   // hàm add new address
   $scope.addAdress = function () {
-    // $scope.formAddress.nameProvice = JSON.parse($scope.selectedProvinceId).name;
-    // $scope.formAddress.nameDistrict = JSON.parse(
-    //   $scope.selectedDistrictId
-    // ).name;
-    // $scope.formAddress.nameWard = JSON.parse($scope.selectedWardId).name;
-    // $scope.formAddress.description = $scope.description;
-    // console.log(JSON.stringify($scope.formAddress));
-    // $http
-    //   .post(addressAPI + "/add-address", JSON.stringify($scope.formAddress))
-    //   .then(function (response) {});
+    $scope.formAddress.city = JSON.parse($scope.selectedProvinceId).name;
+    $scope.formAddress.district = JSON.parse($scope.selectedDistrictId).name;
+    $scope.formAddress.ward = JSON.parse($scope.selectedWardId).name;
+    $scope.formAddress.description = $scope.description;
+    console.log(JSON.parse(JSON.stringify($scope.formAddress)));
+    $http
+      .post(addressAPI + "/add-address", JSON.stringify($scope.formAddress))
+      .then(function (response) {});
   };
 
   $scope.Provinces = []; // Cập nhật dữ liệu về tỉnh/thành phố từ JSON

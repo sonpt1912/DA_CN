@@ -1,4 +1,4 @@
-package com.example.be.util;
+package com.example.be.base.user.util;
 
 import org.springframework.stereotype.Component;
 

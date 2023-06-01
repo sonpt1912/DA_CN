@@ -1,4 +1,4 @@
-window.api = "http://localhost:8080";
+window.api = "http://localhost:8080/user";
 
 window.productAPI = api + "/product";
 
