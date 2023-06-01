@@ -27,4 +27,12 @@ public class UserAddressService {
         repository.save(address);
     }
 
+    public Address findById(long id) {
+        return repository.findById(id).get();
+    }
+
+    public void delete(Address address) {
+        repository.delete(address);
+    }
+
 }

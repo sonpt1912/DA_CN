@@ -48,9 +48,17 @@
             </td>
             <td>
               <a href="" data-bs-toggle="modal" data-bs-target="#editModel"
-                ><i class="bi bi-pencil-fill text-warning me-3"></i
+                ><i
+                  class="bi bi-pencil-fill text-warning me-3"
+                  ng-click="getBrand(brand.id)"
+                ></i
               ></a>
-              <a href=""><i class="bi bi-trash-fill text-danger"></i></a>
+              <a href=""
+                ><i
+                  class="bi bi-trash-fill text-danger"
+                  ng-click="deleteBrand(brand.id)"
+                ></i
+              ></a>
             </td>
           </tr>
         </tbody>
@@ -116,7 +124,12 @@
           <div class="mb-3 row">
             <label for="inputName" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputName" />
+              <input
+                type="text"
+                class="form-control"
+                id="inputName"
+                ng-model="brand.name"
+              />
             </div>
           </div>
         </form>

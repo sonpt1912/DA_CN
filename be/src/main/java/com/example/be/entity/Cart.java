@@ -8,10 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.sql.Date;
 
@@ -21,7 +18,7 @@ import java.sql.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Builder
 public class Cart {
 
     @Id
@@ -34,7 +31,7 @@ public class Cart {
     private Customer customer;
 
     @Column(name = "code", nullable = false)
-    private Integer code;
+    private Long code;
 
     @Column(name = "status")
     private Integer status;

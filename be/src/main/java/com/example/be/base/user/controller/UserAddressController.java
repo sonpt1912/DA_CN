@@ -34,15 +34,23 @@ public class UserAddressController {
         return addressService.getOneById(idAddress);
     }
 
+    @DeleteMapping("/delete/{id}")
+    public void deleteAddress(@PathVariable("id") long id) {
+        Address address = addressService.findById(id);
+        addressService.delete(address);
+    }
+
     @PostMapping("/add-address")
     public void addAddress(@RequestBody UserAddressRequest userAddressRequest) {
         Customer customer = customerService.findCustomerById(userAddressRequest.getIdCustomer());
+        System.out.println(userAddressRequest.toString());
         Address address = Address.builder()
                 .customer(customer)
                 .city(userAddressRequest.getCity())
                 .description(userAddressRequest.getDescription())
                 .district(userAddressRequest.getDistrict())
                 .ward(userAddressRequest.getWard())
+                .status(0)
                 .build();
         addressService.add(address);
     }

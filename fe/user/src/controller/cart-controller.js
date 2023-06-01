@@ -5,7 +5,7 @@ window.cartController = function ($scope, $routeParams, $http) {
   // Lấy detail cart
   $scope.listDetailCarts = [];
   $http
-    .get(detailCart + "/get-by-product/" + $scope.idCart)
+    .get(detailCart + "/get-by-cart/" + $scope.idCart)
     .then(function (response) {
       $scope.listDetailCarts = response.data;
       $scope.calculateTotalPrice();

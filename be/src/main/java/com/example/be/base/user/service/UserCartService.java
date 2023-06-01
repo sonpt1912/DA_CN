@@ -24,4 +24,8 @@ public class UserCartService {
         return repository.findCartByStatus(id);
     }
 
+    public void saveOrUpdate(Cart cart) {
+        repository.save(cart);
+    }
+
 }

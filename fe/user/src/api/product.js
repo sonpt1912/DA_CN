@@ -23,3 +23,5 @@ window.voucherAPI = api + "/voucher";
 window.addressAPI = api + "/address";
 
 window.customerAPI = api + "/customer";
+
+window.billAPI = api + "/bill";

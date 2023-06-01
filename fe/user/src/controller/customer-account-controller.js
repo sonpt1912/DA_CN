@@ -1,4 +1,13 @@
 window.customerController = function ($scope, $http) {
+  // form address
+  $scope.formAddress = {
+    idCustomer: 1,
+    nameProvice: "",
+    nameDistrict: "",
+    nameWard: "",
+    description: "",
+  };
+
   // cart
   $scope.IdCart = [];
   $http.get(cartAPI + "/get-cart-by-customer/" + 1).then(function (response) {
@@ -16,6 +25,36 @@ window.customerController = function ($scope, $http) {
       console.log(error);
     };
 
+  // xóa address
+  $scope.deleteAddress = function (addressId) {
+    $http
+      .delete(addressAPI + "/delete/" + addressId)
+      .then(function (response) {});
+  };
+
+  // lấy customer
+  $scope.customer = [];
+  $http.get(customerAPI + "/get-one-by-id/" + 1).then(function (response) {
+    $scope.customer = response.data;
+  }),
+    function (error) {
+      console.log(error);
+    };
+
+  // hàm add new address
+  $scope.addAdress = function () {
+    // $scope.formAddress.nameProvice = JSON.parse($scope.selectedProvinceId).name;
+    // $scope.formAddress.nameDistrict = JSON.parse(
+    //   $scope.selectedDistrictId
+    // ).name;
+    // $scope.formAddress.nameWard = JSON.parse($scope.selectedWardId).name;
+    // $scope.formAddress.description = $scope.description;
+    // console.log(JSON.stringify($scope.formAddress));
+    // $http
+    //   .post(addressAPI + "/add-address", JSON.stringify($scope.formAddress))
+    //   .then(function (response) {});
+  };
+
   $scope.Provinces = []; // Cập nhật dữ liệu về tỉnh/thành phố từ JSON
   $scope.Districts = []; // Cập nhật dữ liệu về quận/huyện từ JSON
   $scope.Ward = []; // Cập nhật dữ liệu về quận/huyện từ JSON
@@ -30,10 +69,11 @@ window.customerController = function ($scope, $http) {
   // Sự kiện khi chọn một tỉnh/thành phố
   $scope.onProvinceChange = function () {
     var selectedProvinceId = $scope.selectedProvinceId; // Lấy ID của tỉnh/thành phố đã chọn
+    let code = JSON.parse(selectedProvinceId).code;
     $http
       .get(
         "https://vn-public-apis.fpo.vn/districts/getByProvince?provinceCode=" +
-          selectedProvinceId +
+          code +
           "&limit=-1"
       )
       .then(function (response) {
@@ -44,10 +84,11 @@ window.customerController = function ($scope, $http) {
   // Sự kiện khi chọn một huyện
   $scope.onDistrictChange = function () {
     var selectedDistrictId = $scope.selectedDistrictId; // Lấy ID của tỉnh/thành phố đã chọn
+    let code = JSON.parse(selectedDistrictId).code;
     $http
       .get(
         "https://vn-public-apis.fpo.vn/wards/getByDistrict?districtCode=" +
-          selectedDistrictId +
+          code +
           "&limit=-1"
       )
       .then(function (response) {

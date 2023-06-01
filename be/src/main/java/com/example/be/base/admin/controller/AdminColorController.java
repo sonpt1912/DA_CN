@@ -5,10 +5,7 @@ import com.example.be.base.admin.service.AdminColorService;
 import com.example.be.entity.Brand;
 import com.example.be.entity.Color;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,6 +20,32 @@ public class AdminColorController {
     @GetMapping("/get-all-color")
     public List<Color> getAll() {
         return service.getAll();
+    }
+
+    @GetMapping("/get/{id}")
+    public Color getOneById(@PathVariable("id") long id) {
+        return service.getOneById(id);
+    }
+
+    @PostMapping("/add")
+    public void add(@RequestParam String name) {
+        Color color = Color.builder()
+                .name(name)
+                .status(0)
+                .build();
+        service.add(color);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable("id") long id) {
+        Color color = service.getOneById(id);
+        color.setStatus(1);
+        service.delete(color);
+    }
+
+    @PutMapping("/update")
+    public void update(@ModelAttribute Color color){
+        service.update(color);
     }
 
 }

@@ -13,4 +13,6 @@ public interface UserVoucherRepository extends VoucherRepository {
             "FROM Voucher v " +
             "WHERE v.code = :CodeVoucher AND v.status = 0")
     UserVoucherResponse getByCode(@Param("CodeVoucher") String code);
+
+
 }

@@ -11,13 +11,24 @@ window.checkoutUserController = function ($scope, $http, $routeParams) {
     description: "",
   };
 
+  // formBill
+  $scope.formBill = {
+    idCart: $scope.idCart,
+    codeVoucher: "",
+    idCustomer: 1,
+    address: "",
+    description: "",
+  };
+
   // Lấy detail cart
   $scope.listDetailCarts = [];
-  $http.get(detailCart + "/get-by-product/" + 1).then(function (response) {
-    $scope.listDetailCarts = response.data;
-    $scope.calculateTotalPrice();
-    $scope.id = response.data.idDetailProduct;
-  }),
+  $http
+    .get(detailCart + "/get-by-cart/" + $scope.idCart)
+    .then(function (response) {
+      $scope.listDetailCarts = response.data;
+      $scope.calculateTotalPrice();
+      $scope.id = response.data.idDetailProduct;
+    }),
     function (error) {
       console.log(error);
     };
@@ -28,6 +39,7 @@ window.checkoutUserController = function ($scope, $http, $routeParams) {
     .get(addressAPI + "/get-all-address-by-customer/" + 1)
     .then(function (response) {
       $scope.listAddress = response.data;
+      $scope.getAddress($scope.listAddress[0].idAddress);
     }),
     function (error) {
       console.log(error);
@@ -39,13 +51,21 @@ window.checkoutUserController = function ($scope, $http, $routeParams) {
     $scope.address = [];
     $http.get(addressAPI + "/get-by-id/" + idAddress).then(function (response) {
       $scope.address = response.data;
-      console.log($scope.address);
+      $scope.formBill.address =
+        $scope.address.description +
+        ", " +
+        $scope.address.ward +
+        ", " +
+        $scope.address.district +
+        ", " +
+        $scope.address.city;
     }),
       function (error) {
         console.log(error);
       };
   };
 
+  //
   // lấy user hiện tại
   $scope.customer = [];
   $http.get(customerAPI + "/get-one-by-id/" + 1).then(function (response) {
@@ -73,6 +93,20 @@ window.checkoutUserController = function ($scope, $http, $routeParams) {
   $scope.addAdress = function () {
     $http
       .post(addressAPI + "/add-address", $scope.formAddress)
+      .then(function (response) {});
+  };
+
+  // add bill
+  $scope.addBill = function () {
+    $scope.formBill.description = $scope.description;
+    if ($scope.discountPrice.discountAmount > 0) {
+      $scope.formBill.codeVoucher = $scope.code;
+    } else {
+      $scope.formBill.codeVoucher = null;
+    }
+
+    $http
+      .post(billAPI + "/add-to-bill", $scope.formBill)
       .then(function (response) {});
   };
 

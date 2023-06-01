@@ -37,8 +37,12 @@ public class Bill {
     @JoinColumn(name = "id_customer", referencedColumnName = "id")
     private Customer customer;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_voucher", referencedColumnName = "id")
+    private Voucher voucher;
+
     @Column(name = "code")
-    private Character code;
+    private Long code;
 
     @Column(name = "create_date")
     private Date createDate;
@@ -52,11 +56,11 @@ public class Bill {
     @Column(name = "received_date")
     private Date receivedDate;
 
-    @Column(name = "name_customer")
-    private String nameCustomer;
-
     @Column(name = "address")
     private String address;
+
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "phone_number")
     private Integer phoneNumber;

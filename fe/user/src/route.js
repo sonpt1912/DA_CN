@@ -83,6 +83,7 @@ myApp.config(function ($routeProvider, $locationProvider) {
     })
     .when("/customer-order", {
       templateUrl: "./page/customer-order-history.html",
+      controller: orderHistory,
     })
     .otherwise({
       redirectTo: "/customer-accout",

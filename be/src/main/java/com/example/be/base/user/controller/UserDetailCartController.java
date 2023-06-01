@@ -41,7 +41,7 @@ public class UserDetailCartController {
     private UserProductService productService;
 
 
-    @GetMapping("/get-by-product/{IdCart}")
+    @GetMapping("/get-by-cart/{IdCart}")
     public List<UserDetailCartResponse> getAllById(@PathVariable("IdCart") long id) {
         return detailCartService.getAllUserDetailCartByCart(id);
     }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserCustomerRepository extends CustomerRepository {
 
-    @Query("SELECT NEW com.example.be.base.user.model.response.UserCustomerResponse(c.lastName, c.firstName, c.phoneNumber, c.email) " +
+    @Query("SELECT NEW com.example.be.base.user.model.response.UserCustomerResponse(c.username, c.lastName, c.firstName, c.phoneNumber, c.email) " +
             "FROM Customer c " +
             "WHERE c.id = :IdCustomer")
     UserCustomerResponse getOneResponseById(@Param("IdCustomer") long idCustomer);

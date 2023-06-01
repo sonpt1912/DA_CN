@@ -19,5 +19,20 @@ public class AdminColorService {
         return repositoy.findAll();
     }
 
+    public Color getOneById(long id) {
+        return repositoy.findColorById(id);
+    }
 
+    public void add(Color color) {
+        repositoy.save(color);
+    }
+
+    public void delete(Color color) {
+        repositoy.save(color);
+    }
+
+    public void update(Color color) {
+        repositoy.save(color);
+
+    }
 }

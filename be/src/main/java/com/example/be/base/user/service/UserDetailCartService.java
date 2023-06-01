@@ -35,4 +35,8 @@ public class UserDetailCartService {
         detailCartRepository.save(detailCart);
     }
 
+    public List<DetailCart> getAllByCart(Cart cart) {
+        return detailCartRepository.findDetailCartsByCart(cart);
+    }
+
 }

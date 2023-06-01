@@ -6,6 +6,8 @@ import lombok.Data;
 @Data
 public class UserCustomerResponse {
 
+    private String userName;
+
     private String lastName;
 
     private String firstName;
@@ -14,7 +16,8 @@ public class UserCustomerResponse {
 
     private String email;
 
-    public UserCustomerResponse(String lastName, String firstName, Integer phoneNumber, String email) {
+    public UserCustomerResponse(String userName, String lastName, String firstName, Integer phoneNumber, String email) {
+        this.userName = userName;
         this.lastName = lastName;
         this.firstName = firstName;
         this.phoneNumber = phoneNumber;

@@ -17,4 +17,5 @@ public interface UserDetailCartRepository extends DetailCartRepository {
             "WHERE c.id = :IdCart ")
     List<UserDetailCartResponse> getAllByCart(@Param("IdCart") long id);
 
+
 }

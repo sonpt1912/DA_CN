@@ -1,5 +1,5 @@
 // Lắng nghe sự kiện khi tab được nhấp
-var tabs = document.querySelectorAll(".nav-link");
+var tabs = document.querySelectorAll(".md");
 tabs.forEach(function (tab) {
   tab.addEventListener("click", function (event) {
     event.preventDefault();
