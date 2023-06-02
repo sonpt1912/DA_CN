@@ -35,6 +35,7 @@ myApp.config(function ($routeProvider, $locationProvider) {
     })
     .when("/voucher", {
       templateUrl: "./page/voucher.html",
+      controller: voucherController,
     })
     .when("/detail-bill/:id", {
       templateUrl: "./page/detail-bill.html",

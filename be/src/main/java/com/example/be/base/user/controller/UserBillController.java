@@ -26,7 +26,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = {"*"})
-@RequestMapping("/bill")
+@RequestMapping("/user/bill")
 public class UserBillController {
 
     @Autowired
@@ -58,6 +58,12 @@ public class UserBillController {
     public List<UserBillResponse> getAllByCustomerAndStatus(@PathVariable("idCustomer") long idCusomter, @PathVariable("status") int status) {
         Customer customer = customerService.findCustomerById(idCusomter);
         return billService.getAllByCustomerAndStatus(customer, status);
+    }
+
+    @GetMapping("/get-by-id/{id}")
+    public UserBillResponse getResponseById(@PathVariable("id") long id) {
+        Bill bill = billService.getOneById(id);
+        return billService.getOneResponseByBill(bill);
     }
 
     @PostMapping("/add-to-bill")

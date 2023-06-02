@@ -19,8 +19,16 @@ public class UserBillService {
         return repository.getAllByCustomerAndStatus(customer, status);
     }
 
+    public UserBillResponse getOneResponseByBill(Bill bill) {
+        return repository.getOneByResponseByBill(bill);
+    }
+
     public Bill addOrUpdate(Bill bill) {
         return repository.save(bill);
+    }
+
+    public Bill getOneById(long id) {
+        return repository.findById(id).get();
     }
 
 }

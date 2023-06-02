@@ -25,3 +25,5 @@ window.addressAPI = api + "/address";
 window.customerAPI = api + "/customer";
 
 window.billAPI = api + "/bill";
+
+window.detailBillAPI = api + "/detail-bill";

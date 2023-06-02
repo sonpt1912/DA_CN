@@ -77,7 +77,6 @@ window.customerController = function ($scope, $http) {
     $scope.formAddress.district = JSON.parse($scope.selectedDistrictId).name;
     $scope.formAddress.ward = JSON.parse($scope.selectedWardId).name;
     $scope.formAddress.description = $scope.description;
-    console.log(JSON.parse(JSON.stringify($scope.formAddress)));
     $http
       .post(addressAPI + "/add-address", JSON.stringify($scope.formAddress))
       .then(function (response) {});

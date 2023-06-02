@@ -46,17 +46,22 @@
           >
           <span
             class="badge badge-success rounded-pill d-inline"
-            ng-if="order.status == 1"
+            ng-if="order.status == 4"
             >Succes</span
           >
           <span
+            class="badge badge-success rounded-pill d-inline"
+            ng-if="order.status == 5"
+            >Received</span
+          >
+          <span
             class="badge badge-primary rounded-pill d-inline"
-            ng-if="order.status == 3"
+            ng-if="order.status == 1"
             >Prepare</span
           >
           <span
             class="badge badge-info rounded-pill d-inline"
-            ng-if="order.status == 4"
+            ng-if="order.status == 3"
             >delivering</span
           >
           <span

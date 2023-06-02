@@ -34,17 +34,21 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr ng-repeat="voucher in listVoucher">
             <td>1</td>
-            <td>Thomas Hardy</td>
-            <td>Thomas Hardy</td>
-            <td>Thomas Hardy</td>
-            <td>Thomas Hardy</td>
+            <td>{{voucher.code}}</td>
+            <td>{{voucher.startDate}}</td>
+            <td>{{voucher.endDate}}</td>
+            <td class="text-danger">{{voucher.discountAmount}}.00đ</td>
             <td>
-              <span class="badge badge-primary rounded-pill d-inline"
+              <span
+                class="badge badge-primary rounded-pill d-inline"
+                ng-if="voucher.status == 0"
                 >Prepare</span
               >
-              <span class="badge badge-danger rounded-pill d-inline"
+              <span
+                class="badge badge-danger rounded-pill d-inline"
+                ng-if="voucher.status == 1"
                 >Active</span
               >
             </td>

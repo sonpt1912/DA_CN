@@ -11,3 +11,5 @@ window.colorAPI = api + "/color";
 window.productAPI = api + "/product";
 
 window.billAPI = api + "/bill";
+
+window.voucherAPI = api + "/voucher";

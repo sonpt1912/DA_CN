@@ -68,9 +68,9 @@ myApp.config(function ($routeProvider, $locationProvider) {
       templateUrl: "./page/register.html",
       controller: registerController,
     })
-    .when("/detail-bill", {
+    .when("/detail-bill/:id", {
       templateUrl: "./page/detail-bill.html",
-      controller: registerController,
+      controller: detailBillController,
     })
     // customer
     .when("/customer-accout", {

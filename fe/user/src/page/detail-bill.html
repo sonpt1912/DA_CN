@@ -16,15 +16,17 @@
           >
             <!-- Nội dung cần cuộn ngang -->
             <div
+              id="progress"
               class="progress"
               role="progressbar"
-              aria-label="Example with label "
-              aria-valuenow="25"
-              aria-valuemin="0"
+              aria-label="Example with label"
+              aria-valuemin=""
               aria-valuemax="100"
               style="height: 40px"
             >
-              <div class="progress-bar w-25">25%</div>
+              <div id="progress-bar" class="progress-bar w-25">
+                {{bill.status * 25}}
+              </div>
             </div>
           </div>
         </div>
@@ -39,14 +41,50 @@
           <hr class="my-4" />
           <div class="row">
             <div class="col-xs-12 col-xl-6">
-              <p class="card-title text-dark">Status: Order</p>
-              <p class="card-title text-dark">Code: 93820493</p>
-              <p class="card-title text-dark">Name: Phạm Thanh Sơn</p>
+              <p class="card-title text-dark">
+                Status:
+                <span
+                  class="btn btn-warning rounded-pill d-inline"
+                  ng-if="bill.status == 0"
+                  >Wait for confirmation</span
+                >
+                <span
+                  class="btn btn-success rounded-pill d-inline"
+                  ng-if="bill.status == 4"
+                  >Succes</span
+                >
+                <span
+                  class="btn btn-success rounded-pill d-inline"
+                  ng-if="bill.status == 3"
+                  >Received</span
+                >
+                <span
+                  class="btn btn-primary rounded-pill d-inline"
+                  ng-if="bill.status == 1"
+                  >Prepare</span
+                >
+                <span
+                  class="btn btn-info rounded-pill d-inline"
+                  ng-if="bill.status == 2"
+                  >delivering</span
+                >
+                <span
+                  class="btn btn-danger rounded-pill d-inline"
+                  ng-if="bill.status == 5"
+                  >Cancel</span
+                >
+              </p>
+              <p class="card-title text-dark">Code: {{bill.code}}</p>
+              <p class="card-title text-dark">
+                Name:{{customer.lastName + customer.firstName}}
+              </p>
             </div>
             <div class="col-xs-12 col-xl-6">
-              <p class="card-title text-dark">Phone Number: 0389412203</p>
-              <p class="card-title text-dark">Email: phamson191203@gmail.com</p>
-              <p class="card-title text-dark">Addess:</p>
+              <p class="card-title text-dark">
+                Phone Number: (+84){{bill.phoneNumber}}
+              </p>
+              <p class="card-title text-dark">Email: {{customer.email}}</p>
+              <p class="card-title text-dark">Addess: {{bill.address}}</p>
             </div>
           </div>
         </div>
@@ -60,7 +98,7 @@
           <h5 class="card-title fw-bold mb-3">Payment History</h5>
 
           <hr class="my-4" />
-          <p class="card-title">Payment Date: 19/12/2003</p>
+          <p class="card-title">Payment Date: {{bill.paymentDate}}</p>
         </div>
       </div>
     </div>
@@ -69,7 +107,7 @@
       <div class="card shadow-0 border">
         <div class="p-4">
           <div class="row mb-3">
-            <div class="card border-0">
+            <div class="card border-0" ng-repeat="detailPr in listDetailBill">
               <div class="m-4">
                 <div class="row gy-3 mb-4">
                   <div class="col-lg-5">
@@ -81,12 +119,11 @@
                           style="width: 96px; height: 96px"
                         />
                         <div class="">
-                          Houie hiuernd
+                          {{detailPr.nameProduct}}
                           <p class="text-muted">
-                            Color:{{detailCart.nameColor}},
-                            Size:{{detailCart.nameSize}}
+                            Color: {{detailPr.nameColor}}
                           </p>
-                          x2
+                          <p class="text-muted">Size: {{detailPr.nameSize}}</p>
                         </div>
                       </div>
                     </div>
@@ -95,15 +132,19 @@
                     class="col-lg-5 col-sm-6 col-6 d-flex flex-row flex-lg-column flex-xl-row text-nowrap justify-content-center align-items-center"
                   >
                     <div class="">
-                      <text class="h6">{{detailCart.price}}.00đ</text> <br />
+                      <text class="h6 text-danger"
+                        >{{detailPr.price}}.00đ
+                      </text>
+                      x({{detailPr.quantity}})
+                      <br />
                     </div>
                   </div>
+
                   <div
                     class="col-lg-2 col-sm-6 col-6 d-flex flex-row flex-lg-column flex-xl-row text-nowrap justify-content-center align-items-center"
                   >
-                    <div class="float-md-end">
-                      <a class="btn btn-outline-primary d-inline"> Update</a>
-                      <a class="btn btn-outline-danger d-inline"> Remove</a>
+                    <div class="float-md-end text-success">
+                      {{detailPr.price * detailPr.quantity}}.00đ
                     </div>
                   </div>
                 </div>
@@ -114,8 +155,26 @@
           <hr class="my-4" />
 
           <div class="row">
-            <div class="col-6"></div>
-            <div class="col-6"></div>
+            <div class="col-lg-8"></div>
+            <div class="col-lg-4">
+              <div class="card border-0">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <p class="mb-2">Price:</p>
+                    <p id="totalPrice" class="mb-2">{{ bill.quantity }}.00đ</p>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <p class="mb-2">Discount:</p>
+                    <p class="mb-2 text-success">-$60.00</p>
+                  </div>
+                  <hr />
+                  <div class="d-flex justify-content-between">
+                    <p class="mb-2">Total price:</p>
+                    <p class="mb-2 fw-bold">{{calculateToTal()}}.00đ</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

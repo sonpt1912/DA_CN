@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface AdminBillRepository extends BillRepository {
 
-    @Query("SELECT NEW com.example.be.base.admin.model.response.AdminBillResponse(b.id, b.code, SUM(db.quantity), (SUM(db.quantity * db.price) - COALESCE(v.discountAmount, 0)), b.phoneNumber, b.createDate, b.status) " +
+    @Query("SELECT NEW com.example.be.base.admin.model.response.AdminBillResponse(b.id, b.code, SUM(db.quantity),( SUM(db.quantity) - COALESCE(v.discountAmount, 0)) , b.phoneNumber , b.createDate, b.status) " +
             "FROM Bill b " +
             "INNER JOIN DetailBill db ON db.bill = b " +
             "LEFT JOIN  Voucher v ON v = b.voucher " +

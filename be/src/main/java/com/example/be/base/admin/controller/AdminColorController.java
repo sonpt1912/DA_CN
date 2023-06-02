@@ -28,7 +28,7 @@ public class AdminColorController {
     }
 
     @PostMapping("/add")
-    public void add(@RequestParam String name) {
+    public void add(@RequestParam("nameColor") String name) {
         Color color = Color.builder()
                 .name(name)
                 .status(0)
