@@ -13,7 +13,9 @@ window.colorController = function ($scope, $http, $routeParams) {
   };
 
   $scope.deleteColor = function (idColor) {
-    $http.delete(colorAPI + "/delete/" + idColor).then(function (response) {});
+    $http.delete(colorAPI + "/delete/" + idColor).then(function (response) {
+      $scope.init();
+    });
   };
 
   $scope.getColor = function (idColor) {
@@ -26,5 +28,14 @@ window.colorController = function ($scope, $http, $routeParams) {
   $scope.updateColor = function () {
     // console.log($scope.color);
     // $http.put(colorAPI + "/update", $scope.color).then(function (response) {});
+  };
+
+  $scope.init = function () {
+    $http.get(colorAPI + "/get-all-color").then(function (response) {
+      $scope.listColor = response.data;
+    }),
+      function (error) {
+        console.log(error);
+      };
   };
 };

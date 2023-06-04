@@ -13,3 +13,7 @@ window.productAPI = api + "/product";
 window.billAPI = api + "/bill";
 
 window.voucherAPI = api + "/voucher";
+
+window.customerAPI = api + "/customer";
+
+window.detailBillAPI = api + "/detail-bill";

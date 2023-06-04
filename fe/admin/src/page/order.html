@@ -15,12 +15,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr
-        onclick="window.location='#detail-bill'"
-        ng-repeat="order in listBill"
-      >
+      <tr ng-click="redirectToDetail(order.id)" ng-repeat="order in listBill">
         <td>
-          <p class="fw-normal mb-1">{{$index}}</p>
+          <p class="fw-normal mb-1">{{$index +1}}</p>
         </td>
         <td>
           <p class="fw-normal mb-1">{{order.code}}</p>
@@ -42,17 +39,12 @@
           <span
             class="badge badge-warning rounded-pill d-inline"
             ng-if="order.status == 0"
-            >Wait for confirmation</span
+            >Waiting</span
           >
           <span
             class="badge badge-success rounded-pill d-inline"
-            ng-if="order.status == 4"
+            ng-if="order.status == 3"
             >Succes</span
-          >
-          <span
-            class="badge badge-success rounded-pill d-inline"
-            ng-if="order.status == 5"
-            >Received</span
           >
           <span
             class="badge badge-primary rounded-pill d-inline"
@@ -61,12 +53,12 @@
           >
           <span
             class="badge badge-info rounded-pill d-inline"
-            ng-if="order.status == 3"
+            ng-if="order.status == 2"
             >delivering</span
           >
           <span
             class="badge badge-danger rounded-pill d-inline"
-            ng-if="order.status == 5"
+            ng-if="order.status == 4"
             >Cancel</span
           >
         </td>

@@ -33,12 +33,17 @@ myApp.config(function ($routeProvider, $locationProvider) {
       templateUrl: "./page/order.html",
       controller: orderController,
     })
+    .when("/customer", {
+      templateUrl: "./page/customer.html",
+      controller: customerController,
+    })
     .when("/voucher", {
       templateUrl: "./page/voucher.html",
       controller: voucherController,
     })
     .when("/detail-bill/:id", {
       templateUrl: "./page/detail-bill.html",
+      controller: detailBillController,
     })
     .otherwise({
       redirectTo: "/static",

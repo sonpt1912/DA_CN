@@ -1,0 +1,107 @@
+<nav
+  class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+></nav>
+<div class="container-xl">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h2>Manage <b>Account Customer</b></h2>
+          </div>
+        </div>
+      </div>
+      <table class="table align-middle mb-0 bg-white table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="customer in listCustomer">
+            <td>{{$index +1}}</td>
+            <td>{{customer.username}}</td>
+            <td>{{customer.lastName + customer.firstName}}</td>
+            <td>{{customer.phoneNumber}}</td>
+            <td>{{customer.email}}</td>
+            <td>
+              <span
+                class="badge badge-danger rounded-pill d-inline"
+                ng-if="customer.status == 1"
+                >disabled</span
+              >
+              <span
+                class="badge badge-success rounded-pill d-inline"
+                ng-if="customer.status == 0"
+                >Active</span
+              >
+            </td>
+            <td>
+              <a
+                ><i
+                  class="bi bi-trash-fill text-danger"
+                  ng-click="deleteCustomer(customer.id)"
+                ></i
+              ></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <div class="clearfix">
+        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+        <ul class="pagination">
+          <li class="page-item disabled"><a href="#">Previous</a></li>
+          <li class="page-item"><a href="#" class="page-link">1</a></li>
+          <li class="page-item"><a href="#" class="page-link">2</a></li>
+          <li class="page-item active"><a href="#" class="page-link">3</a></li>
+          <li class="page-item"><a href="#" class="page-link">4</a></li>
+          <li class="page-item"><a href="#" class="page-link">5</a></li>
+          <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+      </div> -->
+    </div>
+  </div>
+</div>
+<!-- add Modal HTML -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"></div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3 row">
+            <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="inputName"
+                ng-model="nameColor"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" ng-click="addColor()">
+          Add Color
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

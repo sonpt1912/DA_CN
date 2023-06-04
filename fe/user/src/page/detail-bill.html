@@ -161,16 +161,20 @@
                 <div class="card-body">
                   <div class="d-flex justify-content-between">
                     <p class="mb-2">Price:</p>
-                    <p id="totalPrice" class="mb-2">{{ bill.quantity }}.00đ</p>
+                    <p id="totalPrice" class="mb-2">{{ quantity() }}.00đ</p>
                   </div>
                   <div class="d-flex justify-content-between">
                     <p class="mb-2">Discount:</p>
-                    <p class="mb-2 text-success">-$60.00</p>
+                    <p class="mb-2 text-success" ng-if="voucher">
+                      -{{voucher.discountAmount}}.00đ
+                    </p>
                   </div>
                   <hr />
                   <div class="d-flex justify-content-between">
                     <p class="mb-2">Total price:</p>
-                    <p class="mb-2 fw-bold">{{calculateToTal()}}.00đ</p>
+                    <p class="mb-2 fw-bold text-danger">
+                      {{bill.totalPrice}}.00đ
+                    </p>
                   </div>
                 </div>
               </div>

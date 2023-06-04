@@ -13,20 +13,59 @@
           >
             <!-- Nội dung cần cuộn ngang -->
             <div
+              id="progress"
               class="progress"
               role="progressbar"
               aria-label="Example with label"
-              aria-valuenow="25"
-              aria-valuemin="0"
+              aria-valuemin=""
               aria-valuemax="100"
+              style="height: 40px"
             >
-              <div class="progress-bar" style="width: 25%">25%</div>
+              <div
+                class="progress-bar"
+                ng-class="{
+                'badge-primary': bill.status === 1,
+                'bg-info': bill.status === 2,
+                'bg-success': bill.status === 3,
+                'bg-danger': bill.status === 4
+              }"
+                style="width: {{ bill.status * 25 }}%"
+              >
+                <i class="bi bi-box-seam" ng-if="bill.status == 1">
+                  <span>prepare</span>
+                </i>
+                <i class="bi bi-send" ng-if="bill.status == 2">
+                  <span>delivering</span>
+                </i>
+                <i class="bi bi-patch-check" ng-if="bill.status == 3"
+                  ><span>Succcess</span></i
+                >
+                <i class="bi bi-send-fill" ng-if="bill.status == 2"></i>
+                <i class="bi bi-arrow-repeat" ng-if="bill.status == 4">
+                  <span>cancel</span></i
+                >
+              </div>
             </div>
+
+            <hr class="my-4" />
+
+            <button
+              type="button"
+              class="btn btn-primary"
+              ng-if="bill.status == 0 || bill.status == 1 || bill.status == 2"
+              ng-click="nextStatus(bill.status, bill.id)"
+            >
+              Next
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              ng-if="bill.status == 0 || bill.status == 1"
+              ng-click="cancelBill(bill.id)"
+            >
+              Cancel
+            </button>
           </div>
-
-          <hr class="my-4" />
-
-          <h5 class="card-title mb-3">Payment Methods</h5>
         </div>
       </div>
     </div>
@@ -39,14 +78,44 @@
           <hr class="my-4" />
           <div class="row">
             <div class="col-xs-12 col-xl-6">
-              <p class="card-title text-dark">Status: Order</p>
-              <p class="card-title text-dark">Code: 93820493</p>
-              <p class="card-title text-dark">Name: Phạm Thanh Sơn</p>
+              <p class="card-title text-dark">
+                Status:
+                <span
+                  class="badge badge-warning rounded-pill d-inline"
+                  ng-if="bill.status == 0"
+                  >Waiting</span
+                >
+                <span
+                  class="badge badge-success rounded-pill d-inline"
+                  ng-if="bill.status == 3"
+                  >Succes</span
+                >
+                <span
+                  class="badge badge-primary rounded-pill d-inline"
+                  ng-if="bill.status == 1"
+                  >Prepare</span
+                >
+                <span
+                  class="badge badge-info rounded-pill d-inline"
+                  ng-if="bill.status == 2"
+                  >delivering</span
+                >
+                <span
+                  class="badge badge-danger rounded-pill d-inline"
+                  ng-if="bill.status == 4"
+                  >Cancel</span
+                >
+              </p>
+              <p class="card-title text-dark">Code: {{bill.code}}</p>
+              <p class="card-title text-dark">
+                Name: {{customer.lastName + customer.firstName }}
+              </p>
             </div>
             <div class="col-xs-12 col-xl-6">
-              <p class="card-title text-dark">Phone Number: 0389412203</p>
-              <p class="card-title text-dark">Email: phamson191203@gmail.com</p>
-              <p class="card-title text-dark">Addess:</p>
+              <p class="card-title text-dark">
+                Phone Number: (+84){{bill.phoneNumber}}
+              </p>
+              <p class="card-title text-dark">Addess: {{bill.address}}</p>
             </div>
           </div>
         </div>
@@ -60,7 +129,19 @@
           <h5 class="card-title fw-bold mb-3">Payment History</h5>
 
           <hr class="my-4" />
-          <p class="card-title">Payment Date: 19/12/2003</p>
+          <p class="card-title">Payment Date: {{bill.paymentDate }}</p>
+        </div>
+      </div>
+    </div>
+    <!-- description  -->
+    <div class="col-lg-12 mb-4">
+      <!-- Checkout -->
+      <div class="card shadow-0 border">
+        <div class="p-4">
+          <h5 class="card-title fw-bold mb-3">Description</h5>
+
+          <hr class="my-4" />
+          <p class="card-title">{{bill.description}}</p>
         </div>
       </div>
     </div>
@@ -69,7 +150,7 @@
       <div class="card shadow-0 border">
         <div class="p-4">
           <div class="row mb-3">
-            <div class="card border-0">
+            <div class="card border-0" ng-repeat="detailBill in listDetailBill">
               <div class="m-4">
                 <div class="row gy-3 mb-4">
                   <div class="col-lg-5">
@@ -81,12 +162,11 @@
                           style="width: 96px; height: 96px"
                         />
                         <div class="">
-                          Houie hiuernd
+                          {{detailBill.nameProduct}}
                           <p class="text-muted">
-                            Color:{{detailCart.nameColor}},
-                            Size:{{detailCart.nameSize}}
+                            Color:{{detailBill.nameColor}},
+                            Size:{{detailBill.nameSize}}
                           </p>
-                          x2
                         </div>
                       </div>
                     </div>
@@ -95,15 +175,20 @@
                     class="col-lg-5 col-sm-6 col-6 d-flex flex-row flex-lg-column flex-xl-row text-nowrap justify-content-center align-items-center"
                   >
                     <div class="">
-                      <text class="h6">{{detailCart.price}}.00đ</text> <br />
+                      <text class="h6"
+                        >{{detailBill.price}}.00đ x
+                        ({{detailBill.quantity}})</text
+                      >
+                      <br />
                     </div>
                   </div>
                   <div
                     class="col-lg-2 col-sm-6 col-6 d-flex flex-row flex-lg-column flex-xl-row text-nowrap justify-content-center align-items-center"
                   >
                     <div class="float-md-end">
-                      <a class="btn btn-outline-primary d-inline"> Update</a>
-                      <a class="btn btn-outline-danger d-inline"> Remove</a>
+                      <text class="h6 text-danger"
+                        >{{detailBill.price * detailBill.quantity}}.00đ</text
+                      >
                     </div>
                   </div>
                 </div>

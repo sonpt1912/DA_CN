@@ -1,8 +1,9 @@
-package com.example.be.base.user.repository;
+package com.example.be.base.admin.repository;
 
-import com.example.be.base.user.model.response.UserDetailBillResponse;
+import com.example.be.base.admin.model.response.AdminDetailBillResponse;
 import com.example.be.entity.Bill;
 import com.example.be.repository.DetailBillRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UserDetailBillRepository extends DetailBillRepository {
+public interface AdminDetailBillReposiotry extends DetailBillRepository {
 
     @Query("SELECT NEW com.example.be.base.admin.model.response.AdminDetailBillResponse(p.image, p.name, c.name, s.name, SUM(db.quantity), SUM(db.price)) " +
             "FROM Product p INNER JOIN DetailProduct dp ON p = dp.product " +
@@ -19,6 +20,6 @@ public interface UserDetailBillRepository extends DetailBillRepository {
             "INNER JOIN Bill b ON b = db.bill " +
             "WHERE b = :Bill " +
             "GROUP BY p.image, p.name, c.name, s.name")
-    public List<UserDetailBillResponse> getAllDetailBillByBill(@Param("Bill") Bill bill);
+    public List<AdminDetailBillResponse> getAllDetailBillByBill(@Param("Bill") Bill bill);
 
 }

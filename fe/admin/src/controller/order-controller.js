@@ -3,4 +3,8 @@ window.orderController = function ($scope, $http) {
   $http.get(billAPI + "/get-all").then(function (response) {
     $scope.listBill = response.data;
   });
+
+  $scope.redirectToDetail = function redirectToDetail(billId) {
+    window.location.href = "#detail-bill/" + billId;
+  };
 };

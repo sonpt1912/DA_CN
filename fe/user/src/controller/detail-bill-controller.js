@@ -16,6 +16,14 @@ window.detailBillController = function ($scope, $http, $routeParams) {
     $scope.bill = response.data;
   });
 
+  // lấy thông tin voucher
+  $scope.voucher = [];
+  $http
+    .get(voucherAPI + "/get-voucher-by-bill/" + $scope.idBill)
+    .then(function (response) {
+      $scope.voucher = response.data;
+    });
+
   // lấy thông tin detail bill
   $scope.listDetailBill = [];
   $http
@@ -26,6 +34,11 @@ window.detailBillController = function ($scope, $http, $routeParams) {
     function (error) {
       console.log(error);
     };
+
+  //
+  $scope.quantity = function () {
+    return $scope.bill.totalPrice - $scope.voucher.discountAmount;
+  };
 
   //
   function setProgressBarColor() {

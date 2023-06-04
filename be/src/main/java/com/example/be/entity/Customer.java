@@ -41,4 +41,7 @@ public class Customer {
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    @Column(name = "status", nullable = false)
+    private Integer status;
 }
