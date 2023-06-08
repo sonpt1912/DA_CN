@@ -1,38 +1,78 @@
 window.shopController = function ($http, $scope, $routeParams, $rootScope) {
-  $scope.currentPage = 0;
-  // $scope.listProduct = [];
-  $http.get(productAPI + "/get-all").then(function (response) {
-    $scope.listProduct = response.data;
-  }),
-    function (error) {
-      console.log(error);
-    };
+  // form id
+  $scope.formId = {
+    idCategory: "0",
+    idSize: "0",
+    idBrand: "0",
+    idColor: "0",
+  };
 
-  $scope.totalPages = 0; // Số trang tổng cộng (có thể tính toán từ dữ liệu)
-  $http.get(productAPI + "/get-total-pages").then(function (response) {
-    $scope.totalPages = parseInt(response.data);
-  });
-
-  // hàm set page
-  $scope.setPage = function (page) {
-    // Kiểm tra và giới hạn giá trị của currentPage
-    if (page < 0) {
-      $scope.currentPage = 0;
-    } else if (page > $scope.totalPages) {
-      $scope.currentPage = $scope.totalPages;
-    } else {
-      $scope.currentPage = page;
-    }
-
+  // sự kiện khi click vào lấy id
+  $scope.search = function () {
+    console.log($scope.formId);
+    $scope.currentPage = 0;
+    // list product
+    $scope.listProduct = [];
     $http
-      .get(productAPI + "/get-all?pageNumber=" + $scope.currentPage)
+      .get(productAPI + "/get-all", {
+        params: {
+          Category: $scope.formId.idCategory,
+          Brand: $scope.formId.idBrand,
+          Color: $scope.formId.idColor,
+          Size: $scope.formId.idSize,
+        },
+      })
       .then(function (response) {
         $scope.listProduct = response.data;
       }),
       function (error) {
         console.log(error);
       };
+
+    $scope.totalPages = 0; // Số trang tổng cộng (có thể tính toán từ dữ liệu)
+    $http
+      .get(productAPI + "/get-total-pages", {
+        params: {
+          Category: $scope.formId.idCategory,
+          Brand: $scope.formId.idBrand,
+          Color: $scope.formId.idColor,
+          Size: $scope.formId.idSize,
+        },
+      })
+      .then(function (response) {
+        $scope.totalPages = parseInt(response.data);
+      });
+
+    // hàm set page
+    $scope.setPage = function (page) {
+      // Kiểm tra và giới hạn giá trị của currentPage
+      if (page < 0) {
+        $scope.currentPage = 0;
+      } else if (page > $scope.totalPages) {
+        $scope.currentPage = $scope.totalPages;
+      } else {
+        $scope.currentPage = page;
+      }
+
+      $http
+        .get(productAPI + "/get-all?pageNumber=" + $scope.currentPage, {
+          params: {
+            Category: $scope.formId.idCategory,
+            Brand: $scope.formId.idBrand,
+            Color: $scope.formId.idColor,
+            Size: $scope.formId.idSize,
+          },
+        })
+        .then(function (response) {
+          $scope.listProduct = response.data;
+        }),
+        function (error) {
+          console.log(error);
+        };
+    };
   };
+
+  $scope.search();
 
   // get all brand
   $scope.listBrand = [];

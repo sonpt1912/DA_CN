@@ -1,4 +1,9 @@
-window.detailProductController = function ($scope, $routeParams, $http) {
+window.detailProductController = function (
+  $scope,
+  $rootScope,
+  $routeParams,
+  $http
+) {
   let id = $routeParams.id;
   $scope.selectColor; // lấy id color
 

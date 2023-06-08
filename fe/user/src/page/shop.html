@@ -21,7 +21,6 @@
             <div class="col-12">
               <div class="body-left-all">
                 <h2>SHOP NAVIGATION</h2>
-                <a href="#"><span class="ng-binding">ALL Product</span></a>
               </div>
             </div>
             <div class="col-12">
@@ -30,9 +29,14 @@
                 <select
                   class="form-select border-0"
                   aria-label="Default select example"
+                  ng-model="formId.idCategory"
+                  ng-change="search()"
                 >
-                  <option selected>All</option>
-                  <option value="1" ng-repeat="category in listCategory">
+                  <option value="0">All</option>
+                  <option
+                    value="{{category.id}}"
+                    ng-repeat="category in listCategory"
+                  >
                     {{category.name}}
                   </option>
                 </select>
@@ -44,9 +48,11 @@
                 <select
                   class="form-select border-0"
                   aria-label="Default select example"
+                  ng-model="formId.idBrand"
+                  ng-change="search()"
                 >
-                  <option selected>All</option>
-                  <option value="1" ng-repeat="brand in listBrand">
+                  <option value="0" selected>All</option>
+                  <option value="{{brand.id}}" ng-repeat="brand in listBrand">
                     {{brand.name}}
                   </option>
                 </select>
@@ -62,6 +68,9 @@
                     name="color"
                     id="color"
                     autocomplete="off"
+                    ng-model="formId.idColor"
+                    ng-click="search()"
+                    value="0"
                     checked
                   />
                   <label class="btn btn-outline-dark" for="color">ALL</label>
@@ -76,6 +85,9 @@
                     name="color"
                     id="color{{color.id}}"
                     autocomplete="off"
+                    ng-model="formId.idColor"
+                    ng-click="search()"
+                    value="{{color.id}}"
                   />
                   <label class="btn btn-outline-dark" for="color{{color.id}}"
                     >{{color.name}}</label
@@ -92,7 +104,10 @@
                     class="btn-check"
                     name="size"
                     id="size"
+                    ng-click="search()"
                     autocomplete="off"
+                    ng-model="formId.idSize"
+                    value="0"
                     checked
                   />
                   <label class="btn btn-outline-dark" for="size">ALL</label>
@@ -107,6 +122,9 @@
                     name="size"
                     id="size{{size.id}}"
                     autocomplete="off"
+                    ng-click="search()"
+                    ng-model="formId.idSize"
+                    value="{{size.id}}"
                   />
                   <label class="btn btn-outline-dark" for="size{{size.id}}"
                     >{{size.name}}</label
@@ -158,7 +176,10 @@
                 </a>
               </div>
             </div>
-            <nav aria-label="Page navigation example">
+            <nav
+              aria-label="Page navigation example"
+              ng-if="listProduct.length > 0"
+            >
               <ul class="pagination justify-content-end">
                 <li class="page-item">
                   <a

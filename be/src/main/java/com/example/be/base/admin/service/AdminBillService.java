@@ -1,13 +1,15 @@
 package com.example.be.base.admin.service;
 
 import com.example.be.base.admin.model.response.AdminBillResponse;
+import com.example.be.base.admin.model.response.AdminChartResponse;
 import com.example.be.base.admin.repository.AdminBillRepository;
 import com.example.be.entity.Bill;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -18,7 +20,7 @@ public class AdminBillService {
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyy-MM-dd");
 
-    private Date currentDate = new Date();
+    private java.util.Date currentDate = new java.util.Date();
 
     public List<AdminBillResponse> getAll() {
         return repository.getAll();
@@ -43,6 +45,23 @@ public class AdminBillService {
             bill.setPaymentDate(java.sql.Date.valueOf(dateFormat.format(currentDate)));
         }
         repository.save(bill);
+    }
+
+    // staic
+    public BigDecimal totalMoneyByThisMonth(Date startDate, Date endDate) {
+        return repository.totalMoneyByThisMonth(startDate, endDate);
+    }
+
+    public BigDecimal totalMoneyByYear(Date startDate, Date endDate) {
+        return repository.totalMoneyByYear(startDate, endDate);
+    }
+
+    public Long totalProduct(Date startDate, Date endDate) {
+        return repository.totalProduct(startDate, endDate);
+    }
+
+    public List<AdminChartResponse> areaChart() {
+        return repository.areaChart();
     }
 
 }

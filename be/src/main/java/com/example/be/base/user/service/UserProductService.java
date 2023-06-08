@@ -2,10 +2,11 @@ package com.example.be.base.user.service;
 
 import com.example.be.base.user.model.response.UserProductResponse;
 import com.example.be.base.user.repository.UserProductRepository;
-import com.example.be.entity.Product;
+import com.example.be.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,16 +17,16 @@ public class UserProductService {
     @Autowired
     private UserProductRepository response;
 
-    public List<UserProductResponse> getAllProductPageable(int pageNumber) {
-        int pageSize = 1; // kích thước trang
+    public List<UserProductResponse> getAllProductPageable(int pageNumber, Category category, Brand brand, Size size, Color color) {
+        int pageSize = 9; // kích thước trang
 
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
 
-        return response.getAllProductPageable(pageable);
+        return response.getAllProductPageable(pageable, category, brand, size, color);
     }
 
-    public List<UserProductResponse> getTotalPages() {
-        return response.getTotalPages();
+    public List<UserProductResponse> getTotalPages(Category category, Brand brand, Size size, Color color) {
+        return response.getTotalPages(category, brand, size, color);
     }
 
     public List<UserProductResponse> getTop3NewProduct() {

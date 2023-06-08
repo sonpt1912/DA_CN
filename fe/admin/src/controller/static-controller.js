@@ -1,6 +1,37 @@
 window.staticController = function ($http, $scope) {
+  // total money this month
+  $scope.thisMonth = 0;
+  $http.get(billAPI + "/total-this-month").then(function (response) {
+    $scope.thisMonth = response.data;
+  });
+
+  $scope.thisYear = 0;
+  $http.get(billAPI + "/total-this-year").then(function (response) {
+    $scope.thisYear = response.data;
+  });
+
+  $scope.totalProduct = 0;
+  $http.get(billAPI + "/total-product-this-year").then(function (response) {
+    $scope.totalProduct = response.data;
+  });
+
+  // get list of year
+  var result = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  $http.get(billAPI + "/area-chart").then(function (response) {
+    $scope.areaChartData = response.data;
+
+    for (let i = 0; i < response.data.length; i++) {
+      let month = response.data[i].month;
+      let totalMoney = response.data[i].totalMoney;
+      result[month - 1] = totalMoney;
+    }
+
+    // Call the areaChart function to draw the chart
+    drawAreaChart();
+  });
+
   // area chart
-  $scope.areaChart = function () {
+  function drawAreaChart() {
     var ctx = document.getElementById("myAreaChart").getContext("2d");
     var myChart = new Chart(ctx, {
       type: "line",
@@ -14,15 +45,15 @@ window.staticController = function ($http, $scope) {
           "June",
           "July",
           "August",
-          "Steptember",
-          "octorber",
-          "november",
-          "december",
+          "September",
+          "October",
+          "November",
+          "December",
         ],
         datasets: [
           {
             label: "Earnings",
-            data: [500, 1000, 750, 1250, 800, 1500, 100],
+            data: result,
             backgroundColor: "rgba(78, 115, 223, 0.05)",
             borderColor: "rgba(78, 115, 223, 1)",
             pointRadius: 3,
@@ -60,7 +91,7 @@ window.staticController = function ($http, $scope) {
         },
       },
     });
-  };
+  }
 
   $scope.pieChart = function () {
     var ctx = document.getElementById("myPieChart").getContext("2d");
@@ -100,9 +131,6 @@ window.staticController = function ($http, $scope) {
     });
   };
 
-  // Gọi hàm vẽ biểu đồ khi controller khởi tạo
+  // Call the pieChart
   $scope.pieChart();
-
-  // Gọi hàm vẽ biểu đồ khi controller khởi tạo
-  $scope.areaChart();
 };

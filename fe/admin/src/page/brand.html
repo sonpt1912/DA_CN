@@ -1,6 +1,36 @@
 <nav
   class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
-></nav>
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <div class="mb-3 row">
+          <label for="inputPassword" class="col-sm-3 col-form-label"
+            >Status</label
+          >
+          <div class="col-sm-9">
+            <select class="form-select" aria-label="Default select example">
+              <option selected>All</option>
+              <option value="0">Active</option>
+              <option value="1">Disabled</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <form class="d-flex" role="search">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="code or phone"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
 <div class="container-xl">
   <div class="table-responsive">
     <div class="table-wrapper">
