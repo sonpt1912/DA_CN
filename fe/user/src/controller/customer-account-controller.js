@@ -10,11 +10,29 @@ window.customerController = function ($scope, $http) {
 
   // form
   $scope.formCustomer = {
-    idCustomer: 1,
+    id: 1,
     lastName: "",
     firstName: "",
     phoneNumber: "",
     email: "",
+  };
+
+  $scope.init = function () {
+    $http
+      .get(addressAPI + "/get-all-address-by-customer/" + 1)
+      .then(function (response) {
+        $scope.listAddress = response.data;
+      }),
+      function (error) {
+        console.log(error);
+      };
+
+    $http.get(customerAPI + "/get-one-by-id/" + 1).then(function (response) {
+      $scope.customer = response.data;
+    }),
+      function (error) {
+        console.log(error);
+      };
   };
 
   // cart
@@ -36,9 +54,9 @@ window.customerController = function ($scope, $http) {
 
   // xóa address
   $scope.deleteAddress = function (addressId) {
-    $http
-      .delete(addressAPI + "/delete/" + addressId)
-      .then(function (response) {});
+    $http.delete(addressAPI + "/delete/" + addressId).then(function (response) {
+      $scope.init();
+    });
   };
 
   // lấy customer
@@ -67,8 +85,13 @@ window.customerController = function ($scope, $http) {
   $scope.editInfor = function () {
     console.log($scope.formCustomer);
     $http
-      .put(customerAPI + "/update", $scope.formCustomer)
-      .then(function (response) {});
+      .put(
+        customerAPI + "/update",
+        JSON.parse(JSON.stringify($scope.formCustomer))
+      )
+      .then(function (response) {
+        $scope.init();
+      });
   };
 
   // hàm add new address
@@ -79,7 +102,9 @@ window.customerController = function ($scope, $http) {
     $scope.formAddress.description = $scope.description;
     $http
       .post(addressAPI + "/add-address", JSON.stringify($scope.formAddress))
-      .then(function (response) {});
+      .then(function (response) {
+        $scope.init();
+      });
   };
 
   $scope.Provinces = []; // Cập nhật dữ liệu về tỉnh/thành phố từ JSON

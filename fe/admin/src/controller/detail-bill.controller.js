@@ -18,7 +18,20 @@ window.detailBillController = function ($scope, $http, $routeParams) {
     .get(detailBillAPI + "/get-detail-bill-by-bill/" + idBill)
     .then(function (response) {
       $scope.listDetailBill = response.data;
+
+      // Tính tổng tiền
+      $scope.price = 0;
+      for (let i = 0; i < $scope.listDetailBill.length; i++) {
+        $scope.price +=
+          $scope.listDetailBill[i].price * $scope.listDetailBill[i].quantity;
+      }
     });
+
+  // get voucher
+  // $scope.voucher = [];
+  // $http.get().then(function (response) {
+  //   $scope.voucher = response.data;
+  // });
 
   // cancel
   $scope.cancelBill = function (idBill) {

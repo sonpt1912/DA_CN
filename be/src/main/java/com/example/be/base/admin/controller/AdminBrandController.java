@@ -27,7 +27,7 @@ public class AdminBrandController {
     }
 
     @PostMapping("/add")
-    public void add(@RequestParam String name) {
+    public void add(@RequestParam("nameBrand") String name) {
         Brand brand = Brand.builder()
                 .name(name)
                 .status(0)
@@ -43,7 +43,7 @@ public class AdminBrandController {
     }
 
     @PutMapping("/update")
-    public void update(@ModelAttribute Brand brand) {
+    public void update(@RequestBody Brand brand) {
         service.update(brand);
     }
 }

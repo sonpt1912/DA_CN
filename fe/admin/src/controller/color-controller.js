@@ -8,8 +8,13 @@ window.colorController = function ($scope, $http, $routeParams) {
     };
 
   $scope.addColor = function () {
-    //   let nameColor = $scope.nameColor;
-    //   $http.post(colorAPI + "/add", JSON.stringify(nameColor)).then(function (response) {});
+    let nameColor = $scope.nameColor;
+    console.log(nameColor);
+    $http
+      .post(colorAPI + "/add" + "?nameColor=" + nameColor)
+      .then(function (response) {
+        $scope.init();
+      });
   };
 
   $scope.deleteColor = function (idColor) {
@@ -26,8 +31,11 @@ window.colorController = function ($scope, $http, $routeParams) {
   };
 
   $scope.updateColor = function () {
-    // console.log($scope.color);
-    // $http.put(colorAPI + "/update", $scope.color).then(function (response) {});
+    $http
+      .put(colorAPI + "/update", JSON.parse(JSON.stringify($scope.color)))
+      .then(function (response) {
+        $scope.init();
+      });
   };
 
   $scope.init = function () {

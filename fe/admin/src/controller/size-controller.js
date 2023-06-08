@@ -8,13 +8,17 @@ window.sizeController = function ($scope, $http, $routeParams) {
     };
 
   $scope.addSize = function () {
-    // $http
-    //   .post(colorAPI + "/add", $scope.nameColor)
-    //   .then(function (response) {});
+    $http
+      .post(sizeAPI + "/add" + "?nameSize=" + $scope.nameSize)
+      .then(function (response) {
+        $scope.init();
+      });
   };
 
   $scope.deleteSize = function (idSize) {
-    $http.delete(sizeAPI + "/delete/" + idSize).then(function (response) {});
+    $http.delete(sizeAPI + "/delete/" + idSize).then(function (response) {
+      $scope.init();
+    });
   };
 
   $scope.getSize = function (idSize) {
@@ -26,9 +30,20 @@ window.sizeController = function ($scope, $http, $routeParams) {
 
   $scope.updateSize = function () {
     // console.log(parseJsonToEntity($scope.color));
-    // $http
-    //   .put(colorAPI + "/update", $scope.color)
-    //   .then(function (response) {});
+    $http
+      .put(sizeAPI + "/update", JSON.parse(JSON.stringify($scope.size)))
+      .then(function (response) {
+        $scope.init();
+      });
     // console.log($scope.color);
+  };
+
+  $scope.init = function () {
+    $http.get(sizeAPI + "/get-all-size").then(function (response) {
+      $scope.listSize = response.data;
+    }),
+      function (error) {
+        console.log(error);
+      };
   };
 };

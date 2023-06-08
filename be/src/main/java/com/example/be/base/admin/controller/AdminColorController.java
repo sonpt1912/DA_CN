@@ -44,7 +44,7 @@ public class AdminColorController {
     }
 
     @PutMapping("/update")
-    public void update(@ModelAttribute Color color){
+    public void update(@RequestBody Color color){
         service.update(color);
     }
 

@@ -20,7 +20,7 @@ public class AdminCustomerService {
     }
 
     public Customer getOneById(Long id) {
-        return repository.findCustomerById(id);
+        return repository.findById(id).get();
     }
 
     public void update(Customer customer) {

@@ -29,7 +29,7 @@ public class AdminCategoryController {
     }
 
     @PostMapping("/add")
-    public void add(@RequestParam String name) {
+    public void add(@RequestParam("nameCategory") String name) {
         Category category = Category.builder()
                 .name(name)
                 .status(0)
@@ -45,7 +45,7 @@ public class AdminCategoryController {
     }
 
     @PutMapping("/update")
-    public void update(@ModelAttribute Category category) {
+    public void update(@RequestBody Category category) {
         service.update(category);
     }
 }

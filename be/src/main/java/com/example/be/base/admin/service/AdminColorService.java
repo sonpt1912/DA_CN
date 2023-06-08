@@ -33,6 +33,5 @@ public class AdminColorService {
 
     public void update(Color color) {
         repositoy.save(color);
-
     }
 }

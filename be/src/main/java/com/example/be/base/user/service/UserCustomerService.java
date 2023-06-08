@@ -25,6 +25,6 @@ public class UserCustomerService {
     }
 
     public Customer getOneById(Long id) {
-        return repository.findCustomerById(id);
+        return repository.findById(id).get();
     }
 }

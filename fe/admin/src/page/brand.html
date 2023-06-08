@@ -94,7 +94,12 @@
           <div class="mb-3 row">
             <label for="inputName" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputName" />
+              <input
+                type="text"
+                class="form-control"
+                id="inputName"
+                ng-model="nameBrand"
+              />
             </div>
           </div>
         </form>
@@ -103,7 +108,9 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary">Add Brand</button>
+        <button type="button" class="btn btn-primary" ng-click="addBrand()">
+          Add Brand
+        </button>
       </div>
     </div>
   </div>
@@ -128,6 +135,7 @@
                 type="text"
                 class="form-control"
                 id="inputName"
+                value="brand.name"
                 ng-model="brand.name"
               />
             </div>
@@ -138,7 +146,9 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary">Edit Brand</button>
+        <button type="button" class="btn btn-primary" ng-click="updateBrand()">
+          Edit Brand
+        </button>
       </div>
     </div>
   </div>

@@ -42,14 +42,14 @@
             <td class="text-danger">{{voucher.discountAmount}}.00đ</td>
             <td>
               <span
-                class="badge badge-primary rounded-pill d-inline"
+                class="badge badge-success rounded-pill d-inline"
                 ng-if="voucher.status == 0"
-                >Prepare</span
+                >Active</span
               >
               <span
                 class="badge badge-danger rounded-pill d-inline"
                 ng-if="voucher.status == 1"
-                >Active</span
+                >Disabled</span
               >
             </td>
             <td>

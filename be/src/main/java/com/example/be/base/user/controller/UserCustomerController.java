@@ -27,6 +27,7 @@ public class UserCustomerController {
     @PutMapping("/update")
     public void update(@RequestBody UserCustomerRequest userCustomerRequest) {
         Customer customer = service.getOneById(userCustomerRequest.getId());
+
         customer.setEmail(userCustomerRequest.getEmail());
         customer.setFirstName(userCustomerRequest.getFirstName());
         customer.setLastName(userCustomerRequest.getLastName());

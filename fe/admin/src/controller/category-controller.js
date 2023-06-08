@@ -8,15 +8,19 @@ window.categoryController = function ($scope, $http, $routeParams) {
     };
 
   $scope.addCategory = function () {
-    // $http
-    //   .post(colorAPI + "/add", $scope.nameColor)
-    //   .then(function (response) {});
+    $http
+      .post(categoryAPI + "/add" + "?nameCategory=" + $scope.nameCategory)
+      .then(function (response) {
+        $scope.init();
+      });
   };
 
   $scope.deleteCategory = function (idCategory) {
     $http
       .delete(categoryAPI + "/delete/" + idCategory)
-      .then(function (response) {});
+      .then(function (response) {
+        $scope.init();
+      });
   };
 
   $scope.getCategory = function (idCategory) {
@@ -28,9 +32,20 @@ window.categoryController = function ($scope, $http, $routeParams) {
 
   $scope.updateCategory = function () {
     // console.log(parseJsonToEntity($scope.color));
-    // $http
-    //   .put(colorAPI + "/update", $scope.color)
-    //   .then(function (response) {});
+    $http
+      .put(categoryAPI + "/update", JSON.parse(JSON.stringify($scope.category)))
+      .then(function (response) {
+        $scope.init();
+      });
     // console.log($scope.color);
+  };
+
+  $scope.init = function () {
+    $http.get(categoryAPI + "/get-all-category").then(function (response) {
+      $scope.listCategory = response.data;
+    }),
+      function (error) {
+        console.log(error);
+      };
   };
 };

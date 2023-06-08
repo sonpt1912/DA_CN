@@ -8,13 +8,18 @@ window.brandController = function ($scope, $http, $routeParams) {
     };
 
   $scope.addBrand = function () {
-    // $http
-    //   .post(colorAPI + "/add", $scope.nameColor)
-    //   .then(function (response) {});
+    let nameBrand = $scope.nameBrand;
+    $http
+      .post(brandAPI + "/add" + "?nameBrand=" + nameBrand)
+      .then(function (response) {
+        $scope.init();
+      });
   };
 
   $scope.deleteBrand = function (idBrand) {
-    $http.delete(brandAPI + "/delete/" + idBrand).then(function (response) {});
+    $http.delete(brandAPI + "/delete/" + idBrand).then(function (response) {
+      $scope.init();
+    });
   };
 
   $scope.getBrand = function (idBrand) {
@@ -25,10 +30,20 @@ window.brandController = function ($scope, $http, $routeParams) {
   };
 
   $scope.updateBrand = function () {
-    // console.log(parseJsonToEntity($scope.color));
-    // $http
-    //   .put(colorAPI + "/update", $scope.color)
-    //   .then(function (response) {});
-    // console.log($scope.color);
+    console.log("s");
+    $http
+      .put(brandAPI + "/update", JSON.parse(JSON.stringify($scope.brand)))
+      .then(function (response) {
+        $scope.init();
+      });
+  };
+
+  $scope.init = function () {
+    $http.get(brandAPI + "/get-all-brand").then(function (response) {
+      $scope.listBrand = response.data;
+    }),
+      function (error) {
+        console.log(error);
+      };
   };
 };

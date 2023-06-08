@@ -5,6 +5,7 @@ myApp.config(function ($routeProvider, $locationProvider) {
   $routeProvider
     .when("/static", {
       templateUrl: "./page/static.html",
+      controller: staticController,
     })
     .when("/login", {
       templateUrl: "./page/login.html",

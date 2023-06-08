@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface UserBillRepository extends BillRepository {
 
-    @Query("SELECT NEW com.example.be.base.user.model.response.UserBillResponse(b.id, b.code, SUM(db.quantity), SUM(db.quantity) , b.phoneNumber, b.createDate, b.paymentDate, b.address,  b.status) " +
+    @Query("SELECT NEW com.example.be.base.user.model.response.UserBillResponse(b.id, b.code, SUM(db.quantity), b.phoneNumber, b.createDate, b.paymentDate, b.address,  b.status) " +
             "FROM Bill b " +
             "INNER JOIN DetailBill db ON db.bill = b " +
             "LEFT JOIN  Voucher v ON v = b.voucher " +
@@ -21,7 +21,7 @@ public interface UserBillRepository extends BillRepository {
             "GROUP BY b.id, b.code ")
     List<UserBillResponse> getAllByCustomerAndStatus(@Param("Customer") Customer customer, @Param("IdStatus") int idStatus);
 
-    @Query("SELECT NEW com.example.be.base.user.model.response.UserBillResponse(b.id, b.code, SUM(db.quantity), SUM(db.quantity) , b.phoneNumber, b.createDate, b.paymentDate, b.address, b.status) " +
+    @Query("SELECT NEW com.example.be.base.user.model.response.UserBillResponse(b.id, b.code, SUM(db.quantity),  b.phoneNumber, b.createDate, b.paymentDate, b.address, b.status) " +
             "FROM Bill b " +
             "INNER JOIN DetailBill db ON db.bill = b " +
             "LEFT JOIN  Voucher v ON v = b.voucher " +

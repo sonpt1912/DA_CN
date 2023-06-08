@@ -31,4 +31,8 @@ public class UserBillService {
         return repository.findById(id).get();
     }
 
+    public void updateStatus(Bill bill) {
+        repository.save(bill);
+    }
+
 }

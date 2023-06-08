@@ -103,13 +103,20 @@ public class UserBillController {
         // update tạng thái cart cũ
         cart.setStatus(1);
         cartService.saveOrUpdate(cart);
-        // tạo cart mới
+        // create new cart
         Cart newCart = Cart.builder()
                 .code(randomCode.generateRandomNumber())
                 .status(0)
                 .customer(customer)
                 .build();
         cartService.saveOrUpdate(newCart);
+    }
+
+    @PutMapping("/cancel-status-bill/{id}")
+    public void cancelStatus(@PathVariable("id") Long id) {
+        Bill bill = billService.getOneById(id);
+        bill.setStatus(4);
+        billService.updateStatus(bill);
     }
 
 }

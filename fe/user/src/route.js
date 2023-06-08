@@ -12,10 +12,20 @@ myApp.controller("headerController", function ($scope, $http) {
   $scope.deleteFavorite = function (id) {
     $http
       .delete(favoriteAPI + "/delete-favorite/" + 1 + "/" + id)
-      .then(function (response) {}),
+      .then(function (response) {
+        $scope.init();
+      }),
       function (error) {
         console.log(error);
       };
+
+    $scope.init = function () {
+      $http
+        .get(favoriteAPI + "/get-all-by-customer/" + 1)
+        .then(function (response) {
+          $scope.listFavorites = response.data;
+        });
+    };
   };
 
   // cart
@@ -73,7 +83,7 @@ myApp.config(function ($routeProvider, $locationProvider) {
       controller: detailBillController,
     })
     // customer
-    .when("/customer-accout", {
+    .when("/customer-account", {
       templateUrl: "./page/customer-account.html",
       controller: customerController,
     })
@@ -86,6 +96,6 @@ myApp.config(function ($routeProvider, $locationProvider) {
       controller: orderHistory,
     })
     .otherwise({
-      redirectTo: "/customer-accout",
+      redirectTo: "/customer-account",
     });
 });

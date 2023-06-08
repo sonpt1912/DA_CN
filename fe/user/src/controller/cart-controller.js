@@ -2,6 +2,19 @@ window.cartController = function ($scope, $routeParams, $http) {
   $scope.idCart = $routeParams.id;
   $scope.totalPrice = 0;
 
+  $scope.init = function () {
+    $http
+      .get(detailCart + "/get-by-cart/" + $scope.idCart)
+      .then(function (response) {
+        $scope.listDetailCarts = response.data;
+        $scope.calculateTotalPrice();
+        $scope.id = response.data.idDetailProduct;
+      }),
+      function (error) {
+        console.log(error);
+      };
+  };
+
   // Lấy detail cart
   $scope.listDetailCarts = [];
   $http
@@ -29,6 +42,7 @@ window.cartController = function ($scope, $routeParams, $http) {
         $scope.listDetailCarts = response.data;
         $scope.calculateTotalPrice();
         $scope.id = response.data.idDetailProduct;
+        $scope.init();
       }),
       function (error) {
         console.log(error);
@@ -44,7 +58,9 @@ window.cartController = function ($scope, $routeParams, $http) {
     };
     $http
       .put(detailCart + "/update-detail-cart", $scope.formDetailCart)
-      .then(function (response) {});
+      .then(function (response) {
+        $scope.init();
+      });
   };
 
   //tính thuế tax

@@ -14,8 +14,6 @@ public class UserBillResponse {
 
     private Long quantity;
 
-    private Long totalPrice;
-
     private Integer phoneNumber;
 
     private Date orderDate;
@@ -26,11 +24,10 @@ public class UserBillResponse {
 
     private Integer status;
 
-    public UserBillResponse(Long id, Long code, Long quantity, Long totalPrice, Integer phoneNumber, Date orderDate, Date paymentDate, String address, Integer status) {
+    public UserBillResponse(Long id, Long code, Long quantity, Integer phoneNumber, Date orderDate, Date paymentDate, String address, Integer status) {
         this.id = id;
         this.code = code;
         this.quantity = quantity;
-        this.totalPrice = totalPrice;
         this.phoneNumber = phoneNumber;
         this.orderDate = orderDate;
         this.paymentDate = paymentDate;

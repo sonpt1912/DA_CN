@@ -24,10 +24,41 @@
               aria-valuemax="100"
               style="height: 40px"
             >
-              <div id="progress-bar" class="progress-bar w-25">
-                {{bill.status * 25}}
+              <div
+                class="progress-bar"
+                ng-class="{
+              'badge-primary': bill.status === 1,
+              'bg-info': bill.status === 2,
+              'bg-success': bill.status === 3,
+              'bg-danger': bill.status === 4
+            }"
+                style="width: {{ bill.status * 25 }}%"
+              >
+                <i class="bi bi-box-seam" ng-if="bill.status == 1">
+                  <span>prepare</span>
+                </i>
+                <i class="bi bi-send" ng-if="bill.status == 2">
+                  <span>delivering</span>
+                </i>
+                <i class="bi bi-patch-check" ng-if="bill.status == 3"
+                  ><span>Succcess</span></i
+                >
+                <i class="bi bi-send-fill" ng-if="bill.status == 2"></i>
+                <i class="bi bi-arrow-repeat" ng-if="bill.status == 4">
+                  <span>cancel</span></i
+                >
               </div>
             </div>
+            <hr class="my-4" />
+
+            <button
+              type="button"
+              class="btn btn-danger"
+              ng-if="bill.status == 0 || bill.status == 1 || bill.status == 3"
+              ng-click="cancelBill(bill.id)"
+            >
+              Cancel
+            </button>
           </div>
         </div>
       </div>
@@ -50,7 +81,7 @@
                 >
                 <span
                   class="btn btn-success rounded-pill d-inline"
-                  ng-if="bill.status == 4"
+                  ng-if="bill.status == 2"
                   >Succes</span
                 >
                 <span
@@ -64,13 +95,8 @@
                   >Prepare</span
                 >
                 <span
-                  class="btn btn-info rounded-pill d-inline"
-                  ng-if="bill.status == 2"
-                  >delivering</span
-                >
-                <span
                   class="btn btn-danger rounded-pill d-inline"
-                  ng-if="bill.status == 5"
+                  ng-if="bill.status == 4"
                   >Cancel</span
                 >
               </p>
@@ -155,27 +181,22 @@
           <hr class="my-4" />
 
           <div class="row">
-            <div class="col-lg-8"></div>
-            <div class="col-lg-4">
-              <div class="card border-0">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between">
-                    <p class="mb-2">Price:</p>
-                    <p id="totalPrice" class="mb-2">{{ quantity() }}.00đ</p>
-                  </div>
-                  <div class="d-flex justify-content-between">
-                    <p class="mb-2">Discount:</p>
-                    <p class="mb-2 text-success" ng-if="voucher">
-                      -{{voucher.discountAmount}}.00đ
-                    </p>
-                  </div>
-                  <hr />
-                  <div class="d-flex justify-content-between">
-                    <p class="mb-2">Total price:</p>
-                    <p class="mb-2 fw-bold text-danger">
-                      {{bill.totalPrice}}.00đ
-                    </p>
-                  </div>
+            <div class="card border-0">
+              <div class="card-body">
+                <div class="d-flex justify-content-between">
+                  <p class="mb-2">Price:</p>
+                  <p id="totalPrice" class="mb-2">{{price}}.00đ</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <p class="mb-2">Discount:</p>
+                  <p class="mb-2 text-success" ng-if="voucher">
+                    -{{voucher.discountAmount}}.00đ
+                  </p>
+                </div>
+                <hr />
+                <div class="d-flex justify-content-between">
+                  <p class="mb-2">Total price:</p>
+                  <p class="mb-2 fw-bold text-danger">{{totalPrice}}.00đ</p>
                 </div>
               </div>
             </div>

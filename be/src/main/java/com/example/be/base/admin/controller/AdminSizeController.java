@@ -29,7 +29,7 @@ public class AdminSizeController {
     }
 
     @PostMapping("/add")
-    public void add(@RequestParam String name) {
+    public void add(@RequestParam("nameSize") String name) {
         Size size = Size.builder()
                 .name(name)
                 .status(0)
@@ -45,7 +45,7 @@ public class AdminSizeController {
     }
 
     @PutMapping("/update")
-    public void update(@ModelAttribute Size size) {
+    public void update(@RequestBody Size size) {
         service.update(size);
     }
 

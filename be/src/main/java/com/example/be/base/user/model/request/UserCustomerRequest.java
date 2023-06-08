@@ -7,7 +7,6 @@ public class UserCustomerRequest {
 
     private Long id;
 
-    private String userName;
 
     private String lastName;
 
@@ -18,9 +17,8 @@ public class UserCustomerRequest {
     private String email;
 
 
-    public UserCustomerRequest(Long id, String userName, String lastName, String firstName, Integer phoneNumber, String email) {
+    public UserCustomerRequest(Long id, String lastName, String firstName, Integer phoneNumber, String email) {
         this.id = id;
-        this.userName = userName;
         this.lastName = lastName;
         this.firstName = firstName;
         this.phoneNumber = phoneNumber;

@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface UserDetailBillRepository extends DetailBillRepository {
 
-    @Query("SELECT NEW com.example.be.base.admin.model.response.AdminDetailBillResponse(p.image, p.name, c.name, s.name, SUM(db.quantity), SUM(db.price)) " +
+    @Query("SELECT NEW com.example.be.base.user.model.response.UserDetailBillResponse(p.image, p.name, c.name, s.name, SUM(db.quantity), SUM(db.price)) " +
             "FROM Product p INNER JOIN DetailProduct dp ON p = dp.product " +
             "INNER JOIN Color c ON c = dp.color INNER JOIN Size s ON s = dp.size " +
             "INNER JOIN DetailBill db ON db.detailProduct = dp " +
