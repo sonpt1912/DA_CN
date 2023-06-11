@@ -28,10 +28,12 @@ window.detailBillController = function ($scope, $http, $routeParams) {
     });
 
   // get voucher
-  // $scope.voucher = [];
-  // $http.get().then(function (response) {
-  //   $scope.voucher = response.data;
-  // });
+  $scope.voucher = [];
+  $http
+    .get(voucherAPI + "/get-voucher-by-bill/" + idBill)
+    .then(function (response) {
+      $scope.voucher = response.data;
+    });
 
   // cancel
   $scope.cancelBill = function (idBill) {

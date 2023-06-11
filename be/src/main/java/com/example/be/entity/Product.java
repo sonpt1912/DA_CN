@@ -31,6 +31,9 @@ public class Product {
     @Column(name = "image")
     private String image;
 
+    @Column(name = "description", nullable = false)
+    private String description;
+
     @Column(name = "status")
     private Integer status;
 

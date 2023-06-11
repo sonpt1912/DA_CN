@@ -28,8 +28,4 @@ public class UserCartService {
         repository.save(cart);
     }
 
-    public boolean exitCartByCode(Long code) {
-        return repository.existsAllByCode(code);
-    }
-
 }

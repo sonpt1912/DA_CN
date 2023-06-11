@@ -140,7 +140,7 @@
           </div>
 
           <div class="body-right-container">
-            <div class="row">
+            <div class="row mb-4">
               <div
                 class="col-md-12 col-lg-4 mb-4 mb-lg-0"
                 ng-repeat="pr in listProduct"
@@ -150,11 +150,7 @@
                   style="text-decoration: none"
                 >
                   <div class="card rounded-lg-10">
-                    <img
-                      src="/user/img/product/product-1.jpg"
-                      class="card-img-top"
-                      alt=""
-                    />
+                    <img src="{{pr.image}}" class="card-img-top" alt="" />
                     <div class="card-body">
                       <div class="d-flex justify-content-between"></div>
 
@@ -179,6 +175,7 @@
             <nav
               aria-label="Page navigation example"
               ng-if="listProduct.length > 0"
+              class="mb-4"
             >
               <ul class="pagination justify-content-end">
                 <li class="page-item">

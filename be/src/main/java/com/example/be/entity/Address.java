@@ -33,8 +33,5 @@ public class Address {
     @Column(name = "city")
     private String city;
 
-    @Column(name = "status")
-    private Integer status;
-
 
 }

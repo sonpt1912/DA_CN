@@ -96,9 +96,7 @@ window.detailProductController = function (
   $scope.addToCart = function () {
     $http
       .post(detailCart + "/add-detail-cart", $scope.formProduct)
-      .then(function (response) {
-        alert("succes");
-      });
+      .then(function (response) {});
   };
 
   // get quantity
@@ -125,8 +123,10 @@ window.detailProductController = function (
   // add product to wish list
   // button toast
   var showToastCheckbox = document.getElementById("showToastCheckbox");
+  var showToastAddToCart = document.getElementById("showToastAddToCart");
   var toastContainer = document.querySelector(".toast-container");
   var liveToast = document.getElementById("liveToast");
+  var addToat = document.getElementById("addToat");
   var toastBody = document.getElementById("toastBody");
 
   showToastCheckbox.addEventListener("change", function () {
@@ -134,21 +134,38 @@ window.detailProductController = function (
       // add
       $http
         .post(favoriteAPI + "/save-favorite/" + 1 + "/" + id)
-        .then(function (response) {}),
-        function (error) {
+        .then(function (response) {
+          $http
+            .get(favoriteAPI + "/get-all-by-customer/" + 1)
+            .then(function (response) {
+              $rootScope.favoriteCount = $rootScope.favoriteCount + 1;
+              $rootScope.listFavorites = response.data;
+              showToast("Add to favorites successfully");
+            });
           console.log(error);
-        };
+        }),
+        function (error) {};
       // show mess
-      showToast("Add to favorites successfully");
     } else {
       $http
         .delete(favoriteAPI + "/delete-favorite/" + 1 + "/" + id)
-        .then(function (response) {}),
-        function (error) {
+        .then(function (response) {
+          $http
+            .get(favoriteAPI + "/get-all-by-customer/" + 1)
+            .then(function (response) {
+              $rootScope.listFavorites = response.data;
+              $rootScope.favoriteCount = $rootScope.favoriteCount - 1;
+            });
           console.log(error);
-        };
+        }),
+        function (error) {};
       showToast("delete from favorites");
     }
+  });
+
+  showToastAddToCart.addEventListener("click", function () {
+    showToast("Add to cart successfully");
+    $scope.addToCart();
   });
 
   function showToast(message) {

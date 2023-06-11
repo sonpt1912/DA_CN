@@ -14,12 +14,12 @@ public interface UserAddressRepository extends AddressRepository {
 
     @Query("SELECT NEW com.example.be.base.user.model.response.UserAddressResponse(ad.id, ad.description, ad.ward, ad.district, ad.city) " +
             "FROM Address ad " +
-            "WHERE ad.customer = :Customer AND ad.status = 0")
+            "WHERE ad.customer = :Customer")
     public List<UserAddressResponse> getAllByCustomer(@Param("Customer") Customer customer);
 
     @Query("SELECT NEW com.example.be.base.user.model.response.UserAddressResponse(ad.id, ad.description, ad.ward, ad.district, ad.city) " +
             "FROM Address ad " +
-            "WHERE ad.id = :idAddress AND ad.status = 0")
+            "WHERE ad.id = :idAddress")
     public UserAddressResponse getOneById(@Param("idAddress") long idAddress);
 
 }

@@ -9,8 +9,12 @@
             >Status</label
           >
           <div class="col-sm-9">
-            <select class="form-select" aria-label="Default select example">
-              <option selected>All</option>
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              ng-model="formSearch.stauts"
+            >
+              <option value="5" selected>All</option>
               <option value="0">Waiting</option>
               <option value="1">Prepare</option>
               <option value="2">Delivering</option>
@@ -31,6 +35,7 @@
               type="date"
               placeholder="date"
               aria-label="date"
+              ng-model="formSearch.startDate"
             />
           </div>
         </div>
@@ -44,6 +49,7 @@
               type="date"
               placeholder="date"
               aria-label="date"
+              ng-model="formSearch.endDate"
             />
           </div>
         </div>
@@ -63,13 +69,13 @@
   </div>
 </nav>
 <div class="container">
-  <table class="table align-middle mb-0 bg-white table-hover">
+  <table class="table align-middle mb-0 bg-white table-hover mb-4">
     <thead class="">
       <tr>
         <th>#</th>
         <th>Code</th>
         <th>Quantity</th>
-        <th>Total Price</th>
+
         <th>Number Phone</th>
         <th>Order Date</th>
         <th>Status</th>
@@ -78,7 +84,7 @@
     <tbody>
       <tr ng-click="redirectToDetail(order.id)" ng-repeat="order in listBill">
         <td>
-          <p class="fw-normal mb-1">{{$index +1}}</p>
+          <p class="fw-normal mb-1">{{order.id}}</p>
         </td>
         <td>
           <p class="fw-normal mb-1">{{order.code}}</p>
@@ -86,9 +92,6 @@
 
         <td>
           <p class="fw-normal mb-1">{{order.quantity}}</p>
-        </td>
-        <td>
-          <p class="fw-normal mb-1 text-danger">{{order.totalPrice}}.00đ</p>
         </td>
         <td>
           <p class="fw-normal mb-1">{{order.phoneNumber}}</p>
@@ -126,4 +129,22 @@
       </tr>
     </tbody>
   </table>
+
+  <nav aria-label="Page navigation example" ng-if="listBill.length > 0">
+    <ul class="pagination justify-content-end">
+      <li class="page-item">
+        <a class="page-link text-dark" ng-click="setPage( currentPage - 1)"
+          >Previous</a
+        >
+      </li>
+      <li class="page-item">
+        <a class="page-link text-dark">{{currentPage + 1}}</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link text-dark" ng-click="setPage(currentPage + 1)"
+          >Next</a
+        >
+      </li>
+    </ul>
+  </nav>
 </div>

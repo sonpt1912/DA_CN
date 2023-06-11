@@ -3,7 +3,7 @@ package com.example.be.base.admin.controller;
 import com.example.be.base.admin.model.response.AdminBillResponse;
 import com.example.be.base.admin.model.response.AdminChartResponse;
 import com.example.be.base.admin.service.AdminBillService;
-import com.example.be.entity.Bill;
+import com.example.be.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,8 +25,14 @@ public class AdminBillController {
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     @GetMapping("/get-all")
-    public List<AdminBillResponse> getAll() {
-        return service.getAll();
+    public List<AdminBillResponse> getAll(@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber) {
+        return service.getAll(pageNumber);
+    }
+
+    @GetMapping("/get-total-pages-bill")
+    public Integer getTotalPagesBill() {
+        int page = (int) Math.ceil(service.getTotalPageBill().size() / 9) ;
+        return page;
     }
 
     @GetMapping("/get-by-bill/{id}")

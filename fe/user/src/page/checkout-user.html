@@ -128,7 +128,7 @@
                     ng-model="code"
                     placeholder="Coupon code"
                   />
-                  <button ng-click="getVoucher()" class="btn btn-light border">
+                  <button id="showToast" class="btn btn-light border">
                     Apply
                   </button>
                 </div>
@@ -184,15 +184,15 @@
                   1
                 </span>
                 <img
-                  src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/7.webp"
+                  src="{{detailCart.image}}"
                   style="height: 96px; width: 96x"
                   class="img-sm rounded border"
                 />
               </div>
               <div class="">
-                <a href="#" class="nav-link text-dark">
+                <div class="price text-dark">
                   {{detailCart.nameProduct}}<br />
-                </a>
+                </div>
                 <div class="price text-muted">
                   {{detailCart.nameColor}}, {{detailCart.nameSize}}
                 </div>
@@ -355,3 +355,28 @@
     </div>
   </div>
 </div>
+<!-- toats -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div
+    id="liveToast"
+    class="toast"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="toast-header">
+      <img src="/user/img/logo.png" class="rounded me-2" alt="..." />
+      <strong class="me-auto">Alert</strong>
+      <small id="toastStatus"></small>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="toast-body" id="toastBody"></div>
+  </div>
+</div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+;

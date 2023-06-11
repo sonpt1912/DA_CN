@@ -48,17 +48,9 @@ public class DetailProduct {
     @JoinColumn(name = "id_category", referencedColumnName = "id", nullable = false)
     private Category category;
 
-    @Column(name = "description", nullable = false)
-    private String description;
-
-    @Column(name = "quantity", nullable = false)
-    private Integer quantity;
 
     @Column(name = "sell_price", nullable = false)
     private BigDecimal sellPrice;
-
-    @Column(name = "origin_price", nullable = false)
-    private BigDecimal originPrice;
 
     @Column(name = "status", nullable = false)
     private Integer status;

@@ -214,7 +214,9 @@
                 <hr />
                 <div class="d-flex justify-content-between">
                   <p class="mb-2">Total price:</p>
-                  <p class="mb-2 fw-bold text-danger">{{totalPrice}}.00đ</p>
+                  <p class="mb-2 fw-bold text-danger">
+                    {{price - voucher.discountAmount}}.00đ
+                  </p>
                 </div>
               </div>
             </div>

@@ -103,15 +103,12 @@
         ></button>
       </div>
       <div class="modal-body">
-        <div
-          ng-repeat="favorite in listFavorites"
-          ng-init="$parent.favoriteCount = $index + 1"
-        >
+        <div ng-repeat="favorite in listFavorites">
           <div class="card-body p-4">
             <div class="row d-flex justify-content-between align-items-center">
               <div class="col-md-3 col-lg-2 col-xl-2">
                 <img
-                  src="/user/img/product/product-1.jpg"
+                  src="{{favorite.image}}"
                   class="img-fluid rounded-3"
                   alt="Cotton T-shirt"
                 />

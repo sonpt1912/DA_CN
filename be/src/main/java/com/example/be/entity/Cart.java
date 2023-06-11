@@ -30,9 +30,6 @@ public class Cart {
     @JoinColumn(name = "id_customer", nullable = false, referencedColumnName = "id")
     private Customer customer;
 
-    @Column(name = "code", nullable = false)
-    private Long code;
-
     @Column(name = "status")
     private Integer status;
 

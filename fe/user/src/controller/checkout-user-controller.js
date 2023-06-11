@@ -83,10 +83,12 @@ window.checkoutUserController = function ($scope, $http, $routeParams) {
       .get(voucherAPI + "/get-voucher-by-code/" + $scope.code)
       .then(function (response) {
         $scope.discountPrice = response.data;
+        return true;
       }),
       function (e) {
         console.log(e);
       };
+    return false;
   };
 
   // hàm add address
@@ -98,16 +100,32 @@ window.checkoutUserController = function ($scope, $http, $routeParams) {
 
   // add bill
   $scope.addBill = function () {
-    $scope.formBill.description = $scope.description;
-    if ($scope.discountPrice.discountAmount > 0) {
-      $scope.formBill.codeVoucher = $scope.code;
-    } else {
-      $scope.formBill.codeVoucher = null;
-    }
+    swal({
+      title: "Are you sure?",
+      text: "buy this product",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        $scope.formBill.description = $scope.description;
+        if ($scope.discountPrice.discountAmount > 0) {
+          $scope.formBill.codeVoucher = $scope.code;
+        } else {
+          $scope.formBill.codeVoucher = null;
+        }
 
-    $http
-      .post(billAPI + "/add-to-bill", $scope.formBill)
-      .then(function (response) {});
+        $http
+          .post(billAPI + "/add-to-bill", $scope.formBill)
+          .then(function (response) {});
+        window.location.href = "#customer-account";
+        swal("Poof! Succes", {
+          icon: "success",
+        });
+      } else {
+        swal("Cancel");
+      }
+    });
   };
 
   //tính thuế tax
@@ -175,4 +193,29 @@ window.checkoutUserController = function ($scope, $http, $routeParams) {
         $scope.Ward = response.data.data.data;
       });
   };
+
+  // button toast
+  var showToastCheckbox = document.getElementById("showToast");
+  var toastContainer = document.querySelector(".toast-container");
+  var liveToast = document.getElementById("liveToast");
+  var addToat = document.getElementById("addToat");
+  var toastBody = document.getElementById("toastBody");
+
+  showToastCheckbox.addEventListener("click", function () {
+    $scope.getVoucher();
+    if ($scope.discountPrice > 0) {
+      showToast("add voucher successfully");
+    } else {
+      showToast("add voucher failure");
+    }
+  });
+
+  function showToast(message) {
+    var clonedToast = liveToast.cloneNode(true);
+    var clonedToastBody = clonedToast.querySelector(".toast-body");
+    clonedToastBody.textContent = message;
+    toastContainer.appendChild(clonedToast);
+    var newToast = new bootstrap.Toast(clonedToast);
+    newToast.show();
+  }
 };

@@ -1,6 +1,33 @@
 <nav
   class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
-></nav>
+>
+  <div class="container">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"></li>
+        <li class="nav-item"></li>
+        <li class="nav-item dropdown"></li>
+        <li class="nav-item"></li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          ng-model="searchByName"
+        />
+        <button
+          class="btn btn-outline-success"
+          type="submit"
+          ng-click="getProduct()"
+        >
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>
 <div class="container-xl">
   <div class="table-responsive">
     <div class="table-wrapper">
@@ -38,7 +65,7 @@
               <img
                 class="border rounded me-3"
                 style="width: 96px; height: 96px"
-                src="/admin/img/product-1.jpg"
+                src="{{product.image}}"
                 alt=""
               />
             </td>
@@ -56,7 +83,11 @@
               >
             </td>
             <td>
-              <a href="" data-bs-toggle="modal" data-bs-target="#editModel"
+              <a
+                href=""
+                data-bs-toggle="modal"
+                data-bs-target="#editModel"
+                ng-click="editPorudct(product.id)"
                 ><i class="bi bi-pencil-fill text-warning me-3"></i
               ></a>
               <a href=""><i class="bi bi-trash-fill text-danger"></i></a>
@@ -64,18 +95,6 @@
           </tr>
         </tbody>
       </table>
-      <!-- <div class="clearfix">
-        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-        <ul class="pagination">
-          <li class="page-item disabled"><a href="#">Previous</a></li>
-          <li class="page-item"><a href="#" class="page-link">1</a></li>
-          <li class="page-item"><a href="#" class="page-link">2</a></li>
-          <li class="page-item active"><a href="#" class="page-link">3</a></li>
-          <li class="page-item"><a href="#" class="page-link">4</a></li>
-          <li class="page-item"><a href="#" class="page-link">5</a></li>
-          <li class="page-item"><a href="#" class="page-link">Next</a></li>
-        </ul>
-      </div> -->
     </div>
   </div>
 </div>
@@ -149,38 +168,34 @@
           <!-- color input -->
           <div class="form-outline mb-4">
             <label class="form-label" for="form3Example3">Color: </label>
-            <div class="body-left-size-item d-inline">
+            <div
+              class="body-left-size-item d-inline"
+              ng-repeat="color in listColor"
+            >
               <input
-                type="checkbox"
+                type="radio"
                 class="btn-check"
                 name="color"
                 id="color-all"
                 autocomplete="off"
                 checked
+                ng-model="checkProduct"
+                value="{{color.id}}"
               />
-              <label class="btn btn-outline-dark" for="color-all">ALL</label>
-            </div>
-
-            <div class="body-left-size-item d-inline">
-              <input
-                type="checkbox"
-                class="btn-check"
-                name="color"
-                id="color-red"
-                autocomplete="off"
-              />
-              <label class="btn btn-outline-dark" for="color-red">Red</label>
+              <label class="btn btn-outline-dark" for="color-all"
+                >{{color.name}}</label
+              >
             </div>
           </div>
 
           <!-- size input -->
           <div class="form-outline mb-4">
             <label class="form-label" for="form3Example3">Size:</label>
-            <div class="body-left-size-item d-inline">
+            <!-- <div class="body-left-size-item d-inline">
               <input
                 type="checkbox"
                 class="btn-check"
-                name="color"
+                name="size"
                 id="color-all"
                 autocomplete="off"
                 checked
@@ -192,30 +207,16 @@
               <input
                 type="checkbox"
                 class="btn-check"
-                name="color"
+                name="size"
                 id="color-red"
                 autocomplete="off"
               />
               <label class="btn btn-outline-dark" for="color-red">Red</label>
-            </div>
+            </div> -->
           </div>
 
           <!-- 3 column grid layout with text inputs for the first and last names -->
           <div class="row mb-4">
-            <div class="col">
-              <div class="form-outline">
-                <label class="form-label" for="form3Example1">Quantity</label>
-                <input type="number" id="form3Example2" class="form-control" />
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-outline">
-                <label class="form-label" for="form3Example1"
-                  >Origin Price</label
-                >
-                <input type="number" id="form3Example2" class="form-control" />
-              </div>
-            </div>
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="form3Example2">Sell Price</label>
@@ -239,7 +240,9 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" ng-click="addProduct()">
+          Save changes
+        </button>
       </div>
     </div>
   </div>
@@ -279,7 +282,12 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="form3Example2">Name</label>
-                <input type="text" id="form3Example2" class="form-control" />
+                <input
+                  type="text"
+                  id="form3Example2"
+                  class="form-control"
+                  ng-model="product.name"
+                />
               </div>
             </div>
           </div>
@@ -290,10 +298,7 @@
               <div class="form-outline">
                 <label class="form-label" for="form3Example1">Brand</label>
                 <select class="form-select" aria-label="Default select example">
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option ng-repeat="brand in listBrand">{{brand.name}}</option>
                 </select>
               </div>
             </div>
@@ -301,10 +306,9 @@
               <div class="form-outline">
                 <label class="form-label" for="form3Example2">Category</label>
                 <select class="form-select" aria-label="Default select example">
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option ng-repeat="category in listCategory">
+                    {{category.name}}
+                  </option>
                 </select>
               </div>
             </div>
@@ -317,29 +321,20 @@
 
           <!-- size input -->
           <div class="form-outline mb-4">
-            <label class="form-label" for="form3Example3">Email address</label>
+            <label class="form-label" for="form3Example3">Size: </label>
           </div>
 
           <!-- 3 column grid layout with text inputs for the first and last names -->
           <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="form3Example1">Quantity</label>
-                <input type="number" id="form3Example2" class="form-control" />
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-outline">
-                <label class="form-label" for="form3Example1"
-                  >Origin Price</label
-                >
-                <input type="number" id="form3Example2" class="form-control" />
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-outline">
                 <label class="form-label" for="form3Example2">Sell Price</label>
-                <input type="number" id="form3Example2" class="form-control" />
+                <input
+                  type="number"
+                  id="form3Example2"
+                  class="form-control"
+                  ng-model="product.sellPrice"
+                />
               </div>
             </div>
           </div>
@@ -351,6 +346,7 @@
               class="form-control"
               id="exampleFormControlTextarea1"
               rows="3"
+              ng-model="product.description"
             ></textarea>
           </div>
         </form>

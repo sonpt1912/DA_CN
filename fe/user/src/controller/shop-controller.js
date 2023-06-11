@@ -9,7 +9,6 @@ window.shopController = function ($http, $scope, $routeParams, $rootScope) {
 
   // sự kiện khi click vào lấy id
   $scope.search = function () {
-    console.log($scope.formId);
     $scope.currentPage = 0;
     // list product
     $scope.listProduct = [];

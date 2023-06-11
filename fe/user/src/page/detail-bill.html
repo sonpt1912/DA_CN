@@ -54,7 +54,7 @@
             <button
               type="button"
               class="btn btn-danger"
-              ng-if="bill.status == 0 || bill.status == 1 || bill.status == 3"
+              ng-if="bill.status == 0 || bill.status == 1 "
               ng-click="cancelBill(bill.id)"
             >
               Cancel
@@ -140,7 +140,7 @@
                     <div class="me-lg-5">
                       <div class="d-flex">
                         <img
-                          src="/user/img/product/product-1.jpg"
+                          src="{{detailPr.image}}"
                           class="border rounded me-3"
                           style="width: 96px; height: 96px"
                         />
@@ -196,7 +196,9 @@
                 <hr />
                 <div class="d-flex justify-content-between">
                   <p class="mb-2">Total price:</p>
-                  <p class="mb-2 fw-bold text-danger">{{totalPrice}}.00đ</p>
+                  <p class="mb-2 fw-bold text-danger">
+                    {{price - voucher.discountAmount}}.00đ
+                  </p>
                 </div>
               </div>
             </div>

@@ -4,6 +4,7 @@ import com.example.be.base.admin.model.response.AdminBillResponse;
 import com.example.be.base.admin.model.response.AdminChartResponse;
 import com.example.be.entity.Bill;
 import com.example.be.repository.BillRepository;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -19,8 +20,22 @@ public interface AdminBillRepository extends BillRepository {
             "FROM Bill b " +
             "INNER JOIN DetailBill db ON db.bill = b " +
             "LEFT JOIN  Voucher v ON v = b.voucher " +
+//            "WHERE (:Status IS NULL OR b.status = :Status) " +
+//            "AND (:StartDate IS NULL OR b.paymentDate >= :StartDate) " +
+//            "AND (:EndDate IS NULL OR b.paymentDate <= :EndDate) " +
             "GROUP BY b.id, b.code")
-    List<AdminBillResponse> getAll();
+    List<AdminBillResponse> getAll(Pageable pageable);
+
+
+    @Query("SELECT NEW com.example.be.base.admin.model.response.AdminBillResponse(b.id, b.code, SUM(db.quantity), SUM(db.quantity) , b.phoneNumber , b.createDate, b.paymentDate, b.address, b.description, b.status) " +
+            "FROM Bill b " +
+            "INNER JOIN DetailBill db ON db.bill = b " +
+            "LEFT JOIN  Voucher v ON v = b.voucher " +
+//            "WHERE (:Status IS NULL OR b.status = :Status) " +
+//            "AND (:StartDate IS NULL OR b.paymentDate >= :StartDate) " +
+//            "AND (:EndDate IS NULL OR b.paymentDate <= :EndDate) " +
+            "GROUP BY b.id, b.code")
+    List<AdminBillResponse> getTotalPageBill();
 
     @Query("SELECT NEW com.example.be.base.admin.model.response.AdminBillResponse(b.id, b.code, SUM(db.quantity), SUM(db.quantity) , b.phoneNumber , b.createDate, b.paymentDate,  b.address, b.description, b.status) " +
             "FROM Bill b " +

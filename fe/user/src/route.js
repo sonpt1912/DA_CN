@@ -1,12 +1,13 @@
 var myApp = angular.module("myModule", ["ngRoute"]);
 
-myApp.controller("headerController", function ($scope, $http) {
+myApp.controller("headerController", function ($scope, $rootScope, $http) {
   // favorite
-  $scope.listFavorites = [];
+  $rootScope.listFavorites = [];
   $http
     .get(favoriteAPI + "/get-all-by-customer/" + 1)
     .then(function (response) {
-      $scope.listFavorites = response.data;
+      $rootScope.listFavorites = response.data;
+      $rootScope.favoriteCount = $rootScope.listFavorites.length;
     });
 
   $scope.deleteFavorite = function (id) {
@@ -23,7 +24,7 @@ myApp.controller("headerController", function ($scope, $http) {
       $http
         .get(favoriteAPI + "/get-all-by-customer/" + 1)
         .then(function (response) {
-          $scope.listFavorites = response.data;
+          $rootScope.listFavorites = response.data;
         });
     };
   };

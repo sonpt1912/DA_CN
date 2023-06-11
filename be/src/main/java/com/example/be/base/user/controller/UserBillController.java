@@ -76,7 +76,7 @@ public class UserBillController {
         Voucher voucher = voucherService.getByCode(userBillRequest.getCodeVoucher());
         // tạo bill
         Bill bill = billService.addOrUpdate(Bill.builder()
-                .code(cart.getCode())
+                .code(randomCode.generateRandomNumber())
                 .address(userBillRequest.getAddress())
                 .status(0)
                 .address(userBillRequest.getAddress())
@@ -100,16 +100,12 @@ public class UserBillController {
             listB.add(new DetailBill(bill, listDetailProduct.get(i), detailCartList.get(i).getQuantity(), listDetailProduct.get(i).getSellPrice()));
         }
         detailBillService.addListDetailBill(listB);
-        // update tạng thái cart cũ
-        cart.setStatus(1);
-        cartService.saveOrUpdate(cart);
-        // create new cart
-        Cart newCart = Cart.builder()
-                .code(randomCode.generateRandomNumber())
-                .status(0)
-                .customer(customer)
-                .build();
-        cartService.saveOrUpdate(newCart);
+
+
+        /// xóa hết dữ liệu trong detail cart từ cart
+        for (DetailCart dc : detailCartList) {
+            detailCartService.deleteDetailCart(dc);
+        }
     }
 
     @PutMapping("/cancel-status-bill/{id}")

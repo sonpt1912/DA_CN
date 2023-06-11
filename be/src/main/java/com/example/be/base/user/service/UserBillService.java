@@ -35,4 +35,8 @@ public class UserBillService {
         repository.save(bill);
     }
 
+    public boolean exitCartByCode(Long code) {
+        return repository.existsAllByCode(code);
+    }
+
 }

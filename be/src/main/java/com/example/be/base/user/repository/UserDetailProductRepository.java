@@ -9,10 +9,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserDetailProductRepository extends DetailProductRepository {
 
-    @Query("SELECT NEW com.example.be.base.user.model.response.UserDetailProductResponse( p.name, p.image, dp.description, dp.sellPrice) " +
+    @Query("SELECT NEW com.example.be.base.user.model.response.UserDetailProductResponse( p.name, p.image, p.description, dp.sellPrice) " +
             "FROM Brand b INNER JOIN DetailProduct  dp ON b = dp.brand INNER JOIN Product p ON dp.product = p " +
             "WHERE p.id = :IdProduct " +
-            "GROUP BY p.name, p.image, dp.description, dp.sellPrice")
+            "GROUP BY p.name, p.image, p.description, dp.sellPrice")
     UserDetailProductResponse getDetailProductByProduct(@Param("IdProduct") long idProduct);
 
 }

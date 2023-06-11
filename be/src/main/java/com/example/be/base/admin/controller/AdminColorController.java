@@ -22,6 +22,11 @@ public class AdminColorController {
         return service.getAll();
     }
 
+    @GetMapping("/get-color-by-status")
+    public List<Color> getAllByStauts() {
+        return service.getAllColorByStatus(0);
+    }
+
     @GetMapping("/get/{id}")
     public Color getOneById(@PathVariable("id") long id) {
         return service.getOneById(id);

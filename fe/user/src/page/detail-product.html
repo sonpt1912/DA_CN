@@ -10,11 +10,7 @@
             data-type="image"
             href=""
           >
-            <img
-              src="/user/img/product/product-1.jpg"
-              class="card-img"
-              alt="..."
-            />
+            <img src="{{detailProduct.image}}" class="card-img" alt="..." />
           </a>
         </div>
         <div class="d-flex justify-content-center mb-3"></div>
@@ -128,12 +124,12 @@
             </p>
           </div>
           <div class="mb-1">
-            <a
-              ng-click="addToCart()"
+            <button
+              id="showToastAddToCart"
               class="btn btn-outline-dark shadow-0 w-50"
             >
               Add to cart
-            </a>
+            </button>
             <!-- toat -->
             <input
               type="checkbox"
@@ -169,27 +165,6 @@
     <div class="toast-header">
       <img src="/user/img/logo.png" class="rounded me-2" alt="..." />
       <strong class="me-auto">Alert</strong>
-      <small id="toastStatus"></small>
-      <button
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="toast"
-        aria-label="Close"
-      ></button>
-    </div>
-    <div class="toast-body" id="toastBody"></div>
-  </div>
-</div>
-<!-- toats add -->
-<div class="toast-container position-fixed bottom-0 end-0 p-3">
-  <div
-    id="addToat"
-    class="toast"
-    role="alert"
-    aria-live="assertive"
-    aria-atomic="true"
-  >
-    <div class="toast-header">
       <small id="toastStatus"></small>
       <button
         type="button"

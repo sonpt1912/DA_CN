@@ -34,8 +34,6 @@ public class UserProductService {
     }
 
     public Product getProductById(long id) {
-        return response.findProductById(id);
+        return response.findById(id).get();
     }
-
-
 }

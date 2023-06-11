@@ -5,6 +5,10 @@ import com.example.be.base.admin.model.response.AdminChartResponse;
 import com.example.be.base.admin.repository.AdminBillRepository;
 import com.example.be.entity.Bill;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -22,8 +26,13 @@ public class AdminBillService {
 
     private java.util.Date currentDate = new java.util.Date();
 
-    public List<AdminBillResponse> getAll() {
-        return repository.getAll();
+    public List<AdminBillResponse> getAll(int pageNumber) {
+        Pageable page = PageRequest.of(pageNumber, 9);
+        return repository.getAll(page);
+    }
+
+    public List<AdminBillResponse> getTotalPageBill() {
+        return repository.getTotalPageBill();
     }
 
     public AdminBillResponse getOneByBill(Bill bill) {

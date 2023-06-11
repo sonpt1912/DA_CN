@@ -19,6 +19,10 @@ public class AdminColorService {
         return repositoy.findAll();
     }
 
+    public List<Color> getAllColorByStatus(int status) {
+        return repositoy.findColorsByStatus(status);
+    }
+
     public Color getOneById(long id) {
         return repositoy.findColorById(id);
     }

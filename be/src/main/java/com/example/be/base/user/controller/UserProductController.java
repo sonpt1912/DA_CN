@@ -50,7 +50,7 @@ public class UserProductController {
         Category category = categoryService.getCategoryById(Long.valueOf(idCategory));
         Size size = sizeService.getSizeById(Long.valueOf(idSize));
         Color color = colorService.getColorById(Long.valueOf(idColor));
-        int page = (int) Math.ceil(productService.getTotalPages(category, brand, size, color).size() / 9) - 1;
+        int page = (int) Math.ceil(productService.getTotalPages(category, brand, size, color).size() / 9);
         return page;
     }
 
