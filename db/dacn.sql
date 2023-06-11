@@ -344,6 +344,25 @@ INSERT INTO `dacn`.`detail_product` (`id_category`, `id_product`, `id_size`, `id
 INSERT INTO `dacn`.`detail_product` (`id_category`, `id_product`, `id_size`, `id_color`, `id_brand`, `sell_price`, `status`) VALUES ('6', '14', '2', '3', '3', '290000', '0');
 
 
+
+INSERT INTO `dacn`.`detail_product` (`id_category`, `id_product`, `id_size`, `id_color`, `id_brand`, `sell_price`, `status`) VALUES ('2', '1', '2', '1', '2', '200000', '0');
+INSERT INTO `dacn`.`detail_product` (`id_category`, `id_product`, `id_size`, `id_color`, `id_brand`, `sell_price`, `status`) VALUES ('2', '1', '3', '1', '2', '200000', '0');
+INSERT INTO `dacn`.`detail_product` (`id_category`, `id_product`, `id_size`, `id_color`, `id_brand`, `sell_price`, `status`) VALUES ('2', '1', '4', '1', '2', '200000', '0');
+
+INSERT INTO `dacn`.`detail_product` (`id_category`, `id_product`, `id_size`, `id_color`, `id_brand`, `sell_price`, `status`) VALUES ('2', '2', '3', '1', '2', '220000', '0');
+INSERT INTO `dacn`.`detail_product` (`id_category`, `id_product`, `id_size`, `id_color`, `id_brand`, `sell_price`, `status`) VALUES ('2', '2', '4', '1', '2', '220000', '0');
+INSERT INTO `dacn`.`detail_product` (`id_category`, `id_product`, `id_size`, `id_color`, `id_brand`, `sell_price`, `status`) VALUES ('2', '2', '3', '2', '2', '220000', '0');
+INSERT INTO `dacn`.`detail_product` (`id_category`, `id_product`, `id_size`, `id_color`, `id_brand`, `sell_price`, `status`) VALUES ('2', '2', '4', '2', '2', '220000', '0');
+
+-- 
+INSERT INTO `dacn`.`detail_product` (`id_category`, `id_product`, `id_size`, `id_color`, `id_brand`, `sell_price`, `status`) VALUES ('2', '3', '3', '1', '2', '190000', '0');
+INSERT INTO `dacn`.`detail_product` (`id_category`, `id_product`, `id_size`, `id_color`, `id_brand`, `sell_price`, `status`) VALUES ('2', '3', '4', '1', '2', '190000', '0');
+INSERT INTO `dacn`.`detail_product` (`id_category`, `id_product`, `id_size`, `id_color`, `id_brand`, `sell_price`, `status`) VALUES ('2', '3', '3', '2', '2', '190000', '0');
+INSERT INTO `dacn`.`detail_product` (`id_category`, `id_product`, `id_size`, `id_color`, `id_brand`, `sell_price`, `status`) VALUES ('2', '3', '4', '2', '2', '190000', '0');
+
+
+
+
 -- customer
 INSERT INTO `dacn`.`customer` (`username`, `last_name`, `first_name`, `phone_number`, `email`, `password`, `status`) VALUES ('sonpt', 'phạm', 'sơn', '0389412203', 'sonptph25875@fpt.edu.vn', 'sonpt', '0');
 
